@@ -33,7 +33,7 @@ public class AggiungiArticolo extends HttpServlet {
 		
 		String testo = request.getParameter("testo");
 		Double costo = Double.parseDouble(request.getParameter("costo"));
-		
+		int giacenza = Integer.parseInt(request.getParameter("giacenza"));
 		ArticoloBean saveBean = new ArticoloBean();
 		
 		saveBean.setCodiceArticolo(codice);
@@ -42,6 +42,7 @@ public class AggiungiArticolo extends HttpServlet {
 		saveBean.setImmagine(immagine);
 		saveBean.setDescrizione(testo);
 		saveBean.setCosto(costo);
+		saveBean.setGiacenza(giacenza);
 		
 		Utility.print("Entrata nella servlet");
 		

@@ -47,6 +47,7 @@ public class ArticoloModelDS implements ModelInterface<ArticoloBean> {
 				bean.setCosto(rs.getDouble("costo"));
 				bean.setNomeCategoria(rs.getString("nomeCategoria"));
 				bean.setMediaRecensioni(rs.getInt("mediaRecensioni"));
+				bean.setGiacenza(rs.getInt("giacenza"));
 			}
 		} finally {
 			try {
@@ -104,6 +105,7 @@ public class ArticoloModelDS implements ModelInterface<ArticoloBean> {
 				bean.setCosto(rs.getDouble("costo"));
 				bean.setNomeCategoria(rs.getString("nomeCategoria"));
 				bean.setMediaRecensioni(rs.getInt("mediaRecensioni"));
+				bean.setGiacenza(rs.getInt("giacenza"));
 				
 				collection.add(bean);
 			}
@@ -127,7 +129,7 @@ public class ArticoloModelDS implements ModelInterface<ArticoloBean> {
 		Connection con = null;
 		PreparedStatement ps = null;
 		
-		String InsertSQL = "INSERT INTO articolo VALUES (?,?,?,?,?,?,?)";
+		String InsertSQL = "INSERT INTO articolo VALUES (?,?,?,?,?,?,?,?)";
 		
 		try {
 			con = ds.getConnection();
@@ -140,6 +142,7 @@ public class ArticoloModelDS implements ModelInterface<ArticoloBean> {
 			ps.setDouble(5, item.getCosto());
 			ps.setString(6, item.getNomeCategoria());
 			ps.setDouble(7, item.getMediaRecensioni());
+			ps.setInt(8, item.getGiacenza());
 			
 			Utility.print("doSave: " + ps.toString());
 			
@@ -160,7 +163,7 @@ public class ArticoloModelDS implements ModelInterface<ArticoloBean> {
 		Connection con = null;
 		PreparedStatement ps = null;
 		
-		String UpdateSQL = "UPDATE articolo SET nome=?, immagine=?, descrizione=?, costo=?, nomeCategoria=? WHERE codiceArticolo=?";
+		String UpdateSQL = "UPDATE articolo SET nome=?, immagine=?, descrizione=?, costo=?, nomeCategoria=? , giacenza=? WHERE codiceArticolo=?";
 		
 		try {
 			con = ds.getConnection();
@@ -171,7 +174,8 @@ public class ArticoloModelDS implements ModelInterface<ArticoloBean> {
 			ps.setString(3, item.getDescrizione());
 			ps.setDouble(4, item.getCosto());
 			ps.setString(5, item.getNomeCategoria());
-			ps.setString(6, code);
+			ps.setInt(6, item.getGiacenza());
+			ps.setString(7, code);
 			
 			Utility.print("doUpdate: " + ps.toString());
 			
@@ -229,6 +233,7 @@ public class ArticoloModelDS implements ModelInterface<ArticoloBean> {
 				bean.setCosto(rs.getDouble("costo"));
 				bean.setNomeCategoria(rs.getString("nomeCategoria"));
 				bean.setMediaRecensioni(rs.getInt("mediaRecensioni"));
+				bean.setGiacenza(rs.getInt("giacenza"));
 				
 				collection.add(bean);
 			}
@@ -284,6 +289,7 @@ public class ArticoloModelDS implements ModelInterface<ArticoloBean> {
 				bean.setCosto(rs.getDouble("costo"));
 				bean.setNomeCategoria(rs.getString("nomeCategoria"));
 				bean.setMediaRecensioni(rs.getInt("mediaRecensioni"));
+				bean.setGiacenza(rs.getInt("giacenza"));
 				
 				collection.add(bean);
 			}
@@ -330,6 +336,7 @@ public class ArticoloModelDS implements ModelInterface<ArticoloBean> {
 				bean.setCosto(rs.getDouble("costo"));
 				bean.setNomeCategoria(rs.getString("nomeCategoria"));
 				bean.setMediaRecensioni(rs.getInt("mediaRecensioni"));
+				bean.setGiacenza(rs.getInt("giacenza"));
 				
 				collection.add(bean);
 			}

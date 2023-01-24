@@ -80,6 +80,9 @@ if(unsaved == null)
 									
 									<label for="costo">Costo (&euro;)</label>
 									<input type="number" name="costo" min="0" step="0.01" value="<%=unsaved.getCosto()%>" required>
+									
+									<label for="giacenza">Giacenza</label>
+									<input type="number" name="giacenza" min="1" max="1000" value="<%=unsaved.getGiacenza()%>" required>
 								</div>
 							</div>									
 							<input type="submit" value="Aggiungi">&nbsp;<input type="reset">

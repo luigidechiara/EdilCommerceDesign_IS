@@ -83,6 +83,8 @@ public class ModificaArticolo extends HttpServlet {
 						+ "										<label for=\"costo\">Costo (&euro;)</label>\r\n"
 						+ "										<input type=\"number\" name=\"costo\" min=\"0.00\" required value=" + aBean.getCosto() + ">\r\n"
 						+ "										\r\n"
+						+ "										<label for=\"giacenza\">giacenza</label>\r\n"								
+						+ "										<input type=\"number\" name=\"giacenza\" min=\"1\"max=\"1000\" value="+ aBean.getGiacenza()+">\r\n"
 						+ "										<br><br><input type=\"submit\" value=\"Modifica\">&nbsp;<input type=\"reset\">\r\n"
 						+ "									</form>");
 			}
@@ -93,6 +95,7 @@ public class ModificaArticolo extends HttpServlet {
 			String immagine = request.getParameter("immagine");
 			String testo = request.getParameter("testo");
 			Double costo = Double.parseDouble(request.getParameter("costo"));
+			int giacenza = Integer.parseInt(request.getParameter("giacenza"));
 			String[] cat = categoria.split(" ");
 			String cat1 = cat[0];
 			if(cat.length != 1)
@@ -105,6 +108,7 @@ public class ModificaArticolo extends HttpServlet {
 			aBean.setImmagine(immagine);
 			aBean.setNome(nome);
 			aBean.setNomeCategoria(categoria);
+			aBean.setGiacenza(giacenza);
 			
 			try {
 				modelA.doUpdate(aBean, codice);
