@@ -28,7 +28,6 @@ public class Login extends HttpServlet {
 		UserModelDS model = new UserModelDS(ds);
 		RuoloUserModelDS modelRuolo = new RuoloUserModelDS(ds);
 		RequestDispatcher dispatcher = null;
-		
 		UserBean bean = new UserBean();
 		try {
 			bean = model.doRetriveByKey(request.getParameter("username"));
@@ -48,6 +47,8 @@ public class Login extends HttpServlet {
 							session.setAttribute("userRole", true);
 						} if(userBean.getNome().equals("admin")) {
 							session.setAttribute("adminRole", true);
+						}if(userBean.getNome().equals("catalogo")) {
+							session.setAttribute("adminRole", true);					
 						}
 					}
 					try {
@@ -58,8 +59,16 @@ public class Login extends HttpServlet {
 						session.removeAttribute("loginRedirect");
 						
 						if(redirect == null) {
-							redirect="home.jsp";
+							redirect="home.jsp";							
 						}
+						Collection<RuoloUserBean> collection1 = modelRuolo.doRetriveByOneKey(bean.getUsername());
+						
+						
+						for(RuoloUserBean userBean: collection) {
+							if(userBean.getNome().equals("catalogo")) 
+								redirect="admin/admin.jsp";				
+							}
+											
 						response.sendRedirect(response.encodeRedirectURL(redirect));
 						return;
 					} catch(SQLException e) {
