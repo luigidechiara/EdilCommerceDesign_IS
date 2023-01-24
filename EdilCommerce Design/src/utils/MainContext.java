@@ -31,7 +31,7 @@ public class MainContext implements ServletContextListener {
 			Context initCtx = new InitialContext();
 			Context envCtx = (Context) initCtx.lookup("java:comp/env");
 
-			ds = (DataSource) envCtx.lookup("jdbc/edil_commerce_design");
+			ds = (DataSource) envCtx.lookup("jdbc/edil_commerce_design_is");
 			try { 
 				Connection con = null;
 				try {
