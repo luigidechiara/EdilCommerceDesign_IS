@@ -190,7 +190,33 @@ public class ArticoloModelDS implements ModelInterface<ArticoloBean> {
 			}
 		}
 	}
-
+	public void doUpdateGiacenza(ArticoloBean item, String code) throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		
+		String UpdateSQL = "UPDATE articolo SET  giacenza=? WHERE codiceArticolo=?";
+		
+		try {
+			con = ds.getConnection();
+			ps = con.prepareStatement(UpdateSQL);
+			
+			
+			ps.setInt(1, item.getGiacenza());
+			ps.setString(2, code);
+			
+			Utility.print("doUpdate: " + ps.toString());
+			
+			ps.executeUpdate();
+		} finally {
+			try {
+				if(ps != null)
+					ps.close();
+			} finally {
+				if(con != null)
+					con.close();
+			}
+		}
+	}
 	@Override
 	public void doDelete(ArticoloBean item) throws SQLException {
 		// TODO Auto-generated method stub

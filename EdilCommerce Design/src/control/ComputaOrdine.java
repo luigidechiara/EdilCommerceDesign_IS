@@ -43,7 +43,7 @@ public class ComputaOrdine extends HttpServlet {
 		OrdineBean oBean = new OrdineBean();
 		InfoFatturazioneBean ifBean = new InfoFatturazioneBean();
 		PagamentoBean pBean = new PagamentoBean();
-		
+				
 		HttpSession session =  request.getSession(false);
 		if(session != null) {
 			OrdineModelDS oModel = new OrdineModelDS(ds);
@@ -75,7 +75,10 @@ public class ComputaOrdine extends HttpServlet {
 					cBean.setQuantità(q);
 					cModel.doSave(cBean);
 					importo = importo + aModel.doRetriveByKey(codice).getCosto() * q;
-					
+					ArticoloBean artBean = new ArticoloBean();
+					q=aModel.doRetriveByKey(codice).getGiacenza()-q;
+					artBean.setGiacenza(q);
+					aModel.doUpdateGiacenza(artBean, codice);	
 				}
 				
 				PagamentoModelDS pModel = new PagamentoModelDS(ds);

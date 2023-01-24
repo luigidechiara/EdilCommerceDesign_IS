@@ -33,8 +33,18 @@
 				<h3>Prezzo: <%=bean.getCosto() %>&euro;</h3>
 				<form action="<%=response.encodeURL("/EdilCommerce_Design/Aggiungi")%>" method="get">
 					<input type="hidden" name="codice" value="<%=bean.getCodiceArticolo() %>">
-					<label>Quantità: <input name="quantita" type="number" value="1" min="1" class="quantità"></label>
+					<label>Quantità: <input name="quantita" type="number" value="1" min="1" max="<%=bean.getGiacenza()%>" class="quantità"></label>
+				 	<%
+					if(bean.getGiacenza()<1) {
+					%>
+					<br><br>
+					<label>Articolo esaurito</label>
+					<%
+					} else{%>
 				 	<input type="submit" value="Aggiungi al carrello" class="aggiungi">
+				 	<%
+						}
+						%>
 			 	</form>
 			 	<hr style="margin: 20px 0">
 			 	<h4>Articoli venduti e certificati da EdilCommerce Design</h4>

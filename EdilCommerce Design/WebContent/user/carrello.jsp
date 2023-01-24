@@ -55,16 +55,16 @@
 				Integer q = 0;
 				double totale = 0;
 				int index = 0;
-					
+				int giacenzaMax;
+				
 				while(it1.hasNext() && it2.hasNext()){
 					bean=it1.next();
 					q=it2.next();
-					
 					%>
 					<tr><td><a href="<%= response.encodeURL("/EdilCommerce_Design/articolo.jsp?articolo=" + bean.getCodiceArticolo())%>"><img alt="<%=bean.getNome()%>" src="<%=bean.getImmagine()%>"></a></td>
 					<td><h4><a href="<%= response.encodeURL("/EdilCommerce_Design/articolo.jsp?articolo=" + bean.getCodiceArticolo())%>"><%=bean.getNome()%></a></h4>
 					<h5><%=df.format(bean.getCosto())%>&euro;</h5>
-					<label>Quantità</label><input class="quantita" type="number" value="<%=q%>" onchange='aggiornaQuantita("<%=index%>")'></td>
+					<label>Quantità</label><input class="quantita" type="number" value="<%=q%>" min ="1" max="<%=bean.getGiacenza()%>"  onchange='aggiornaQuantita("<%=index%>")'></td>
 					<td><button onclick='deleteItem("<%=bean.getCodiceArticolo()%>", "carrello")'>X</button></td></tr>
 					<%
 					index = index + 1;
@@ -84,6 +84,7 @@
 				<%
 				} else {
 				%>
+				
 					<a href="<%= response.encodeURL("/EdilCommerce_Design/user/checkout.jsp")%>"><button class="bottone" >Procedi al pagamento</button></a>
 				<%
 				}
