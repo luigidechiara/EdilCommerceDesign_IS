@@ -48,7 +48,12 @@ public class Login extends HttpServlet {
 						} if(userBean.getNome().equals("admin")) {
 							session.setAttribute("adminRole", true);
 						}if(userBean.getNome().equals("catalogo")) {
-							session.setAttribute("adminRole", true);					
+							session.setAttribute("adminRole", true);
+							session.setAttribute("cataRole", true);
+						}
+						if(userBean.getNome().equals("magazzino")) {
+							session.setAttribute("adminRole", true);
+							session.setAttribute("magRole",true);
 						}
 					}
 					try {
@@ -65,7 +70,7 @@ public class Login extends HttpServlet {
 						
 						
 						for(RuoloUserBean userBean: collection) {
-							if(userBean.getNome().equals("catalogo")) 
+							if(userBean.getNome().equals("catalogo")||userBean.getNome().equals("magazzino")) 
 								redirect="admin/admin.jsp";				
 							}
 											

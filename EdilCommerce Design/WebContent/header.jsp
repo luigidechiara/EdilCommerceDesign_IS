@@ -13,39 +13,51 @@
 	HttpSession headerSession = request.getSession(false);
 	Boolean headerUserRole  =  null;
 	Boolean headerAdminRole =  null;
+	Boolean headerCataRole= null;
+	Boolean headerMagRole=null;
 	UserBean headerBean =  null;
+	
+	
 	if(headerSession != null){
 		headerUserRole = (Boolean) headerSession.getAttribute("userRole"); 
 		headerAdminRole = (Boolean) headerSession.getAttribute("adminRole"); 
 		headerBean = (UserBean) headerSession.getAttribute("loggedUser");
+		headerCataRole=(Boolean)headerSession.getAttribute("cataRole");
+		headerMagRole=(Boolean)headerSession.getAttribute("magRole");
 	}
+	
 	@SuppressWarnings("unchecked")
 	Collection<CategoriaBean> headerCollection = (Collection<CategoriaBean>) getServletContext().getAttribute("Categorie");
 	%>
 		
 	<header>
-		<div id="left"><a href="/EdilCommerce_Design/home.jsp" title="Home"><img alt="ECD_Logo" src="/EdilCommerce_Design/img/logo_mini.png"></a></div>
+		<div id="left"><%if(headerCataRole==null){ %>><a href="/EdilCommerce_Design/home.jsp" title="Home"><%} %><img alt="ECD_Logo" src="/EdilCommerce_Design/img/logo_mini.png"></a></div>
 		<div id="centro"> <img alt="lente" src="/EdilCommerce_Design/img/lente.png" width=30px height=30px>
-		<form action="<%=response.encodeURL("/EdilCommerce_Design/Search")%>" method="get">
+		<%if(headerCataRole==null){ %>><form action="<%=response.encodeURL("/EdilCommerce_Design/Search")%>" method="get"><%} %>
 		<input id="search" type="text"  name="criterioRicerca" size="30" placeholder="Cerca in EdilCommerce Design" onkeyup="autocomp()">
 		</form>
 		<div id="suggerimenti"></div>
 		</div>
 		<div id = "rigth">
 		<% 
+		
 		if(headerUserRole != null && headerAdminRole != null){
 			if(headerUserRole.equals(true) || headerAdminRole.equals(true) ){
 		%>
 		<ul>
-			<%if(headerAdminRole.equals(true)) {
+			<%if(headerAdminRole.equals(true)&& headerCataRole==null && headerMagRole==null) {
 			%>
 			<li><a href="<%=response.encodeURL("/EdilCommerce_Design/admin/admin.jsp")%>" title="Area dell'admin"><img alt="admin" src="/EdilCommerce_Design/img/admin.png"></a></li>
 			<%
 			}
 			%>
+			<%if(headerCataRole==null && headerMagRole==null){ %>
 			<li><a href="<%=response.encodeURL("/EdilCommerce_Design/user/profilo.jsp")%>" title="Profilo di <%=headerBean.getUsername()%>"><img alt="profilo" src="/EdilCommerce_Design/img/profilo.png"></a></li>
+			<%} %>
+			<%if(headerCataRole==null || headerCataRole!=null && headerMagRole==null || headerMagRole!=null ){ %>
 			<li><a href="<%=response.encodeURL("/EdilCommerce_Design/Logout")%>" title="Logout"><img alt="logout" src="/EdilCommerce_Design/img/logout.png"></a></li>
-			<%if(!headerAdminRole.equals(true)) {
+			<%} %>
+			<%if(!headerAdminRole.equals(true) && headerCataRole==null) {
 			%>
 			<li><a href="<%=response.encodeURL("/EdilCommerce_Design/user/carrello.jsp")%>" title="Carrello">  <img alt="carrello" src="/EdilCommerce_Design/img/carrello.png"></a></li>
 			<%
@@ -74,7 +86,7 @@
 	</header>
 	<nav class="bottom" id="topNav">
 	<%
-		if(headerCollection != null){
+		if(headerCollection != null && headerCataRole==null && headerMagRole==null){
 			if(!headerCollection.isEmpty()) {
 				Iterator<CategoriaBean> it = headerCollection.iterator();
 				while(it.hasNext()){

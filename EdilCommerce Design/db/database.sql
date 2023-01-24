@@ -149,11 +149,14 @@ INSERT INTO ruolo(nome) VALUES ("magazzino");
 
 INSERT INTO user VALUES ("admin", "nome", "cognome", "admin@email.com", "telefono", "indirizzo", "citta", "stato", "84085", "admin");
 INSERT INTO user VALUES ("Gcatalogo", "nome", "cognome", "admin@email.com", "telefono", "indirizzo", "citta", "stato", "84085", "admin");
+INSERT INTO user VALUES ("Gmagazzino", "nome", "cognome", "magazzino@email.com", "telefono", "indirizzo", "citta", "stato", "84085", "admin");
 
 INSERT INTO ruoloUser VALUES ("admin", "user");
 INSERT INTO ruoloUser VALUES ("admin", "admin");
 INSERT INTO ruoloUser VALUES ("Gcatalogo", "catalogo");
 INSERT INTO ruoloUser VALUES ("Gcatalogo", "user");
+INSERT INTO ruoloUser VALUES ("Gmagazzino", "magazzino");
+
 
 INSERT INTO user VALUES ("mario", "Mario", "Rossi", "marioRossi@email.com", "089788998", "via Roma", "Fisciano", "Italia", "84085", "rossi");
 INSERT INTO ruoloUser VALUES ("mario", "user");

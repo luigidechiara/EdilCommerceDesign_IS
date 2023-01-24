@@ -9,12 +9,15 @@ if(session == null) {
 	return;
 } else {
 	Boolean adminRole = (Boolean) session.getAttribute("adminRole");
+	
 	if((adminRole == null) || (!adminRole.booleanValue())) {
 		response.sendRedirect(response.encodeRedirectURL("/EdilCommerce_Design/login.jsp"));
 		return;
 	}
 }
 
+Boolean magRole = (Boolean) session.getAttribute("magRole");
+Boolean cataRole = (Boolean) session.getAttribute("cataRole");
 String errore = (String) session.getAttribute("AdminError");
 session.removeAttribute("AdminError");
 
@@ -37,7 +40,10 @@ if(unsaved == null)
 	<script type="text/javascript" src="/EdilCommerce_Design/script/profiloScripts.js"></script>
 	<script type="text/javascript" src="/EdilCommerce_Design/script/admin.js"></script>
 	<div id="holder">
+		
 		<%@ include file="../header.jsp" %>
+		
+		
 		<div id="body">
 		<%=errore!=null?"<h3 class=\"errorMessage\">Errore:" + errore + "</h3>":(mess!=null?"<h3>" + mess + "</h3>":"")%>
 	
@@ -120,6 +126,40 @@ if(unsaved == null)
 						
 					</div>
 					
+					<%if(cataRole==null && magRole==true){ %>
+					<li onclick="visualizza('modificaArticolo')"><h2>Carico Giacenza</h2></li>
+					<div class="container start" id="modificaArticolo">
+						
+							<div class="flex">
+					  			<div class="col-50">
+					  				<label for="articolo"><h3>Seleziona l'articolo da caricare</h3></label>
+									<select name="articolo" id="articolo" required>
+									<% 
+									 ds = (DataSource) getServletContext().getAttribute("DataSource");
+										
+									 aModel = new ArticoloModelDS(ds);
+										
+									 collection = (LinkedList<ArticoloBean>) aModel.doRetriveAll("");
+									Iterator<ArticoloBean> iterator = collection.iterator();
+									while(iterator.hasNext()){
+									 aBean = iterator.next();
+									%>
+										<option value="<%=aBean.getCodiceArticolo()%>"><%=aBean.getCodiceArticolo() + " " + aBean.getNome()%></option>
+									<% 
+									}
+									%>		
+									</select>
+									&nbsp;<input type="button" onclick="selezionaArticolo('1')" value="Seleziona articolo"><br>
+								<div id="formModificaA">
+								</div>
+							</div>
+						</div>				
+					<%} %>
+					
+					
+					
+					
+				<%if(cataRole==null){ %>	
 				<li onclick="visualizza('ordini')"><h2>Visualizza ordini</h2></li>
 					<div class="container start" id="ordini">
 				<%
@@ -190,7 +230,7 @@ if(unsaved == null)
 				%>
 					</ul></div>
 				<%
-					}
+					}}
 					
 				%>
 			</div>
