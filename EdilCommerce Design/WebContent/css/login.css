@@ -1,0 +1,48 @@
+@charset "ISO-8859-1";
+.all {
+	text-align: center;
+}
+
+
+.container {
+ 	margin: auto;
+ 	width: 500px;
+  
+}
+
+#body input[type=text], #body input[type=password]{
+  width: 70%;
+  margin-bottom: 20px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 30px;
+}
+#body input:focus{
+ box-shadow: 0 0 0 1pt black;
+ outline: none;
+
+}
+
+label {
+  margin-bottom: 10px;
+  display: block;
+}
+
+h4 {
+	margin-bottom: 0;
+}
+#showP {
+	display: inline-block;
+    width: 40px;
+    border-radius: 100px;
+    position: absolute;
+    margin-left: 25.8em;
+    margin-top: 0.06em;
+    cursor: pointer;
+}
+
+@media all and (max-width: 800px) {
+	#showP{
+		margin-left: 340px;
+	}
+}
