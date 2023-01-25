@@ -3,12 +3,13 @@
 <%@page session="false" %>
 <!DOCTYPE html>
 <%
+Boolean adminRole;
 HttpSession session = request.getSession(false);
 if(session == null) {
 	response.sendRedirect(response.encodeRedirectURL("/EdilCommerce_Design/login.jsp"));
 	return;
 } else {
-	Boolean adminRole = (Boolean) session.getAttribute("adminRole");
+    adminRole = (Boolean) session.getAttribute("adminRole");
 	
 	if((adminRole == null) || (!adminRole.booleanValue())) {
 		response.sendRedirect(response.encodeRedirectURL("/EdilCommerce_Design/login.jsp"));
@@ -49,7 +50,9 @@ if(unsaved == null)
 	
 		<h2>Scegli un'operazione:</h2>
 			<ul>
+				<%if(cataRole!=null && magRole==null || adminRole!=null && magRole==null){ %>
 				<li onclick="visualizza('inserisciArticolo')"><h2>Inserisci articolo</h2></li>
+				<%} %>
 					<div class="container start" id="inserisciArticolo">
 						<form action="<%=response.encodeURL("/EdilCommerce_Design/AggiungiArticolo")%>" method="POST">
 							<div class="flex">
@@ -95,66 +98,41 @@ if(unsaved == null)
 						</form>
 					</div>
 					
-				<li onclick="visualizza('modificaArticolo')"><h2>Modifica articolo</h2></li>
-					<div class="container start" id="modificaArticolo">
-						
-							<div class="flex">
-					  			<div class="col-50">
-					  				<label for="articolo"><h3>Seleziona l'articolo da modificare</h3></label>
-									<select name="articolo" id="articolo" required>
-									<% 
-									 ds = (DataSource) getServletContext().getAttribute("DataSource");
-										
-									 aModel = new ArticoloModelDS(ds);
-										
-									 collection = (LinkedList<ArticoloBean>) aModel.doRetriveAll("");
-									Iterator<ArticoloBean> iter = collection.iterator();
-									while(iter.hasNext()){
-									 aBean = iter.next();
-									%>
-										<option value="<%=aBean.getCodiceArticolo()%>"><%=aBean.getCodiceArticolo() + " " + aBean.getNome()%></option>
-									<% 
-									}
-									%>		
-									</select>
-									&nbsp;<input type="button" onclick="selezionaArticolo('1')" value="Seleziona articolo"><br>
-								<div id="formModificaA">
-								</div>
-							</div>
-						</div>									
-							
-						
-					</div>
-					
-					<%if(cataRole==null && magRole==true){ %>
+				<%if(cataRole==null && magRole!=null){ %>
 					<li onclick="visualizza('modificaArticolo')"><h2>Carico Giacenza</h2></li>
-					<div class="container start" id="modificaArticolo">
-						
-							<div class="flex">
-					  			<div class="col-50">
-					  				<label for="articolo"><h3>Seleziona l'articolo da caricare</h3></label>
-									<select name="articolo" id="articolo" required>
-									<% 
-									 ds = (DataSource) getServletContext().getAttribute("DataSource");
-										
-									 aModel = new ArticoloModelDS(ds);
-										
-									 collection = (LinkedList<ArticoloBean>) aModel.doRetriveAll("");
-									Iterator<ArticoloBean> iterator = collection.iterator();
-									while(iterator.hasNext()){
-									 aBean = iterator.next();
-									%>
-										<option value="<%=aBean.getCodiceArticolo()%>"><%=aBean.getCodiceArticolo() + " " + aBean.getNome()%></option>
-									<% 
-									}
-									%>		
-									</select>
-									&nbsp;<input type="button" onclick="selezionaArticolo('1')" value="Seleziona articolo"><br>
-								<div id="formModificaA">
-								</div>
-							</div>
-						</div>				
+					<%}else{ %>	
+					<li onclick="visualizza('modificaArticolo')"><h2>Modifica articolo</h2></li>
 					<%} %>
+						<div class="container start" id="modificaArticolo">
+							
+								<div class="flex">
+						  			<div class="col-50">
+						  				<label for="articolo"><h3>Seleziona l'articolo da modificare</h3></label>
+										<select name="articolo" id="articolo" required>
+										<% 
+										 ds = (DataSource) getServletContext().getAttribute("DataSource");
+											
+										 aModel = new ArticoloModelDS(ds);
+											
+										 collection = (LinkedList<ArticoloBean>) aModel.doRetriveAll("");
+										Iterator<ArticoloBean> iter = collection.iterator();
+										while(iter.hasNext()){
+										 aBean = iter.next();
+										%>
+											<option value="<%=aBean.getCodiceArticolo()%>"><%=aBean.getCodiceArticolo() + " " + aBean.getNome()%></option>
+										<% 
+										}
+										%>		
+										</select>
+										&nbsp;<input type="button" onclick="selezionaArticolo('1')" value="Seleziona articolo"><br>
+									<div id="formModificaA">
+									</div>
+								</div>
+							</div>									
+								
+
+						</div>	
+					
 					
 					
 					
