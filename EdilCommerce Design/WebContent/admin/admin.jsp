@@ -159,7 +159,7 @@ if(unsaved == null)
 					
 					
 					
-				<%if(cataRole==null){ %>	
+			
 				<li onclick="visualizza('ordini')"><h2>Visualizza ordini</h2></li>
 					<div class="container start" id="ordini">
 				<%
@@ -230,7 +230,7 @@ if(unsaved == null)
 				%>
 					</ul></div>
 				<%
-					}}
+					}
 					
 				%>
 			</div>
