@@ -137,8 +137,9 @@ if(unsaved == null)
 					
 					
 					
-			
-				<li onclick="visualizza('ordini')"><h2>Visualizza ordini</h2></li>
+				<%if(cataRole==null && magRole!=null || adminRole!=null && cataRole==null){ %>
+					<li onclick="visualizza('ordini')"><h2>Visualizza ordini</h2></li>
+				<%} %>
 					<div class="container start" id="ordini">
 				<%
 				
