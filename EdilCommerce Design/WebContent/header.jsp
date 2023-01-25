@@ -33,8 +33,12 @@
 	<header>
 		<div id="left"><%if(headerCataRole==null && headerMagRole==null){ %><a href="/EdilCommerce_Design/home.jsp" title="Home"><%} %><img alt="ECD_Logo" src="/EdilCommerce_Design/img/logo_mini.png"></a></div>
 		<div id="centro"> <img alt="lente" src="/EdilCommerce_Design/img/lente.png" width=30px height=30px>
-		<%if(headerCataRole==null && headerMagRole==null){ %><form action="<%=response.encodeURL("/EdilCommerce_Design/Search")%>" method="get"><%} %>
-		<input id="search" type="text"  name="criterioRicerca" size="30" placeholder="Cerca in EdilCommerce Design" onkeyup="autocomp()">
+		<form action="<%=response.encodeURL("/EdilCommerce_Design/Search")%>" method="get">
+		<% if(headerAdminRole!=null && headerCataRole!=null ||headerAdminRole!=null && headerCataRole!=null ){%>
+		<input id="search" type="text"  name="criterioRicerca" size="30" placeholder="Cerca in EdilCommerce Design" onkeyup="autocomp()" disabled>
+		<%}else{ %>
+		<input id="search" type="text"  name="criterioRicerca" size="30" placeholder="Cerca in EdilCommerce Design" onkeyup="autocomp()" >
+		<%} %>
 		</form>
 		<div id="suggerimenti"></div>
 		</div>
