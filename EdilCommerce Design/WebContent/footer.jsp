@@ -16,8 +16,8 @@
 	   	 <h4>Contatti:</h4>
 
 	   	 	<img src="https://img.icons8.com/color/48/000000/admin-settings-male.png"/> Luigi De Chiara
-	   	 	<img src="https://img.icons8.com/color/48/000000/admin-settings-male.png"/> Francesco Fasolino<br>
-	   	 	<img src="https://img.icons8.com/color/48/000000/admin-settings-male.png"/> Angelo Giaquinto
+	   	 	<img src="https://img.icons8.com/color/48/000000/admin-settings-male.png"/> Alex Ferrara<br>
+	   	 	<img src="https://img.icons8.com/color/48/000000/admin-settings-male.png"/> ...
 	   	 	<img src="https://img.icons8.com/color/48/000000/admin-settings-male.png"/> ...
 	   	 
 	   </div>
