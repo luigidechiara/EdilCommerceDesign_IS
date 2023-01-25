@@ -34,9 +34,10 @@ function deleteItem(codice, id) {
 	xhttp.send();
 }
 
-function aggiornaQuantita(index) {
+function aggiornaQuantita(index, giacenza) {
 	var xhttp = getXmlHttpRequest();
 	var q = document.getElementsByClassName("quantita")[index].value;
+	if(q>0 && q<=giacenza){
 	xhttp.open("GET", "/EdilCommerce_Design/AggiornaQ?codice=" + index +"&quantita=" + q, true);
 	xhttp.send();
-}
+}}

@@ -64,7 +64,12 @@
 					<tr><td><a href="<%= response.encodeURL("/EdilCommerce_Design/articolo.jsp?articolo=" + bean.getCodiceArticolo())%>"><img alt="<%=bean.getNome()%>" src="<%=bean.getImmagine()%>"></a></td>
 					<td><h4><a href="<%= response.encodeURL("/EdilCommerce_Design/articolo.jsp?articolo=" + bean.getCodiceArticolo())%>"><%=bean.getNome()%></a></h4>
 					<h5><%=df.format(bean.getCosto())%>&euro;</h5>
-					<label>Quantità</label><input class="quantita" type="number" value="<%=q%>" min ="1" max="<%=bean.getGiacenza()%>"  onchange='aggiornaQuantita("<%=index%>")'></td>
+					<%if(q<=bean.getGiacenza()){ %>
+					<label>Quantità</label><input class="quantita" type="number" value="<%=q%>" min ="1" max="<%=bean.getGiacenza()%>"  onchange='aggiornaQuantita("<%=index%>",<%=bean.getGiacenza()%>)'></td>
+					<%}else{ %>
+					<label>Quantità</label><input class="quantita" type="number" value="<%=bean.getGiacenza()%>" min ="1" max="<%=bean.getGiacenza()%>"  onchange='aggiornaQuantita("<%=index%>",<%=bean.getGiacenza()%>)'></td>
+					
+					<%} %>
 					<td><button onclick='deleteItem("<%=bean.getCodiceArticolo()%>", "carrello")'>X</button></td></tr>
 					<%
 					index = index + 1;
