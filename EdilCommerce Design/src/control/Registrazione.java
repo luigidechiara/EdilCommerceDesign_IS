@@ -15,6 +15,7 @@ import model.RuoloUserModelDS;
 import model.UserBean;
 import model.UserModelDS;
 import utils.Utility;
+import utils.ValidazioneInput;
 
 /**
  * Servlet implementation class Registrazione
@@ -27,7 +28,7 @@ public class Registrazione extends HttpServlet {
 		DataSource ds = (DataSource) getServletContext().getAttribute("DataSource");
 		UserModelDS model = new UserModelDS(ds);
 		RuoloUserModelDS modelRuolo = new RuoloUserModelDS(ds);
-		
+		ValidazioneInput validazione= new ValidazioneInput();
 		UserBean bean = new UserBean();
 		
 		bean.setUsername(request.getParameter("username"));
@@ -45,6 +46,9 @@ public class Registrazione extends HttpServlet {
 				bean.setCittà(request.getParameter("citta"));
 				bean.setCap(request.getParameter("cap"));
 				bean.setStato(request.getParameter("stato"));
+				if(validazione.ValidazioneRegistrazione(bean.getUsername(),bean.getNome(),bean.getCognome(),bean.getEmail(),bean.getUserPassword(),bean.getTelefono(),bean.getIndirizzo(),bean.getCittà(),bean.getCap(),bean.getStato())) 
+				{ 
+				
 				try {
 					model.doSave(bean);
 					RuoloUserBean ruolo = new RuoloUserBean();
@@ -58,7 +62,11 @@ public class Registrazione extends HttpServlet {
 
 				response.sendRedirect(response.encodeRedirectURL("login.jsp"));
 				return;
-			} else {
+			}else {
+				request.setAttribute("errorevalidazione", "Dati Registrazione Errati");
+				getServletContext().getRequestDispatcher(response.encodeURL("/registrazione.jsp")).include(request, response);
+				
+			}} else {
 				request.setAttribute("error", "Username già in uso");
 				getServletContext().getRequestDispatcher(response.encodeURL("/registrazione.jsp")).include(request, response);
 			}
