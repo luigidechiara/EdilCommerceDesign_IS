@@ -46,17 +46,18 @@ public class ComputaOrdine extends HttpServlet {
 		PagamentoBean pBean = new PagamentoBean();
 		ValidazioneInput validazione= new ValidazioneInput();
 		HttpSession session =  request.getSession(false);
-		
+		String metodo = request.getParameter("metodo");
 		
 		if(session != null) {
+			
 			OrdineModelDS oModel = new OrdineModelDS(ds);
 			Carrello<ArticoloBean> carrello = (Carrello<ArticoloBean>) session.getAttribute("Carrello");
 			
 			oBean.setUsername(((UserBean)session.getAttribute("loggedUser")).getUsername());
 
 			if(validazione.InformazioniSpedizione(request.getParameter("nome"), request.getParameter("cognome"),request.getParameter("email"),request.getParameter("telefono"),request.getParameter("indirizzo"),request.getParameter("citta"),request.getParameter("stato"),request.getParameter("cap"))) { 
-				if(validazione.ValidazioneCarta(request.getParameter("cnum"),request.getParameter("cnome"),request.getParameter("expmonth"), request.getParameter("expyear"),request.getParameter("cvv"))) {
-
+				if(validazione.ValidazioneCarta(request.getParameter("cnum"),request.getParameter("cnome"),request.getParameter("expmonth"), request.getParameter("expyear"),request.getParameter("cvv"))||metodo.equals("2")) {
+					
 			try {
 
 				oModel.doSave(oBean);
@@ -114,7 +115,7 @@ public class ComputaOrdine extends HttpServlet {
 				ifModel.doSave(ifBean);
 						
 
-				String metodo = request.getParameter("metodo");
+				
 				if(metodo.equals("1")) {
 					CartaModelDS caModel = new CartaModelDS(ds);
 					

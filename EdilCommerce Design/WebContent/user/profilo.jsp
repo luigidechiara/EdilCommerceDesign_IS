@@ -135,7 +135,7 @@ if (bean == null) {
 						OrdineBean oBean = it.next();
 					
 						PagamentoBean pBean = (PagamentoBean) pModel.doRetriveByNumeroOrdine(oBean.getNumeroOrdine());
-						
+
 						CartaBean caBean = caModel.doRetriveByKey(pBean.getNumeroPagamento());
 						ContrassegnoBean coBean = coModel.doRetriveByKey(pBean.getNumeroPagamento());
 						

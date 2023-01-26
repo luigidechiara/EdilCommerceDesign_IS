@@ -40,7 +40,7 @@ public class ValidazioneInput {
 		if(nome.matches("^[A-Za-z]+$")&& nome.length()>=3) {
 			  if(cognome.matches("^[A-Za-z]+$")&& cognome.length()>=3) {
 				if(email.matches("[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}")) {
-						if(telefono.matches("^[0-9]{10}$")) {
+						if(telefono.matches("^[0-9]{9,10}$")) {
 							if(cap.matches("^([0-9]{5})$")) {
 								
 								return true;
@@ -51,12 +51,13 @@ public class ValidazioneInput {
 	
 	public boolean ValidazioneCarta(String numero,String intestatario,String annoScadenza,String meseScadenza,String cvv) {
 		Date dt=new Date();
-        int year=dt.getYear();
-
+        int year=(dt.getYear());
+        
         System.out.print(year);
-
+        
+        if(numero!=null&&intestatario!=null&&annoScadenza!=null&&meseScadenza!=null&&cvv!=null) {
         if(numero.matches("^([0-9]{16})$")) {
-			if(intestatario.length()>=1&&intestatario.length()<=25) {
+        	if(intestatario.length()>=1&&intestatario.length()<=25) {
 				if((Integer.parseInt(annoScadenza))>=year) {
 					if(meseScadenza.length()>=3) {
 						if(cvv.matches("^([0-9]{3})$")) {
@@ -64,7 +65,7 @@ public class ValidazioneInput {
 					}
 				
 						}
-							 }}}	
+							 }}}}	
 		return false;
 	}
 	
