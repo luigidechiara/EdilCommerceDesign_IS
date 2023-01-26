@@ -144,7 +144,6 @@ if(unsaved == null)
 				<%
 				
 					OrdineModelDS oModel = new OrdineModelDS(ds);
-					PagamentoModelDS pModel = new PagamentoModelDS(ds);
 					ComponeModelDS cModel = new ComponeModelDS(ds);
 					CartaModelDS caModel = new CartaModelDS(ds);
 					ContrassegnoModelDS coModel = new ContrassegnoModelDS(ds);
@@ -167,11 +166,9 @@ if(unsaved == null)
 						%><hr><%
 						 }
 						OrdineBean oBean = it.next();
-					
-						PagamentoBean pBean = (PagamentoBean) pModel.doRetriveByNumeroOrdine(oBean.getNumeroOrdine());
 						
-						CartaBean caBean = caModel.doRetriveByKey(pBean.getNumeroPagamento());
-						ContrassegnoBean coBean = coModel.doRetriveByKey(pBean.getNumeroPagamento());
+						CartaBean caBean = caModel.doRetriveByKey(oBean.getNumeroOrdine());
+						ContrassegnoBean coBean = coModel.doRetriveByKey(oBean.getNumeroOrdine());
 						
 				%>
 					<div>
@@ -190,7 +187,7 @@ if(unsaved == null)
 					}
 				 %>
 					</h3>
-					<h3>Importo ordine: <%=df.format(pBean.getImporto())%>&euro;</h3>
+					<h3>Importo ordine: <%=df.format(oBean.getImporto())%>&euro;</h3>
 				<%
 						
 						LinkedList<ComponeBean> cList = (LinkedList<ComponeBean>) cModel.doRetriveByOneKey(oBean.getNumeroOrdine() + "");

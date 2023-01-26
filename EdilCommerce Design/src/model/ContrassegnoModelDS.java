@@ -30,7 +30,7 @@ public class ContrassegnoModelDS implements ModelInterface<ContrassegnoBean> {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		
-		String selectCodeSQL = "SELECT * FROM contrassegno WHERE numeroPagamento=?";
+		String selectCodeSQL = "SELECT * FROM contrassegno WHERE numeroOrdine=?";
 		
 		ContrassegnoBean bean = new ContrassegnoBean();
 		try {
@@ -44,7 +44,7 @@ public class ContrassegnoModelDS implements ModelInterface<ContrassegnoBean> {
 			rs = ps.executeQuery();
 			
 			if(rs.next()) {
-				bean.setNumeroPagamento(rs.getInt("numeroPagamento"));
+				bean.setNumeroOrdine(rs.getInt("numeroOrdine"));
 			}
 		} finally {
 			try {
@@ -79,7 +79,7 @@ public class ContrassegnoModelDS implements ModelInterface<ContrassegnoBean> {
 			
 			while(rs.next()) {
 				ContrassegnoBean bean = new ContrassegnoBean();
-				bean.setNumeroPagamento(rs.getInt("numeroPagamento"));
+				bean.setNumeroOrdine(rs.getInt("numeroOrdine"));
 				collection.add(bean);
 			}
 		} finally {
@@ -107,7 +107,7 @@ public class ContrassegnoModelDS implements ModelInterface<ContrassegnoBean> {
 			con = ds.getConnection();
 			ps = con.prepareStatement(InsertSQL);
 			
-			ps.setInt(1, item.getNumeroPagamento());
+			ps.setInt(1, item.getNumeroOrdine());
 			
 			Utility.print("doSave: " + ps.toString());
 			

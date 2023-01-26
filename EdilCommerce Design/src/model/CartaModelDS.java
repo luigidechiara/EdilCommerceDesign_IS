@@ -31,7 +31,7 @@ public class CartaModelDS implements ModelInterface<CartaBean> {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		
-		String selectCodeSQL = "SELECT * FROM carta WHERE numeroPagamento=?";
+		String selectCodeSQL = "SELECT * FROM carta WHERE numeroOrdine=?";
 		
 		CartaBean bean = new CartaBean();
 		try {
@@ -45,7 +45,7 @@ public class CartaModelDS implements ModelInterface<CartaBean> {
 			rs = ps.executeQuery();
 			
 			if(rs.next()) {
-				bean.setNumeroPagamento(rs.getInt("numeroPagamento"));
+				bean.setNumeroOrdine(rs.getInt("numeroOrdine"));
 				bean.setNumero(rs.getString("numero"));
 				bean.setIntestatario(rs.getString("intestatario"));
 				bean.setDataScadenza(rs.getString("dataScadenza"));
@@ -84,7 +84,7 @@ public class CartaModelDS implements ModelInterface<CartaBean> {
 			
 			while(rs.next()) {
 				CartaBean bean = new CartaBean();
-				bean.setNumeroPagamento(rs.getInt("numeroPagamento"));
+				bean.setNumeroOrdine(rs.getInt("numeroOrdine"));
 				bean.setNumero(rs.getString("numero"));
 				bean.setIntestatario(rs.getString("intestatario"));
 				bean.setDataScadenza(rs.getString("dataScadenza"));
@@ -116,7 +116,7 @@ public class CartaModelDS implements ModelInterface<CartaBean> {
 			con = ds.getConnection();
 			ps = con.prepareStatement(InsertSQL);
 			
-			ps.setInt(1, item.getNumeroPagamento());
+			ps.setInt(1, item.getNumeroOrdine());
 			ps.setString(2, item.getNumero());
 			ps.setString(3, item.getIntestatario());
 			ps.setString(4, item.getDataScadenza());

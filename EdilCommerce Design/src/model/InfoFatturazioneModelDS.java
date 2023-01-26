@@ -30,7 +30,7 @@ public class InfoFatturazioneModelDS implements ModelInterface<InfoFatturazioneB
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		
-		String selectCodeSQL = "SELECT * FROM infoFatturazione WHERE numeroPagamento=?";
+		String selectCodeSQL = "SELECT * FROM infoFatturazione WHERE numeroOrdine=?";
 		
 		InfoFatturazioneBean bean = new InfoFatturazioneBean();
 		
@@ -45,7 +45,7 @@ public class InfoFatturazioneModelDS implements ModelInterface<InfoFatturazioneB
 			rs = ps.executeQuery();
 			
 			if(rs.next()) {
-				bean.setNumeroPagamento(rs.getInt("numeroPagamento"));
+				bean.setNumeroOrdine(rs.getInt("numeroOrdine"));
 				bean.setNome(rs.getString("nome"));
 				bean.setCognome(rs.getString("cognome"));
 				bean.setEmail(rs.getString("email"));
@@ -90,7 +90,7 @@ public class InfoFatturazioneModelDS implements ModelInterface<InfoFatturazioneB
 			
 			while(rs.next()) {
 				InfoFatturazioneBean bean = new InfoFatturazioneBean();
-				bean.setNumeroPagamento(rs.getInt("numeroPagamento"));
+				bean.setNumeroOrdine(rs.getInt("numeroOrdine"));
 				bean.setNome(rs.getString("nome"));
 				bean.setCognome(rs.getString("cognome"));
 				bean.setEmail(rs.getString("email"));
@@ -127,7 +127,7 @@ public class InfoFatturazioneModelDS implements ModelInterface<InfoFatturazioneB
 				con = ds.getConnection();
 				ps = con.prepareStatement(InsertSQL);
 				
-				ps.setInt(1, item.getNumeroPagamento());
+				ps.setInt(1, item.getNumeroOrdine());
 				ps.setString(2, item.getNome());
 				ps.setString(3, item.getCognome());
 				ps.setString(4, item.getEmail());
