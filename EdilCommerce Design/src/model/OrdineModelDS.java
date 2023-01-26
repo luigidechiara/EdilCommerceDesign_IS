@@ -86,6 +86,7 @@ public class OrdineModelDS implements ModelInterface<OrdineBean> {
 				bean.setUsername(rs.getString("username"));
 				bean.setData(rs.getDate("data"));
 				bean.setNumeroOrdine(rs.getInt("numeroOrdine"));
+				bean.setImporto(rs.getDouble("importo"));
 				collection.add(bean);
 			}
 		} finally {
@@ -107,13 +108,14 @@ public class OrdineModelDS implements ModelInterface<OrdineBean> {
 		Connection con = null;
 		PreparedStatement ps = null;
 		
-		String InsertSQL = "INSERT INTO ordine (data, username) VALUES (NOW(),?)";
+		String InsertSQL = "INSERT INTO ordine (data, username,importo) VALUES (NOW(),?,?)";
 		
 			try {
 				con = ds.getConnection();
 				ps = con.prepareStatement(InsertSQL);
 				
 				ps.setString(1, item.getUsername());
+				ps.setDouble(2, item.getImporto());
 
 				Utility.print("doSave: " + ps.toString());
 
@@ -136,7 +138,34 @@ public class OrdineModelDS implements ModelInterface<OrdineBean> {
 		// TODO Auto-generated method stub
 		
 	}
+	public void doUpdateImporto(OrdineBean item) throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		
+		String InsertSQL = "UPDATE ordine SET importo = ? where numeroOrdine=?";
+		
+			try {
+				con = ds.getConnection();
+				ps = con.prepareStatement(InsertSQL);
+				
+				ps.setDouble(1, item.getImporto());
+				ps.setInt(2, item.getNumeroOrdine());
 
+				Utility.print("doSave: " + ps.toString());
+
+				ps.executeUpdate();
+
+			} finally {
+				try {
+					if (ps != null)
+						ps.close();
+				} finally {
+					if (con != null)
+						con.close();
+				}
+			}
+		
+	}
 	@Override
 	public void doDelete(OrdineBean item) throws SQLException {
 		// TODO Auto-generated method stub
@@ -166,6 +195,7 @@ public class OrdineModelDS implements ModelInterface<OrdineBean> {
 				bean.setUsername(rs.getString("username"));
 				bean.setData(rs.getDate("data"));
 				bean.setNumeroOrdine(rs.getInt("numeroOrdine"));
+				bean.setImporto(rs.getDouble("importo"));
 				collection.add(bean);
 			}
 		} finally {
@@ -182,3 +212,4 @@ public class OrdineModelDS implements ModelInterface<OrdineBean> {
 		return collection;
 	}
 }
+

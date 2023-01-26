@@ -7,11 +7,13 @@ public class OrdineBean {
 	int numeroOrdine;
 	Date data;
 	String username;
+	double importo;
 	
 	public OrdineBean() {
 		numeroOrdine = 0;
 		data = null;
 		username = "";
+		importo= 0;
 	}
 
 	public int getNumeroOrdine() {
@@ -42,9 +44,20 @@ public class OrdineBean {
 		return numeroOrdine == 0;
 	}
 
+	public double getImporto() {
+		return importo;
+	}
+
+	public void setImporto(double importo) {
+		this.importo = importo;
+	}
+
+	
+
 	@Override
 	public String toString() {
-		return numeroOrdine + ", " + data + ", " + username ;
+		return "OrdineBean [numeroOrdine=" + numeroOrdine + ", data=" + data + ", username=" + username + ", importo="
+				+ importo + "]";
 	}
 
 	@Override

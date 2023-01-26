@@ -27,8 +27,6 @@ import model.InfoFatturazioneBean;
 import model.InfoFatturazioneModelDS;
 import model.OrdineBean;
 import model.OrdineModelDS;
-import model.PagamentoBean;
-import model.PagamentoModelDS;
 import model.UserBean;
 import utils.Utility;
 import utils.ValidazioneInput;
@@ -43,7 +41,6 @@ public class ComputaOrdine extends HttpServlet {
 		
 		OrdineBean oBean = new OrdineBean();
 		InfoFatturazioneBean ifBean = new InfoFatturazioneBean();
-		PagamentoBean pBean = new PagamentoBean();
 		ValidazioneInput validazione= new ValidazioneInput();
 		HttpSession session =  request.getSession(false);
 		
@@ -54,11 +51,10 @@ public class ComputaOrdine extends HttpServlet {
 			
 			oBean.setUsername(((UserBean)session.getAttribute("loggedUser")).getUsername());
 
-			if(validazione.InformazioniSpedizione(request.getParameter("nome"), request.getParameter("cognome"),request.getParameter("email"),request.getParameter("telefono"),request.getParameter("indirizzo"),request.getParameter("citta"),request.getParameter("stato"),request.getParameter("cap"))) { 
-				if(validazione.ValidazioneCarta(request.getParameter("cnum"),request.getParameter("cnome"),request.getParameter("expmonth"), request.getParameter("expyear"),request.getParameter("cvv"))) {
+			//if(validazione.InformazioniSpedizione(request.getParameter("nome"), request.getParameter("cognome"),request.getParameter("email"),request.getParameter("telefono"),request.getParameter("indirizzo"),request.getParameter("citta"),request.getParameter("stato"),request.getParameter("cap"))) { 
+				//if(validazione.ValidazioneCarta(request.getParameter("cnum"),request.getParameter("cnome"),request.getParameter("expmonth"), request.getParameter("expyear"),request.getParameter("cvv"))) {
 
 			try {
-
 				oModel.doSave(oBean);
 				
 				LinkedList<OrdineBean> col = (LinkedList<OrdineBean>) oModel.doRetriveAll("");
@@ -88,20 +84,14 @@ public class ComputaOrdine extends HttpServlet {
 					artBean.setGiacenza(q);
 					aModel.doUpdateGiacenza(artBean, codice);	
 				}
-				
-				PagamentoModelDS pModel = new PagamentoModelDS(ds);
-				
-				pBean.setImporto(importo);
-				pBean.setNumeroOrdine(oBean.getNumeroOrdine());
-				
-				pModel.doSave(pBean);
-				
-				LinkedList<PagamentoBean> pag = (LinkedList<PagamentoBean>) pModel.doRetriveAll("");
-				pBean.setNumeroPagamento(pag.getLast().getNumeroPagamento());
+								
+				oBean.setImporto(importo);
+				oModel.doUpdateImporto(oBean);
+								
 				
 				InfoFatturazioneModelDS ifModel = new InfoFatturazioneModelDS(ds);
 				
-				ifBean.setNumeroPagamento(pBean.getNumeroPagamento());
+				ifBean.setNumeroOrdine(oBean.getNumeroOrdine());
 				ifBean.setNome(request.getParameter("nome"));
 				ifBean.setCognome(request.getParameter("cognome"));
 				ifBean.setEmail(request.getParameter("email"));
@@ -120,7 +110,7 @@ public class ComputaOrdine extends HttpServlet {
 					
 					CartaBean caBean = new CartaBean();
 					
-					caBean.setNumeroPagamento(pBean.getNumeroPagamento());
+					caBean.setNumeroOrdine(oBean.getNumeroOrdine());
 					caBean.setNumero(request.getParameter("cnum"));
 					caBean.setIntestatario(request.getParameter("cnome"));
 					caBean.setDataScadenza(request.getParameter("expmonth") + "/" + request.getParameter("expyear"));
@@ -135,7 +125,7 @@ public class ComputaOrdine extends HttpServlet {
 					
 					ContrassegnoBean coBean = new ContrassegnoBean();
 					
-					coBean.setNumeroPagamento(pBean.getNumeroPagamento());
+					coBean.setNumeroOrdine(oBean.getNumeroOrdine());
 					
 					coModel.doSave(coBean);
 				}
@@ -153,9 +143,9 @@ public class ComputaOrdine extends HttpServlet {
 			} else {
 				response.sendRedirect(response.encodeRedirectURL("/EdilCommerce_Design/user/checkout.jsp"));
 			}}
-		}
+	//	}
 		
-	}
+//	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);

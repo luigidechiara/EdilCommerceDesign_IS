@@ -1,7 +1,7 @@
 package model;
 
 public class InfoFatturazioneBean {
-	int numeroPagamento;
+	int numeroOrdine;
 	String nome;
 	String cognome;
 	String email;
@@ -12,7 +12,7 @@ public class InfoFatturazioneBean {
 	String cap;
 	
 	public InfoFatturazioneBean() {
-		numeroPagamento = 0;
+		numeroOrdine = 0;
 		nome = "";
 		cognome = "";
 		email = "";
@@ -23,12 +23,12 @@ public class InfoFatturazioneBean {
 		cap = "";
 	}
 
-	public int getNumeroPagamento() {
-		return numeroPagamento;
+	public int getNumeroOrdine() {
+		return numeroOrdine;
 	}
 
-	public void setNumeroPagamento(int numeroPagamento) {
-		this.numeroPagamento = numeroPagamento;
+	public void setNumeroOrdine(int numeroOrdine) {
+		this.numeroOrdine = numeroOrdine;
 	}
 
 	public String getNome() {
@@ -96,17 +96,17 @@ public class InfoFatturazioneBean {
 	}
 	
 	public boolean isEmpty() {
-		return numeroPagamento == 0;
+		return numeroOrdine == 0;
 	}
 	
 	@Override
 	public boolean equals(Object obj) {
-		return this.getNumeroPagamento()==((InfoFatturazioneBean) obj).getNumeroPagamento();
+		return this.getNumeroOrdine()==((InfoFatturazioneBean) obj).getNumeroOrdine();
 	}
 
 	@Override
 	public String toString() {
-		return numeroPagamento + ", " + nome + ", " + cognome + ", " +  email + ", " + indirizzo  + ", " +  telefono + ", " +  città  + ", " +  stato  + ", " +  cap  ;
+		return numeroOrdine + ", " + nome + ", " + cognome + ", " +  email + ", " + indirizzo  + ", " +  telefono + ", " +  città  + ", " +  stato  + ", " +  cap  ;
 
 	}
 

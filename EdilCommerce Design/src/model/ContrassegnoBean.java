@@ -1,31 +1,31 @@
 package model;
 
 public class ContrassegnoBean {
-	int numeroPagamento;
+	int numeroOrdine;
 	
 	public ContrassegnoBean() {
-		numeroPagamento = 0;
+		numeroOrdine = 0;
 	}
 
-	public int getNumeroPagamento() {
-		return numeroPagamento;
+	public int getNumeroOrdine() {
+		return numeroOrdine;
 	}
 
-	public void setNumeroPagamento(int numeroPagamento) {
-		this.numeroPagamento = numeroPagamento;
+	public void setNumeroOrdine(int numeroOrdine) {
+		this.numeroOrdine = numeroOrdine;
 	}
 
 	public boolean isEmpty() {
-		return numeroPagamento == 0;
+		return numeroOrdine == 0;
 	}
 	
 	@Override
 	public boolean equals(Object obj) {
-		return this.getNumeroPagamento()==((ContrassegnoBean) obj).getNumeroPagamento();
+		return this.getNumeroOrdine()==((ContrassegnoBean) obj).getNumeroOrdine();
 	}
 	
 	@Override
 	public String toString() {
-		return numeroPagamento + "";
+		return numeroOrdine + "";
 	}
 }

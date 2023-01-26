@@ -3,24 +3,24 @@ package model;
 import java.sql.Date;
 
 public class CartaBean {
-	int numeroPagamento;
+	int numeroOrdine;
 	String numero;
 	String intestatario;
 	String dataScadenza;
 	String cvv;
 	
     public CartaBean() {
-    	numeroPagamento = 0;
+    	numeroOrdine = 0;
     	numero = "";
     	intestatario = "";
     	dataScadenza = null;
     	cvv = "";
     }
-	public int getNumeroPagamento() {
-		return numeroPagamento;
+	public int getNumeroOrdine() {
+		return numeroOrdine;
 	}
-	public void setNumeroPagamento(int numeroPagamento) {
-		this.numeroPagamento = numeroPagamento;
+	public void setNumeroOrdine(int numeroOrdine) {
+		this.numeroOrdine = numeroOrdine;
 	}
 	public String getNumero() {
 		return numero;
@@ -48,17 +48,17 @@ public class CartaBean {
 	}
 	
 	public boolean isEmpty() {
-		return numeroPagamento == 0;
+		return numeroOrdine == 0;
 	}
 	
 	@Override
 	public boolean equals(Object obj) {
-		return this.getNumeroPagamento()== ((CartaBean) obj).getNumeroPagamento();
+		return this.getNumeroOrdine()== ((CartaBean) obj).getNumeroOrdine();
 	}
 	
 	@Override
 	public String toString() {
-		return numeroPagamento + ", " + numero + ", " + intestatario + ", " +  dataScadenza + ", " + cvv;
+		return numeroOrdine + ", " + numero + ", " + intestatario + ", " +  dataScadenza + ", " + cvv;
 	}
 
 }
