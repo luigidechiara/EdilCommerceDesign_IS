@@ -51,9 +51,6 @@ public class ComputaOrdine extends HttpServlet {
 			
 			oBean.setUsername(((UserBean)session.getAttribute("loggedUser")).getUsername());
 
-			//if(validazione.InformazioniSpedizione(request.getParameter("nome"), request.getParameter("cognome"),request.getParameter("email"),request.getParameter("telefono"),request.getParameter("indirizzo"),request.getParameter("citta"),request.getParameter("stato"),request.getParameter("cap"))) { 
-				//if(validazione.ValidazioneCarta(request.getParameter("cnum"),request.getParameter("cnome"),request.getParameter("expmonth"), request.getParameter("expyear"),request.getParameter("cvv"))) {
-
 			try {
 				oModel.doSave(oBean);
 				
