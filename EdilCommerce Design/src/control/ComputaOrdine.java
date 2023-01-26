@@ -31,6 +31,7 @@ import model.PagamentoBean;
 import model.PagamentoModelDS;
 import model.UserBean;
 import utils.Utility;
+import utils.ValidazioneInput;
 
 @WebServlet("/ComputaOrdine")
 public class ComputaOrdine extends HttpServlet {
@@ -43,14 +44,21 @@ public class ComputaOrdine extends HttpServlet {
 		OrdineBean oBean = new OrdineBean();
 		InfoFatturazioneBean ifBean = new InfoFatturazioneBean();
 		PagamentoBean pBean = new PagamentoBean();
-				
+		ValidazioneInput validazione= new ValidazioneInput();
 		HttpSession session =  request.getSession(false);
+		
+		
 		if(session != null) {
 			OrdineModelDS oModel = new OrdineModelDS(ds);
 			Carrello<ArticoloBean> carrello = (Carrello<ArticoloBean>) session.getAttribute("Carrello");
 			
 			oBean.setUsername(((UserBean)session.getAttribute("loggedUser")).getUsername());
+
+			if(validazione.InformazioniSpedizione(request.getParameter("nome"), request.getParameter("cognome"),request.getParameter("email"),request.getParameter("telefono"),request.getParameter("indirizzo"),request.getParameter("citta"),request.getParameter("stato"),request.getParameter("cap"))) { 
+				if(validazione.ValidazioneCarta(request.getParameter("cnum"),request.getParameter("cnome"),request.getParameter("expmonth"), request.getParameter("expyear"),request.getParameter("cvv"))) {
+
 			try {
+
 				oModel.doSave(oBean);
 				
 				LinkedList<OrdineBean> col = (LinkedList<OrdineBean>) oModel.doRetriveAll("");
@@ -102,9 +110,10 @@ public class ComputaOrdine extends HttpServlet {
 				ifBean.setCittà(request.getParameter("citta"));
 				ifBean.setStato(request.getParameter("stato"));
 				ifBean.setCap(request.getParameter("cap"));
-				
+
 				ifModel.doSave(ifBean);
-				
+						
+
 				String metodo = request.getParameter("metodo");
 				if(metodo.equals("1")) {
 					CartaModelDS caModel = new CartaModelDS(ds);
@@ -116,8 +125,11 @@ public class ComputaOrdine extends HttpServlet {
 					caBean.setIntestatario(request.getParameter("cnome"));
 					caBean.setDataScadenza(request.getParameter("expmonth") + "/" + request.getParameter("expyear"));
 					caBean.setCvv(request.getParameter("cvv"));
+
+						caModel.doSave(caBean);
+						
 					
-					caModel.doSave(caBean);
+					
 				} else if(metodo.equals("2")) {
 					ContrassegnoModelDS coModel = new ContrassegnoModelDS(ds);
 					
@@ -129,18 +141,19 @@ public class ComputaOrdine extends HttpServlet {
 				}
 				carrello.deleteItems();
 				session.setAttribute("Carrello", carrello);
-				
-				
+		
+			
 			} catch (SQLException e) {
 				Utility.print(e);
 				request.setAttribute("error", e.getMessage());
 			}
-			
+
 			response.sendRedirect(response.encodeRedirectURL("/EdilCommerce_Design/user/ordineEffettuato.jsp?suc=1"));
-			
-		} 
-		
-		
+
+			} else {
+				response.sendRedirect(response.encodeRedirectURL("/EdilCommerce_Design/user/checkout.jsp"));
+			}}
+		}
 		
 	}
 

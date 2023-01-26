@@ -234,5 +234,6 @@ function validateCheckout(obj){
 			cvv.classList.remove("error")
 		}
 	}
+	valid=true;
 	if(valid) obj.submit();
 }

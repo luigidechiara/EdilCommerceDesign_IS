@@ -52,7 +52,7 @@ if(carrello.getItems().isEmpty()) {
 	<div class="row">
 	  <div class="col-75">
 	    <div class="container">
-	      <form  method="post" action="<%=response.encodeURL("/EdilCommerce_Design/ComputaOrdine")%>"onsubmit="event.preventDefault(); validateCheckout(this)">
+	      <form  method="post" action="<%=response.encodeURL("/EdilCommerce_Design/ComputaOrdine")%>" onsubmit="event.preventDefault(); validateCheckout(this)">
 	      
 	        <div class="row">
 	          <div class="col-50">
