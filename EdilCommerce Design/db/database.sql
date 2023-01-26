@@ -49,22 +49,15 @@ CREATE TABLE ordine (
 numeroOrdine 		int auto_increment		not null,
 data				date 					not null,	
 username			varchar(20)				not null,
+importo				double					not null,
 primary key (numeroOrdine),
 foreign key (username) references user (username) ON UPDATE CASCADE
 )    auto_increment=1;
 
-DROP TABLE IF EXISTS pagamento;
-CREATE TABLE pagamento (
-numeroPagamento		int auto_increment		not null,
-numeroOrdine		int						not null,
-importo				double					not null,
-primary key (numeroPagamento),
-foreign key (numeroOrdine) references ordine (numeroOrdine)
-) auto_increment=1;
 
 DROP TABLE IF EXISTS infoFatturazione;
 CREATE TABLE infoFatturazione (
-numeroPagamento      int 					not null,
+numeroOrdine        int 					not null,
 nome				varchar(20)				not null,
 cognome				varchar(20)				not null,
 email				varchar(50)				not null,
@@ -73,26 +66,26 @@ indirizzo			varchar(100)			not null,
 cittaÂ 			    varchar(20)				not null,
 stato				varchar(20)				not null,
 cap					varchar(20)				not null,
-primary key (numeroPagamento),
-foreign key (numeroPagamento) references pagamento (numeroPagamento)
+primary key (numeroOrdine),
+foreign key (numeroOrdine) references ordine (numeroOrdine)
 );
 
 DROP TABLE IF EXISTS contrassegno;
 CREATE TABLE contrassegno (
-numeroPagamento      int 					not null,
-primary key (numeroPagamento),
-foreign key (numeroPagamento) references pagamento (numeroPagamento)
+numeroOrdine      int 					not null,
+primary key (numeroOrdine),
+foreign key (numeroOrdine) references ordine (numeroOrdine)
 );
 
 DROP TABLE IF EXISTS carta;
 CREATE TABLE carta (
-numeroPagamento      int 					not null,
+numeroOrdine      int 					not null,
 numero				varchar(100)			not null,
 intestatario		varchar(100)			not null,
 dataScadenza        char(7)					not null,
 cvv					varchar(10)				not null,
-primary key (numeroPagamento),
-foreign key (numeroPagamento) references pagamento (numeroPagamento)
+primary key (numeroOrdine),
+foreign key (numeroOrdine) references ordine (numeroOrdine)
 );
 
 DROP TABLE IF EXISTS ruolo;
@@ -316,18 +309,17 @@ UPDATE (select codiceArticolo, count(codiceArticolo) count from articolo NATURAL
 INSERT INTO recensisce VALUES ('ART32','admin',NOW() ,2,'elegante');
  UPDATE (select codiceArticolo, count(codiceArticolo) count from articolo NATURAL JOIN recensisce WHERE codiceArticolo = 'ART32' group by codiceArticolo) a, articolo SET mediaRecensioni = ((mediaRecensioni * (count - 1)) + 2)/count WHERE articolo.codiceArticolo = 'ART32';
  
- INSERT INTO ordine (data, username) VALUES (NOW(),'admin');
+ INSERT INTO ordine (data, username, importo) VALUES (NOW(),'admin',539.6999999999999);
  INSERT INTO compone VALUES (1,'ART03',1);
  INSERT INTO compone VALUES (1,'ART31',1);
  INSERT INTO compone VALUES (1,'ART10',1);
- INSERT INTO pagamento (numeroOrdine, importo) VALUES (1,539.6999999999999);
  INSERT INTO infoFatturazione VALUES (1,'nome','cognome','admin@email.com','089893889','indirizzo','citta','stato','84085');
  INSERT INTO contrassegno VALUES (1);
- INSERT INTO ordine (data, username) VALUES (NOW(),'admin');
+ 
+ INSERT INTO ordine (data, username,importo) VALUES (NOW(),'admin',44.7);
  INSERT INTO compone VALUES (2,'ART07',1);
  INSERT INTO compone VALUES (2,'ART19',1);
  INSERT INTO compone VALUES (2,'ART21',1);
- INSERT INTO pagamento (numeroOrdine, importo) VALUES (2,44.7);
  INSERT INTO infoFatturazione VALUES (2,'nome','cognome','admin@email.com','089893889','indirizzo','citta','stato','84085');
  INSERT INTO carta VALUES (2,'1234123412341234','nome','01/2022','352');
  
@@ -337,11 +329,11 @@ INSERT INTO recensisce VALUES ('ART25','mario',NOW() ,3,'adattabile\n');
 UPDATE (select codiceArticolo, count(codiceArticolo) count from articolo NATURAL JOIN recensisce WHERE codiceArticolo = 'ART25' group by codiceArticolo) a, articolo SET mediaRecensioni = ((mediaRecensioni * (count - 1)) + 3)/count WHERE articolo.codiceArticolo = 'ART25';
 INSERT INTO recensisce VALUES ('ART02','mario',NOW() ,2,'utile e grande');
 UPDATE (select codiceArticolo, count(codiceArticolo) count from articolo NATURAL JOIN recensisce WHERE codiceArticolo = 'ART02' group by codiceArticolo) a, articolo SET mediaRecensioni = ((mediaRecensioni * (count - 1)) + 2)/count WHERE articolo.codiceArticolo = 'ART02';
-INSERT INTO ordine (data, username) VALUES (NOW(),'mario');
+
+INSERT INTO ordine (data, username, importo) VALUES (NOW(),'mario',430.39);
 INSERT INTO compone VALUES (3,'ART00',1);
 INSERT INTO compone VALUES (3,'ART25',1);
 INSERT INTO compone VALUES (3,'ART02',1);
-INSERT INTO pagamento (numeroOrdine, importo) VALUES (3,430.39);
 INSERT INTO infoFatturazione VALUES (3,'Mario','Rossi','marioRossi@email.com','089788998','via Roma','Fisciano','Italia','84085');
 INSERT INTO contrassegno VALUES (3);
 
