@@ -43,7 +43,8 @@ public class ComputaOrdine extends HttpServlet {
 		InfoFatturazioneBean ifBean = new InfoFatturazioneBean();
 		ValidazioneInput validazione= new ValidazioneInput();
 		HttpSession session =  request.getSession(false);
-		
+		String metodo = request.getParameter("metodo");
+
 		
 		if(session != null) {
 			OrdineModelDS oModel = new OrdineModelDS(ds);
@@ -51,6 +52,10 @@ public class ComputaOrdine extends HttpServlet {
 			
 			oBean.setUsername(((UserBean)session.getAttribute("loggedUser")).getUsername());
 
+			if(validazione.InformazioniSpedizione(request.getParameter("nome"), request.getParameter("cognome"),request.getParameter("email"),request.getParameter("telefono"),request.getParameter("indirizzo"),request.getParameter("citta"),request.getParameter("stato"),request.getParameter("cap"))) { 
+				if(validazione.ValidazioneCarta(request.getParameter("cnum"),request.getParameter("cnome"),request.getParameter("expmonth"), request.getParameter("expyear"),request.getParameter("cvv"))||metodo.equals("2")) {
+
+			
 			try {
 				oModel.doSave(oBean);
 				
@@ -101,7 +106,7 @@ public class ComputaOrdine extends HttpServlet {
 				ifModel.doSave(ifBean);
 						
 
-				String metodo = request.getParameter("metodo");
+				
 				if(metodo.equals("1")) {
 					CartaModelDS caModel = new CartaModelDS(ds);
 					
@@ -137,12 +142,12 @@ public class ComputaOrdine extends HttpServlet {
 
 			response.sendRedirect(response.encodeRedirectURL("/EdilCommerce_Design/user/ordineEffettuato.jsp?suc=1"));
 
-			} else {
+			}} else {
 				response.sendRedirect(response.encodeRedirectURL("/EdilCommerce_Design/user/checkout.jsp"));
-			}}
-	//	}
+			}
+		}
 		
-//	}
+	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
