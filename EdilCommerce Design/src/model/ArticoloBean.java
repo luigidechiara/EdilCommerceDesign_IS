@@ -3,14 +3,14 @@ package model;
 import java.sql.Blob;
 
 public class ArticoloBean {
-	String codiceArticolo;		
-	String nome;				
-	String immagine;			
-	String descrizione;		
-	double costo;				
-	String nomeCategoria;
-	int mediaRecensioni;
-	int giacenza;
+	private String codiceArticolo;		
+	private String nome;				
+	private String immagine;			
+	private String descrizione;		
+	private double costo;				
+	private String nomeCategoria;
+	private int mediaRecensioni;
+	private int giacenza;
 	
 	public ArticoloBean(){
 		codiceArticolo= "";

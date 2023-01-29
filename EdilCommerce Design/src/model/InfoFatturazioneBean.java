@@ -1,15 +1,15 @@
 package model;
 
 public class InfoFatturazioneBean {
-	int numeroOrdine;
-	String nome;
-	String cognome;
-	String email;
-	String telefono;
-	String indirizzo;
-	String città;
-	String stato;
-	String cap;
+	private int numeroOrdine;
+	private String nome;
+	private String cognome;
+	private String email;
+	private String telefono;
+	private String indirizzo;
+	private String città;
+	private String stato;
+	private String cap;
 	
 	public InfoFatturazioneBean() {
 		numeroOrdine = 0;

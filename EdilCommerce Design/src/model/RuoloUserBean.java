@@ -1,8 +1,8 @@
 package model;
 
 public class RuoloUserBean {
-	String username;
-	String nome;
+	private String username;
+	private String nome;
 	
 	public RuoloUserBean() {
 		username = "";

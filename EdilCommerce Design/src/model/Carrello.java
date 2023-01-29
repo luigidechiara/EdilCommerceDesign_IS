@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Carrello<T> {
-	List<T> items;
-	List<Integer> quantità;
+	private List<T> items;
+	private List<Integer> quantità;
 	
 	public Carrello() {
 		items = new ArrayList<T>();

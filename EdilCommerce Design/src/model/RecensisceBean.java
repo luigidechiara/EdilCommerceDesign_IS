@@ -4,11 +4,11 @@ import java.sql.Date;
 
 public class RecensisceBean {
 	
-	String codiceArticolo;
-	String username;
-	Date date;
-    int valore;
-    String testo;
+	private String codiceArticolo;
+	private String username;
+	private Date date;
+	private int valore;
+	private String testo;
     
     public RecensisceBean() {
     	codiceArticolo = "";

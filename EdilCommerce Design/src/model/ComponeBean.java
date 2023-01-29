@@ -1,9 +1,9 @@
 package model;
 
 public class ComponeBean {
-	int numeroOrdine;
-	String codiceArticolo;
-	int quantità;
+	private int numeroOrdine;
+	private String codiceArticolo;
+	private int quantità;
 	
 	public ComponeBean() {
 		numeroOrdine = 0;

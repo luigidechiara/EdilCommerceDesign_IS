@@ -1,16 +1,16 @@
 package model;
 
 public class UserBean {
-	String username;
-	String nome;
-	String cognome;
-	String email;
-	String telefono;
-	String indirizzo;
-	String userPassword;
-	String città;
-	String stato;
-	String cap;
+	private String username;
+	private String nome;
+	private String cognome;
+	private String email;
+	private String telefono;
+	private String indirizzo;
+	private String userPassword;
+	private String città;
+	private String stato;
+	private String cap;
 	
 	public UserBean() {
 		username = "";

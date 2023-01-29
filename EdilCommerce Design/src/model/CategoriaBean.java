@@ -3,9 +3,9 @@ package model;
 import java.sql.Blob;
 
 public class CategoriaBean {
-	String immagine;
-	String nome;
-	String descrizione;
+	private String immagine;
+	private String nome;
+	private String descrizione;
 
 
 	public CategoriaBean() {
