@@ -15,6 +15,7 @@ import model.RecensisceBean;
 import model.RecensisceModelDS;
 import model.UserBean;
 import utils.Utility;
+import utils.ValidazioneInput;
 
 @WebServlet("/OperaRecensione")
 public class OperaRecensione extends HttpServlet {
@@ -24,6 +25,7 @@ public class OperaRecensione extends HttpServlet {
 		HttpSession session = request.getSession(false);
 		if(session != null) {
 			RecensisceBean rBean = new RecensisceBean();
+			ValidazioneInput validazione= new ValidazioneInput();
 			String op = request.getParameter("op");
 			String codA = request.getParameter("codiceArticolo");
 			String testo = request.getParameter("testo");
@@ -37,6 +39,10 @@ public class OperaRecensione extends HttpServlet {
 			rBean.setTesto(testo);
 			rBean.setUsername(username);
 			rBean.setValore(valutazione);
+		
+				if(validazione.ValidazioneInserimentoRecensione(rBean)) {
+					
+				
 			
 			try {
 				if(op.equals("save")) 
@@ -49,7 +55,10 @@ public class OperaRecensione extends HttpServlet {
 				Utility.print(e);
 				request.setAttribute("error", e.getMessage());
 			}
-		}
+				}else{ 
+					
+					request.setAttribute("error", "Descrizione/Valore errati");
+				}}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

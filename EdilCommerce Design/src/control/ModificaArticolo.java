@@ -19,6 +19,7 @@ import model.ArticoloModelDS;
 import model.CategoriaBean;
 import model.CategoriaModelDS;
 import utils.Utility;
+import utils.ValidazioneInput;
 
 @WebServlet("/ModificaArticolo")
 public class ModificaArticolo extends HttpServlet {
@@ -26,7 +27,7 @@ public class ModificaArticolo extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		DataSource ds = (DataSource) getServletContext().getAttribute("DataSource");
-		
+		ValidazioneInput validazione= new ValidazioneInput();
 		HttpSession session = request.getSession(false);
 		if(session == null) {
 			response.sendRedirect(response.encodeRedirectURL("/EdilCommerce_Design/"));
@@ -102,6 +103,7 @@ public class ModificaArticolo extends HttpServlet {
 				cat1 = cat[0] + cat[1].substring(0, 1).toUpperCase() + cat[1].substring(1);
 			immagine = "/EdilCommerce_Design/img/categoria/" + cat1 + "/" + immagine;
 			
+			
 			aBean.setCodiceArticolo(codice);
 			aBean.setCosto(costo);
 			aBean.setDescrizione(testo);
@@ -109,6 +111,9 @@ public class ModificaArticolo extends HttpServlet {
 			aBean.setNome(nome);
 			aBean.setNomeCategoria(categoria);
 			aBean.setGiacenza(giacenza);
+			
+			if(validazione.ValidazioneModificaArticolo(aBean)) {
+			
 			
 			try {
 				modelA.doUpdate(aBean, codice);
@@ -120,7 +125,15 @@ public class ModificaArticolo extends HttpServlet {
 			session.setAttribute("Messaggio", "Articolo " + aBean.getCodiceArticolo() + " modificato con successo");
 			response.sendRedirect(response.encodeRedirectURL("/EdilCommerce_Design/admin/admin.jsp"));
 			return;
-		}
+		
+			}else {
+				session.setAttribute("Messaggio", "errore parametri di modifica articolo");
+				response.sendRedirect(response.encodeRedirectURL("/EdilCommerce_Design/admin/admin.jsp"));
+				return;
+				
+			}
+			
+			}
 		return;
 	}
 

@@ -6,6 +6,7 @@ import java.util.regex.Pattern;
 import javax.servlet.http.HttpSession;
 
 import model.ArticoloBean;
+import model.RecensisceBean;
 
 public class ValidazioneInput {
 
@@ -37,9 +38,9 @@ public class ValidazioneInput {
 	public boolean ValidazioneInformazioniPersonali(String username,String nome,String cognome,String email,String telefono,String indirizzo,String userPassword,String citta,String cap,String stato) {
 		
 		if(username!=null&&nome!=null&&cognome!=null&&email!=null&&telefono!=null&&indirizzo!=null&&userPassword!=null&&citta!=null&&stato!=null&&cap!=null) {
-			if(nome.matches("^[A-Za-z]+$")) {	
-			  if(cognome.matches("^[A-Za-z]+$")) { 	
-				if(email.matches("[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}")) {
+			if(nome.matches("^[A-Za-z]+$")&&nome.length()>1&&nome.length()<=15) {	
+			  if(cognome.matches("^[A-Za-z]+$")&&cognome.length()>1&&cognome.length()<=15) { 	
+				if(email.matches("[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}")&&email.length()>10&&email.length()<=30) {
 					if(userPassword.matches("((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{8,20})")) {
 						if(telefono.matches("^[0-9]{8,10}$")) {
 							if(cap.matches("^([0-9]{5})$")) {
@@ -92,13 +93,33 @@ public class ValidazioneInput {
 	
 	public boolean ValidazioneAggiungiArticolo(ArticoloBean saveBean) {
 		
-		if(saveBean.getNome().matches("^[A-Za-z]+$")) {
-			if(saveBean.getImmagine().length()>1 && saveBean.getImmagine().length()<=15&& saveBean.getImmagine().contains(".jpeg")) {
-				if(saveBean.getDescrizione().length()>5 && saveBean.getDescrizione().matches("^[A-Za-z]+$")) {
+		if(saveBean.getNome().matches("^[A-Za-z]+$")&&saveBean.getNome().length()>1&&saveBean.getNome().length()<=15) {
+			if(saveBean.getImmagine().length()>1) {
+				if(saveBean.getDescrizione().length()>5) {
+					if(saveBean.getCosto()>=0) {	
 					
 						return true;
 					
-				}
+			  }}
+			}		
+		}
+		
+		return false;
+		
+		
+	}
+	
+public boolean ValidazioneModificaArticolo(ArticoloBean saveBean) {
+		
+		if(saveBean.getNome().matches("^[A-Za-z]+$")&&saveBean.getNome().length()>1&&saveBean.getNome().length()<=15) {
+			if(saveBean.getImmagine().length()>1) {
+				if(saveBean.getDescrizione().length()>5) {
+					if(saveBean.getCosto()>=0) {
+						
+					
+						return true;
+					
+					}}
 			}
 			
 		}
@@ -107,6 +128,21 @@ public class ValidazioneInput {
 		
 		
 	}
+	
+	
+public boolean ValidazioneInserimentoRecensione(RecensisceBean rBean) {
+	
+	if(rBean.getTesto()!=null) {
+		if(rBean.getTesto().length()>1 && rBean.getTesto().length()<=200) {
+			if(rBean.getValore()>=1 && rBean.getValore()<=5) {
+				return true;
+			}
+		}
+		
+	}
+	
+	return false;
+}
 	
 	
 }
