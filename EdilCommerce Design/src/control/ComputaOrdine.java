@@ -142,12 +142,16 @@ public class ComputaOrdine extends HttpServlet {
 
 			response.sendRedirect(response.encodeRedirectURL("/EdilCommerce_Design/user/ordineEffettuato.jsp?suc=1"));
 
-			}} else {
-				response.sendRedirect(response.encodeRedirectURL("/EdilCommerce_Design/user/checkout.jsp"));
-			}
-		}
+			}else {
+				response.sendRedirect(response.encodeRedirectURL("/EdilCommerce_Design/user/home.jsp"));
+				} 
 		
-	}
+	}else {
+		response.sendRedirect(response.encodeRedirectURL("/EdilCommerce_Design/user/checkout.jsp"));} 
+			
+		}
+
+}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);

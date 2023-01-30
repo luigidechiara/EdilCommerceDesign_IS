@@ -29,8 +29,8 @@ public class Modifica extends HttpServlet {
 		String original = request.getParameter("originalUsername");
 		
 		
-		if(validazione.ValidazioneInformazioniPersonali(request.getParameter("username"), request.getParameter("nome"),request.getParameter("cognome"), request.getParameter("email"), request.getParameter("password"),
-				request.getParameter("telefono"), request.getParameter("indirizzo"), request.getParameter("città"),request.getParameter("cap"),request.getParameter("stato"))){
+		if(validazione.ValidazioneInformazioniPersonali(request.getParameter("username"), request.getParameter("nome"),request.getParameter("cognome"), request.getParameter("email"), 
+		request.getParameter("telefono"), request.getParameter("indirizzo"), request.getParameter("password"),request.getParameter("citta"),request.getParameter("cap"),request.getParameter("stato"))){
 			
 		
 		
