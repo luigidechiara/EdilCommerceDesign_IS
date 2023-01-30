@@ -4,10 +4,10 @@ import java.sql.Date;
 
 public class OrdineBean {
 	
-	int numeroOrdine;
-	Date data;
-	String username;
-	double importo;
+	private int numeroOrdine;
+	private Date data;
+	private String username;
+	private double importo;
 	
 	public OrdineBean() {
 		numeroOrdine = 0;

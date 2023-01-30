@@ -3,11 +3,11 @@ package model;
 import java.sql.Date;
 
 public class CartaBean {
-	int numeroOrdine;
-	String numero;
-	String intestatario;
-	String dataScadenza;
-	String cvv;
+	private int numeroOrdine;
+	private String numero;
+	private String intestatario;
+	private String dataScadenza;
+	private String cvv;
 	
     public CartaBean() {
     	numeroOrdine = 0;

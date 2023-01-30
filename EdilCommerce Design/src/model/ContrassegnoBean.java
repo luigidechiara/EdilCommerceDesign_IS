@@ -1,7 +1,7 @@
 package model;
 
 public class ContrassegnoBean {
-	int numeroOrdine;
+	private int numeroOrdine;
 	
 	public ContrassegnoBean() {
 		numeroOrdine = 0;
