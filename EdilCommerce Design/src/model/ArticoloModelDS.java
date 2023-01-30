@@ -69,6 +69,8 @@ public class ArticoloModelDS implements ModelInterface<ArticoloBean> {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	
 
 	@Override
 	public Collection<ArticoloBean> doRetriveAll(String order) throws SQLException {
@@ -334,11 +336,12 @@ public class ArticoloModelDS implements ModelInterface<ArticoloBean> {
 		return collection;
 	}
 
-	public Collection<ArticoloBean> doRetriveByImmagine(String code) throws SQLException {
+	public ArticoloBean doRetriveByImmagine(String code) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		Collection<ArticoloBean> collection = new LinkedList<ArticoloBean>();
+		ArticoloBean bean = new ArticoloBean();
+		
 		
 		String selectCodeSQL = "SELECT * FROM articolo WHERE immagine=?";
 		
@@ -351,10 +354,7 @@ public class ArticoloModelDS implements ModelInterface<ArticoloBean> {
 			Utility.print("doRetriveByImmagine: " + ps.toString());
 			
 			rs = ps.executeQuery();
-			
-			while(rs.next()) {
-				ArticoloBean bean = new ArticoloBean();
-				
+					
 				bean.setCodiceArticolo(rs.getString("codiceArticolo"));
 				bean.setNome(rs.getString("nome"));
 				bean.setImmagine(rs.getString("immagine"));
@@ -363,9 +363,8 @@ public class ArticoloModelDS implements ModelInterface<ArticoloBean> {
 				bean.setNomeCategoria(rs.getString("nomeCategoria"));
 				bean.setMediaRecensioni(rs.getInt("mediaRecensioni"));
 				bean.setGiacenza(rs.getInt("giacenza"));
-				
-				collection.add(bean);
-			}
+	
+	
 		} finally {
 			try {
 				if(ps != null)
@@ -378,6 +377,6 @@ public class ArticoloModelDS implements ModelInterface<ArticoloBean> {
 			}
 		}
 		
-		return collection;
+		return bean;
 	}
 }

@@ -16,12 +16,14 @@ import javax.sql.DataSource;
 import model.ArticoloBean;
 import model.ArticoloModelDS;
 import utils.Utility;
+import utils.ValidazioneInput;
 
 @WebServlet("/AggiungiArticolo")
 public class AggiungiArticolo extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		ValidazioneInput validazione=new ValidazioneInput();
 		String nome = request.getParameter("nome");
 		String codice = request.getParameter("codice");
 		String categorie = request.getParameter("categorie");
@@ -34,6 +36,7 @@ public class AggiungiArticolo extends HttpServlet {
 		String testo = request.getParameter("testo");
 		Double costo = Double.parseDouble(request.getParameter("costo"));
 		int giacenza = Integer.parseInt(request.getParameter("giacenza"));
+		
 		ArticoloBean saveBean = new ArticoloBean();
 		
 		saveBean.setCodiceArticolo(codice);
@@ -43,10 +46,13 @@ public class AggiungiArticolo extends HttpServlet {
 		saveBean.setDescrizione(testo);
 		saveBean.setCosto(costo);
 		saveBean.setGiacenza(giacenza);
+		HttpSession session = request.getSession(false);
+		
+		if(validazione.ValidazioneAggiungiArticolo(saveBean)) {
 		
 		Utility.print("Entrata nella servlet");
 		
-		HttpSession session = request.getSession(false);
+		
 		if(session == null) {
 			response.sendRedirect(response.encodeURL("/EdilCommerce_Design/admin/admin.jsp"));
 			return;
@@ -59,15 +65,15 @@ public class AggiungiArticolo extends HttpServlet {
 		}
 		
 		DataSource ds = (DataSource) getServletContext().getAttribute("DataSource");
-		Collection<ArticoloBean> collection = new LinkedList<ArticoloBean>();
 		
+		ArticoloBean articolo= new ArticoloBean();
 		
 		
 		ArticoloModelDS modelA = new ArticoloModelDS(ds);
 		
 		try {
-			collection = modelA.doRetriveByImmagine(immagine);
-			if(!collection.isEmpty()) {
+			articolo = modelA.doRetriveByImmagine(immagine);
+			if(!articolo.isEmpty()) {
 				session.setAttribute("UnsavedArticolo", saveBean);
 				session.setAttribute("AdminError", "Nome imagine duplicato, rinominare l'imagine");
 				response.sendRedirect(response.encodeURL("/EdilCommerce_Design/admin/admin.jsp"));
@@ -103,7 +109,12 @@ public class AggiungiArticolo extends HttpServlet {
 		Utility.print("Uscita dalla servlet");
 		session.setAttribute("Messaggio", "Articolo " + saveBean.toString() + " salvato con successo");
 		response.sendRedirect(response.encodeURL("/EdilCommerce_Design/admin/admin.jsp"));
+	
 		return;
+		}else {
+			session.setAttribute("Messaggio", "Errore dati Input");
+			response.sendRedirect(response.encodeURL("/EdilCommerce_Design/admin/admin.jsp"));
+		}
 	}
 
 	

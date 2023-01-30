@@ -15,7 +15,8 @@ function checkEmail(inputtxt){
 	 return false;
 }
 function checkPass(inputtxt){
-	 var pass= /^(\w{4,10})+$/;
+	 var pass= /^[A-Za-z0-9]{8,20}$/;
+	 
 	 if(inputtxt.value.match(pass))	
 		return true;
 	 return false;

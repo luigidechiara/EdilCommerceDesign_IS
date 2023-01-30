@@ -31,8 +31,14 @@ public class Registrazione extends HttpServlet {
 		ValidazioneInput validazione= new ValidazioneInput();
 		UserBean bean = new UserBean();
 		
+		
 		bean.setUsername(request.getParameter("username"));
 		UserBean checkBean = new UserBean();
+		
+		if(validazione.ValidazioneRegistrazione(request.getParameter("username"),request.getParameter("nome"),request.getParameter("cognome"),request.getParameter("email"),request.getParameter("password"),
+				request.getParameter("telefono"),request.getParameter("indirizzo"),request.getParameter("citta"),request.getParameter("cap"),request.getParameter("stato"))){ 
+		 
+		
 		try {
 			checkBean = model.doRetriveByKey(bean.getUsername());
 
@@ -46,8 +52,7 @@ public class Registrazione extends HttpServlet {
 				bean.setCittà(request.getParameter("citta"));
 				bean.setCap(request.getParameter("cap"));
 				bean.setStato(request.getParameter("stato"));
-				if(validazione.ValidazioneRegistrazione(bean.getUsername(),bean.getNome(),bean.getCognome(),bean.getEmail(),bean.getUserPassword(),bean.getTelefono(),bean.getIndirizzo(),bean.getCittà(),bean.getCap(),bean.getStato())) 
-				{ 
+				
 				
 				try {
 					model.doSave(bean);
@@ -62,17 +67,17 @@ public class Registrazione extends HttpServlet {
 
 				response.sendRedirect(response.encodeRedirectURL("login.jsp"));
 				return;
-			}else {
-				request.setAttribute("errorevalidazione", "Dati Registrazione Errati");
-				getServletContext().getRequestDispatcher(response.encodeURL("/registrazione.jsp")).include(request, response);
-				
-			}} else {
+			} else {
 				request.setAttribute("error", "Username già in uso");
 				getServletContext().getRequestDispatcher(response.encodeURL("/registrazione.jsp")).include(request, response);
 			}
 		} catch (SQLException e) {
 			Utility.print(e);
 			request.setAttribute("error", e.getMessage());
+		}}else {
+			request.setAttribute("error", "Dati Registrazione Errati");
+			getServletContext().getRequestDispatcher(response.encodeURL("/registrazione.jsp")).include(request, response);
+			
 		}
 	}
 

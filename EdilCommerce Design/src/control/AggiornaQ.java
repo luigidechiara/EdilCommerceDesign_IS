@@ -14,6 +14,7 @@ import model.Carrello;
 
 /**
  * Servlet implementation class AggiornaQ
+ 
  */
 @WebServlet("/AggiornaQ")
 public class AggiornaQ extends HttpServlet {
@@ -26,8 +27,8 @@ public class AggiornaQ extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int indice = Integer.parseInt((String) request.getParameter("codice"));
 		Integer q = Integer.parseInt((String) request.getParameter("quantita"));
-		
 		HttpSession session = request.getSession(false);
+		
 		if(session != null) {
 			Carrello carrello = (Carrello) session.getAttribute("Carrello");
 			List<Integer> artQuantità = carrello.getQuantità();

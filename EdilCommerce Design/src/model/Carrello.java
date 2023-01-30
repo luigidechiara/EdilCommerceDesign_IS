@@ -7,6 +7,7 @@ public class Carrello<T> {
 	List<T> items;
 	List<Integer> quantità;
 	
+	
 	public Carrello() {
 		items = new ArrayList<T>();
 		quantità = new ArrayList<Integer>();
