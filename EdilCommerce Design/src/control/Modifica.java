@@ -34,7 +34,7 @@ public class Modifica extends HttpServlet {
 			bean.setUserPassword(request.getParameter("password"));
 			bean.setTelefono(request.getParameter("telefono"));
 			bean.setIndirizzo(request.getParameter("indirizzo"));
-			bean.setCittà(request.getParameter("citta"));
+			bean.setCitta(request.getParameter("citta"));
 			bean.setCap(request.getParameter("cap"));
 			bean.setStato(request.getParameter("stato"));
 			try {
@@ -58,7 +58,7 @@ public class Modifica extends HttpServlet {
 					bean.setUserPassword(request.getParameter("password"));
 					bean.setTelefono(request.getParameter("telefono"));
 					bean.setIndirizzo(request.getParameter("indirizzo"));
-					bean.setCittà(request.getParameter("citta"));
+					bean.setCitta(request.getParameter("citta"));
 					bean.setCap(request.getParameter("cap"));
 					bean.setStato(request.getParameter("stato"));
 					try {
@@ -72,7 +72,7 @@ public class Modifica extends HttpServlet {
 					return;
 
 				} else {
-					request.setAttribute("error", "Username già in uso");
+					request.setAttribute("error", "Username gia in uso");
 					getServletContext().getRequestDispatcher(response.encodeURL("/user/profilo.jsp")).include(request, response);
 					return;
 				}

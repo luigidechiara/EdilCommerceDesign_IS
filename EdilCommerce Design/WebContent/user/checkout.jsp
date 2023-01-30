@@ -72,8 +72,8 @@ if(carrello.getItems().isEmpty()) {
 	            <label for="indirizzo"><i class="fa fa-address-card-o"></i> Indirizzo</label>
 	            <input type="text" id="indirizzo" name="indirizzo" placeholder="via umberto I" value="<%=bean.getIndirizzo()%>">
 	            
-	            <label for="citta"><i class="fa fa-institution"></i> Città</label>
-	            <input type="text" id="citta" name="citta" placeholder="Salerno" value="<%=bean.getCittà()%>">
+	            <label for="citta"><i class="fa fa-institution"></i> Citta</label>
+	            <input type="text" id="citta" name="citta" placeholder="Salerno" value="<%=bean.getCitta()%>">
 	
 	            <div class="row">
 	              <div class="col-50">
@@ -102,7 +102,7 @@ if(carrello.getItems().isEmpty()) {
 	            <input type="text" id="cnome" name="cnome" placeholder="Mario Rossi" required>
 	            <label for="cnum">Numero carta</label>
 	            <input type="text" id="cnum" name="cnum" placeholder="1111-2222-3333-4444" required>
-	            <label for="expmonth">Validità (mese)</label>
+	            <label for="expmonth">Validita (mese)</label>
 	            <select name="expmonth" id="expmonth" required>
 				  <option value="01">Gennaio</option>
 				  <option value="02">Febbraio</option>
@@ -119,7 +119,7 @@ if(carrello.getItems().isEmpty()) {
 				</select>
 	            <div class="row">
 	              <div class="col-50">
-	                <label for="expyear">Validità (anno)</label>
+	                <label for="expyear">Validita (anno)</label>
 	                <input type="text" id="expyear" name="expyear" placeholder="2022" required>
 	              </div>
 	              <div class="col-50">
@@ -138,9 +138,9 @@ if(carrello.getItems().isEmpty()) {
 	    <div class="container">
 		<%
 		List<ArticoloBean> articoli = carrello.getItems();
-		List<Integer> quantità = carrello.getQuantità();
+		List<Integer> quantita = carrello.getQuantita();
 		Iterator<ArticoloBean> it1 = articoli.iterator();
-		Iterator<Integer> it2 = quantità.iterator();
+		Iterator<Integer> it2 = quantita.iterator();
 		DecimalFormat df = new DecimalFormat("#.00");
 			
 		ArticoloBean aBean = new ArticoloBean();

@@ -3,12 +3,12 @@ package model;
 public class ComponeBean {
 	private int numeroOrdine;
 	private String codiceArticolo;
-	private int quantità;
+	private int quantita;
 	
 	public ComponeBean() {
 		numeroOrdine = 0;
 		codiceArticolo = "";
-		quantità = 0;
+		quantita = 0;
 	}
 	
 	public int getNumeroOrdine() {
@@ -23,11 +23,11 @@ public class ComponeBean {
 	public void setCodiceArticolo(String codiceArticolo) {
 		this.codiceArticolo = codiceArticolo;
 	}
-	public int getQuantità() {
-		return quantità;
+	public int getQuantita() {
+		return quantita;
 	}
-	public void setQuantità(int quantità) {
-		this.quantità = quantità;
+	public void setQuantita(int quantita) {
+		this.quantita = quantita;
 	}
 	
 	@Override
@@ -37,6 +37,6 @@ public class ComponeBean {
 	
 	@Override
 	public String toString() {
-		return numeroOrdine + ", " + codiceArticolo + ", " + quantità;
+		return numeroOrdine + ", " + codiceArticolo + ", " + quantita;
 	}
 }

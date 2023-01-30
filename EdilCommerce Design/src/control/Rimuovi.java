@@ -34,7 +34,7 @@ public class Rimuovi extends HttpServlet {
 		Carrello<ArticoloBean> carrello = (Carrello<ArticoloBean>) session.getAttribute("Carrello");
 		
 		List<ArticoloBean> articoli = carrello.getItems();
-		List<Integer> artQuantità = carrello.getQuantità();
+		List<Integer> artQuantita = carrello.getQuantita();
 		DecimalFormat df=new DecimalFormat("#0.00");
 		double totale = 0;
 		
@@ -66,7 +66,7 @@ public class Rimuovi extends HttpServlet {
 			ArticoloBean bean = new ArticoloBean();
 			
 			Iterator<ArticoloBean> it1 = articoli.iterator();
-			Iterator<Integer> it2 = artQuantità.iterator();
+			Iterator<Integer> it2 = artQuantita.iterator();
 			
 			Integer q = 0;
 			int i = 1;
@@ -83,7 +83,7 @@ public class Rimuovi extends HttpServlet {
 				buffer.append("<tr><td><a href=\"/EdilCommerce_Design/articolo.jsp?articolo=" + bean.getCodiceArticolo() + "\"><img alt=\"" + bean.getNome() + "\" src=\"" + bean.getImmagine() + "\"></a></td>");
 				buffer.append("<td><h4><a href=\"/EdilCommerce_Design/articolo.jsp?articolo=" + bean.getCodiceArticolo() + "\">" + bean.getNome() + "</a></h4>");
 				buffer.append("<h5>" + df.format(bean.getCosto()) + "&euro;</h5>");
-				buffer.append("<label>Quantità</label><input type=\"number\" value=\"" + q + "\"  onchange='aggiornaQuantita(" + j + ")'\"></td>");
+				buffer.append("<label>Quantita</label><input type=\"number\" value=\"" + q + "\"  onchange='aggiornaQuantita(" + j + ")'\"></td>");
 				buffer.append("<td><button onclick='deleteItem(\"" + bean.getCodiceArticolo() + "\", \"carrello\")'>X</button></td></tr>");		
 			
 				if(i == index) {

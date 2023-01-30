@@ -6,8 +6,8 @@ import model.ArticoloBean;
 
 public class ValidazioneInput {
 
-	public boolean ValidazioneRegistrazione(String username,String nome,String cognome,String email,String telefono,String indirizzo,String userPassword,String città,String stato,String cap) {
-    if(username!=null&&nome!=null&&cognome!=null&&email!=null&&telefono!=null&&indirizzo!=null&&userPassword!=null&&città!=null&&stato!=null&&cap!=null) {
+	public boolean ValidazioneRegistrazione(String username,String nome,String cognome,String email,String telefono,String indirizzo,String userPassword,String citta,String stato,String cap) {
+    if(username!=null&&nome!=null&&cognome!=null&&email!=null&&telefono!=null&&indirizzo!=null&&userPassword!=null&&citta!=null&&stato!=null&&cap!=null) {
 	if(nome.matches("^[A-Za-z]+$")) {
 	  if(cognome.matches("^[A-Za-z]+$")) {
 		if(email.matches("[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}")) {
@@ -15,7 +15,7 @@ public class ValidazioneInput {
 				if(telefono.matches("^[0-9]{8,10}$")) {
 					if(cap.matches("^([0-9]{5})$")) {
 						if(indirizzo.length()>8) {
-							if(città.length()>4) {
+							if(citta.length()>4) {
 								if(cap.length()==5) {
 									if(stato.length()>=2 && stato.length()>=20) {
 								
@@ -27,9 +27,9 @@ public class ValidazioneInput {
 	}
 	
 	
-	public boolean ValidazioneInformazioniPersonali(String username,String nome,String cognome,String email,String telefono,String indirizzo,String userPassword,String città,String stato,String cap) {
+	public boolean ValidazioneInformazioniPersonali(String username,String nome,String cognome,String email,String telefono,String indirizzo,String userPassword,String citta,String stato,String cap) {
 		
-		if(username!=null&&nome!=null&&cognome!=null&&email!=null&&telefono!=null&&indirizzo!=null&&userPassword!=null&&città!=null&&stato!=null&&cap!=null) {
+		if(username!=null&&nome!=null&&cognome!=null&&email!=null&&telefono!=null&&indirizzo!=null&&userPassword!=null&&citta!=null&&stato!=null&&cap!=null) {
 			if(nome.matches("^[A-Za-z]+$")) {
 			  if(cognome.matches("^[A-Za-z]+$")) {
 				if(email.matches("[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}")) {
@@ -37,7 +37,7 @@ public class ValidazioneInput {
 						if(telefono.matches("^[0-9]{8,10}$")) {
 							if(cap.matches("^([0-9]{5})$")) {
 								if(indirizzo.length()>8) {
-									if(città.length()>4) {
+									if(citta.length()>4) {
 										if(cap.length()==5) {
 											if(stato.length()>=2 && stato.length()>=20) {
 										
@@ -48,7 +48,7 @@ public class ValidazioneInput {
 			return false;
 			}
 	
-	public boolean InformazioniSpedizione(String nome,String cognome,String email,String telefono,String indirizzo,String città,String stato,String cap) {
+	public boolean InformazioniSpedizione(String nome,String cognome,String email,String telefono,String indirizzo,String citta,String stato,String cap) {
 		
 		if(nome.matches("^[A-Za-z]+$")&& nome.length()>=3) {
 			  if(cognome.matches("^[A-Za-z]+$")&& cognome.length()>=3) {

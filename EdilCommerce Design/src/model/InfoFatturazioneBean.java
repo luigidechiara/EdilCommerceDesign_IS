@@ -7,7 +7,7 @@ public class InfoFatturazioneBean {
 	private String email;
 	private String telefono;
 	private String indirizzo;
-	private String città;
+	private String citta;
 	private String stato;
 	private String cap;
 	
@@ -18,7 +18,7 @@ public class InfoFatturazioneBean {
 		email = "";
 		telefono = "";
 		indirizzo = "";
-		città = "";
+		citta = "";
 		stato = "";
 		cap = "";
 	}
@@ -71,12 +71,12 @@ public class InfoFatturazioneBean {
 		this.indirizzo = indirizzo;
 	}
 
-	public String getCittà() {
-		return città;
+	public String getCitta() {
+		return citta;
 	}
 
-	public void setCittà(String città) {
-		this.città = città;
+	public void setCitta(String citta) {
+		this.citta = citta;
 	}
 
 	public String getStato() {
@@ -106,7 +106,7 @@ public class InfoFatturazioneBean {
 
 	@Override
 	public String toString() {
-		return numeroOrdine + ", " + nome + ", " + cognome + ", " +  email + ", " + indirizzo  + ", " +  telefono + ", " +  città  + ", " +  stato  + ", " +  cap  ;
+		return numeroOrdine + ", " + nome + ", " + cognome + ", " +  email + ", " + indirizzo  + ", " +  telefono + ", " +  citta  + ", " +  stato  + ", " +  cap  ;
 
 	}
 

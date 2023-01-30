@@ -51,7 +51,7 @@ public class InfoFatturazioneModelDS implements ModelInterface<InfoFatturazioneB
 				bean.setEmail(rs.getString("email"));
 				bean.setTelefono(rs.getString("telefono"));
 				bean.setIndirizzo(rs.getString("indirizzo"));
-				bean.setCittà(rs.getString("città"));
+				bean.setCitta(rs.getString("citta"));
 				bean.setStato(rs.getString("stato"));
 				bean.setCap(rs.getString("cap"));
 			}
@@ -96,7 +96,7 @@ public class InfoFatturazioneModelDS implements ModelInterface<InfoFatturazioneB
 				bean.setEmail(rs.getString("email"));
 				bean.setTelefono(rs.getString("telefono"));
 				bean.setIndirizzo(rs.getString("indirizzo"));
-				bean.setCittà(rs.getString("città"));
+				bean.setCitta(rs.getString("citta"));
 				bean.setStato(rs.getString("stato"));
 				bean.setCap(rs.getString("cap"));
 				collection.add(bean);
@@ -133,7 +133,7 @@ public class InfoFatturazioneModelDS implements ModelInterface<InfoFatturazioneB
 				ps.setString(4, item.getEmail());
 				ps.setString(5, item.getTelefono());
 				ps.setString(6, item.getIndirizzo());
-				ps.setString(7, item.getCittà());
+				ps.setString(7, item.getCitta());
 				ps.setString(8, item.getStato());
 				ps.setString(9, item.getCap());
 

@@ -31,9 +31,9 @@ public class AggiornaQ extends HttpServlet {
 		
 		if(session != null) {
 			Carrello carrello = (Carrello) session.getAttribute("Carrello");
-			List<Integer> artQuantità = carrello.getQuantità();
-			artQuantità.remove(indice);
-			artQuantità.add(indice, q);
+			List<Integer> artQuantita = carrello.getQuantita();
+			artQuantita.remove(indice);
+			artQuantita.add(indice, q);
 		}
 	}
 

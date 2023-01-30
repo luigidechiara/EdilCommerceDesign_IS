@@ -33,7 +33,7 @@
 				<h3>Prezzo: <%=bean.getCosto() %>&euro;</h3>
 				<form action="<%=response.encodeURL("/EdilCommerce_Design/Aggiungi")%>" method="get">
 					<input type="hidden" name="codice" value="<%=bean.getCodiceArticolo() %>">
-					<label>Quantità: <input name="quantita" type="number" value="1" min="1" max="<%=bean.getGiacenza()%>" class="quantità"></label>
+					<label>Quantita: <input name="quantita" type="number" value="1" min="1" max="<%=bean.getGiacenza()%>" class="quantita"></label>
 				 	<%
 					if(bean.getGiacenza()<1) {
 					%>

@@ -65,9 +65,9 @@ public class ComputaOrdine extends HttpServlet {
 				ComponeModelDS cModel = new ComponeModelDS(ds);
 				
 				List<ArticoloBean> items = carrello.getItems();
-				List<Integer> quantità = carrello.getQuantità();
+				List<Integer> quantita = carrello.getQuantita();
 				Iterator<ArticoloBean> it1 = items.iterator();
-				Iterator<Integer> it2 = quantità.iterator();
+				Iterator<Integer> it2 = quantita.iterator();
 				
 				ArticoloModelDS aModel = new ArticoloModelDS(ds);
 				double importo = 0.0;
@@ -78,7 +78,7 @@ public class ComputaOrdine extends HttpServlet {
 					String codice = it1.next().getCodiceArticolo();
 					int q = it2.next();
 					cBean.setCodiceArticolo(codice);
-					cBean.setQuantità(q);
+					cBean.setQuantita(q);
 					cModel.doSave(cBean);
 					importo = importo + aModel.doRetriveByKey(codice).getCosto() * q;
 					ArticoloBean artBean = new ArticoloBean();
@@ -99,7 +99,7 @@ public class ComputaOrdine extends HttpServlet {
 				ifBean.setEmail(request.getParameter("email"));
 				ifBean.setTelefono(request.getParameter("telefono"));
 				ifBean.setIndirizzo(request.getParameter("indirizzo"));
-				ifBean.setCittà(request.getParameter("citta"));
+				ifBean.setCitta(request.getParameter("citta"));
 				ifBean.setStato(request.getParameter("stato"));
 				ifBean.setCap(request.getParameter("cap"));
 

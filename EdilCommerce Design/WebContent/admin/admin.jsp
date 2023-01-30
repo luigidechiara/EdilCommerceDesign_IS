@@ -200,7 +200,7 @@ if(unsaved == null)
 							ComponeBean cBean = it1.next();
 							 aBean = aModel.doRetriveByKey(cBean.getCodiceArticolo()); 
 				%>
-					<li><a href="<%=response.encodeURL("/EdilCommerce_Design/articolo.jsp?articolo=" + aBean.getCodiceArticolo())%>"><%=aBean.getNome()%></a>, quantità:<%=cBean.getQuantità()%></li>
+					<li><a href="<%=response.encodeURL("/EdilCommerce_Design/articolo.jsp?articolo=" + aBean.getCodiceArticolo())%>"><%=aBean.getNome()%></a>, quantita:<%=cBean.getQuantita()%></li>
 				<%			
 						}
 				%>

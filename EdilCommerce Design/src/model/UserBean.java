@@ -8,7 +8,7 @@ public class UserBean {
 	private String telefono;
 	private String indirizzo;
 	private String userPassword;
-	private String città;
+	private String citta;
 	private String stato;
 	private String cap;
 	
@@ -20,17 +20,17 @@ public class UserBean {
 		telefono = "";
 		indirizzo = "";
 		userPassword = "";
-		città = "";
+		citta = "";
 		stato = "";
 		cap = "";
 	}
 	
-	public String getCittà() {
-		return città;
+	public String getCitta() {
+		return citta;
 	}
 
-	public void setCittà(String città) {
-		this.città = città;
+	public void setCitta(String citta) {
+		this.citta = citta;
 	}
 
 	public String getStato() {
@@ -109,6 +109,6 @@ public class UserBean {
 	
 	@Override
 	public String toString() {
-		return username + ", " + nome + ", " + cognome + ", " +  email + ", " + indirizzo  + ", " +  telefono + ", " +  città  + ", " +  stato  + ", " +  cap  + ", " +  userPassword;
+		return username + ", " + nome + ", " + cognome + ", " +  email + ", " + indirizzo  + ", " +  telefono + ", " +  citta  + ", " +  stato  + ", " +  cap  + ", " +  userPassword;
 	}
 }
