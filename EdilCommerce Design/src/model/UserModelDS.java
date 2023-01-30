@@ -45,7 +45,7 @@ public class UserModelDS implements ModelInterface<UserBean> {
 				bean.setTelefono(rs.getString("telefono"));
 				bean.setIndirizzo(rs.getString("indirizzo"));
 				bean.setUserPassword(rs.getString("userPassword"));
-				bean.setCittà(rs.getString("citta"));
+				bean.setCitta(rs.getString("citta"));
 				bean.setCap(rs.getString("cap"));
 				bean.setStato(rs.getString("stato"));
 			}
@@ -87,7 +87,7 @@ public class UserModelDS implements ModelInterface<UserBean> {
 				ps.setString(4, item.getEmail());
 				ps.setString(5, item.getTelefono());
 				ps.setString(6, item.getIndirizzo());
-				ps.setString(7, item.getCittà());
+				ps.setString(7, item.getCitta());
 				ps.setString(8, item.getStato());
 				ps.setString(9, item.getCap());
 				ps.setString(10, item.getUserPassword());
@@ -112,7 +112,7 @@ public class UserModelDS implements ModelInterface<UserBean> {
 		Connection con = null;
 		PreparedStatement ps = null;
 		
-		String UpdateSQL = "UPDATE user SET username=?, nome=?, cognome=?, email=?, telefono=?, indirizzo=?, userPassword=?, stato=?, cap=?, città=? WHERE username=?";
+		String UpdateSQL = "UPDATE user SET username=?, nome=?, cognome=?, email=?, telefono=?, indirizzo=?, userPassword=?, stato=?, cap=?, citta=? WHERE username=?";
 		
 			try {
 				con = ds.getConnection();
@@ -127,7 +127,7 @@ public class UserModelDS implements ModelInterface<UserBean> {
 				ps.setString(7, item.getUserPassword());
 				ps.setString(8, item.getStato());
 				ps.setString(9, item.getCap());
-				ps.setString(10, item.getCittà());
+				ps.setString(10, item.getCitta());
 				ps.setString(11, code);
 
 				Utility.print("doUpdate: " + ps.toString());

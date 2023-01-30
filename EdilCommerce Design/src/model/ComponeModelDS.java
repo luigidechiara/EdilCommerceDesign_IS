@@ -48,7 +48,7 @@ public class ComponeModelDS implements ModelRelationInterface<ComponeBean>{
 				ComponeBean bean = new ComponeBean();
 				bean.setCodiceArticolo(rs.getString("codiceArticolo"));
 				bean.setNumeroOrdine(Integer.parseInt(rs.getString("numeroOrdine")));
-				bean.setQuantità(Integer.parseInt(rs.getString("quantita")));
+				bean.setQuantita(Integer.parseInt(rs.getString("quantita")));
 				collection.add(bean);
 			}
 		} finally {
@@ -86,7 +86,7 @@ public class ComponeModelDS implements ModelRelationInterface<ComponeBean>{
 				ComponeBean bean = new ComponeBean();
 				bean.setCodiceArticolo(rs.getString("codiceArticolo"));
 				bean.setNumeroOrdine(Integer.parseInt(rs.getString("numeroOrdine")));
-				bean.setQuantità(Integer.parseInt(rs.getString("quantita")));
+				bean.setQuantita(Integer.parseInt(rs.getString("quantita")));
 				collection.add(bean);
 			}
 		} finally {
@@ -116,7 +116,7 @@ public class ComponeModelDS implements ModelRelationInterface<ComponeBean>{
 			
 			ps.setInt(1, item.getNumeroOrdine());
 			ps.setString(2, item.getCodiceArticolo());
-			ps.setInt(3, item.getQuantità());
+			ps.setInt(3, item.getQuantita());
 			
 			Utility.print("doSave: " + ps.toString());
 			

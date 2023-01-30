@@ -46,9 +46,9 @@
 				%>
 				<%
 				List<ArticoloBean> articoli = carrello.getItems();
-				List<Integer> quantità = carrello.getQuantità();
+				List<Integer> quantita = carrello.getQuantita();
 				Iterator<ArticoloBean> it1 = articoli.iterator();
-				Iterator<Integer> it2 = quantità.iterator();
+				Iterator<Integer> it2 = quantita.iterator();
 				DecimalFormat df = new DecimalFormat("#0.00");
 				
 				ArticoloBean bean = new ArticoloBean();
@@ -65,9 +65,9 @@
 					<td><h4><a href="<%= response.encodeURL("/EdilCommerce_Design/articolo.jsp?articolo=" + bean.getCodiceArticolo())%>"><%=bean.getNome()%></a></h4>
 					<h5><%=df.format(bean.getCosto())%>&euro;</h5>
 					<%if(q<=bean.getGiacenza()){ %>
-					<label>Quantità</label><input class="quantita" type="number" value="<%=q%>" min ="1" max="<%=bean.getGiacenza()%>"  onchange='aggiornaQuantita("<%=index%>",<%=bean.getGiacenza()%>)'></td>
+					<label>Quantita</label><input class="quantita" type="number" value="<%=q%>" min ="1" max="<%=bean.getGiacenza()%>"  onchange='aggiornaQuantita("<%=index%>",<%=bean.getGiacenza()%>)'></td>
 					<%}else{ %>
-					<label>Quantità</label><input class="quantita" type="number" value="<%=bean.getGiacenza()%>" min ="1" max="<%=bean.getGiacenza()%>"  onchange='aggiornaQuantita("<%=index%>",<%=bean.getGiacenza()%>)'></td>
+					<label>Quantita</label><input class="quantita" type="number" value="<%=bean.getGiacenza()%>" min ="1" max="<%=bean.getGiacenza()%>"  onchange='aggiornaQuantita("<%=index%>",<%=bean.getGiacenza()%>)'></td>
 					
 					<%} %>
 					<td><button onclick='deleteItem("<%=bean.getCodiceArticolo()%>", "carrello")'>X</button></td></tr>

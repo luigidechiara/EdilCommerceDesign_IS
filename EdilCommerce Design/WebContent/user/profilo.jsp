@@ -87,8 +87,8 @@ if (bean == null) {
 								<label for="telefono"><i class="fa fa-phone"></i> Telefono</label>
 								<input type="text" name="telefono" placeholder="ex. 089893888" required readonly value="<%= bean.getTelefono() %>">
 							
-								<label for="citta"><i class="fa fa-institution"></i> Città</label>
-								<input type="text" name="citta" placeholder="Salerno" required readonly value="<%= bean.getCittà() %>">
+								<label for="citta"><i class="fa fa-institution"></i> Citta</label>
+								<input type="text" name="citta" placeholder="Salerno" required readonly value="<%= bean.getCitta() %>">
 								
 								<label for="cap"><i class="fa fa-home"></i> Cap</label>
 								<input type="text" name="cap" placeholder="800000" required readonly value="<%= bean.getCap() %>">
@@ -167,7 +167,7 @@ if (bean == null) {
 							ComponeBean cBean = it1.next();
 							ArticoloBean aBean = aModel.doRetriveByKey(cBean.getCodiceArticolo()); 
 				%>
-					<li><a href="<%=response.encodeURL("/EdilCommerce_Design/articolo.jsp?articolo=" + aBean.getCodiceArticolo())%>"><%=aBean.getNome()%></a>, quantità:<%=cBean.getQuantità()%></li>
+					<li><a href="<%=response.encodeURL("/EdilCommerce_Design/articolo.jsp?articolo=" + aBean.getCodiceArticolo())%>"><%=aBean.getNome()%></a>, quantita:<%=cBean.getQuantita()%></li>
 				<%			
 						}
 				%>

@@ -49,7 +49,7 @@ public class Registrazione extends HttpServlet {
 				bean.setUserPassword(request.getParameter("password"));
 				bean.setTelefono(request.getParameter("telefono"));
 				bean.setIndirizzo(request.getParameter("indirizzo"));
-				bean.setCittà(request.getParameter("citta"));
+				bean.setCitta(request.getParameter("citta"));
 				bean.setCap(request.getParameter("cap"));
 				bean.setStato(request.getParameter("stato"));
 				
@@ -68,7 +68,7 @@ public class Registrazione extends HttpServlet {
 				response.sendRedirect(response.encodeRedirectURL("login.jsp"));
 				return;
 			} else {
-				request.setAttribute("error", "Username già in uso");
+				request.setAttribute("error", "Username gia in uso");
 				getServletContext().getRequestDispatcher(response.encodeURL("/registrazione.jsp")).include(request, response);
 			}
 		} catch (SQLException e) {

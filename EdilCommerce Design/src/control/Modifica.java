@@ -43,7 +43,7 @@ public class Modifica extends HttpServlet {
 			bean.setUserPassword(request.getParameter("password"));
 			bean.setTelefono(request.getParameter("telefono"));
 			bean.setIndirizzo(request.getParameter("indirizzo"));
-			bean.setCittà(request.getParameter("indirizzo"));
+			bean.setCitta(request.getParameter("citta"));
 			bean.setCap(request.getParameter("cap"));
 			bean.setStato(request.getParameter("stato"));
 
@@ -70,7 +70,7 @@ public class Modifica extends HttpServlet {
 					bean.setUserPassword(request.getParameter("password"));
 					bean.setTelefono(request.getParameter("telefono"));
 					bean.setIndirizzo(request.getParameter("indirizzo"));
-					bean.setCittà(request.getParameter("citta"));
+					bean.setCitta(request.getParameter("citta"));
 					bean.setCap(request.getParameter("cap"));
 					bean.setStato(request.getParameter("stato"));
 					try {
@@ -84,7 +84,7 @@ public class Modifica extends HttpServlet {
 					return;
 
 				} else {
-					
+
 					getServletContext().getRequestDispatcher(response.encodeURL("/user/profilo.jsp")).include(request, response);
 					return;
 				}
