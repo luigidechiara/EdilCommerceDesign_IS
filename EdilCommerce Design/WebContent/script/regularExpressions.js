@@ -12,10 +12,11 @@ function checkEmail(inputtxt){
 	 var email= /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 	 if(inputtxt.value.match(email))	
 		return true;
+		
 	 return false;
 }
 function checkPass(inputtxt){
-	 var pass= /^[A-Za-z0-9]{8,20}$/;
+	 var pass= /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,20}$/ 
 	 
 	 if(inputtxt.value.match(pass))	
 		return true;

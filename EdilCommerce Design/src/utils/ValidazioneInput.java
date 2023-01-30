@@ -2,22 +2,26 @@ package utils;
 
 import java.util.Date;
 
+import javax.servlet.http.HttpSession;
+
 import model.ArticoloBean;
 
 public class ValidazioneInput {
 
+	
+	
 	public boolean ValidazioneRegistrazione(String username,String nome,String cognome,String email,String telefono,String indirizzo,String userPassword,String città,String stato,String cap) {
     if(username!=null&&nome!=null&&cognome!=null&&email!=null&&telefono!=null&&indirizzo!=null&&userPassword!=null&&città!=null&&stato!=null&&cap!=null) {
 	if(nome.matches("^[A-Za-z]+$")) {
 	  if(cognome.matches("^[A-Za-z]+$")) {
-		if(email.matches("[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}")) {
+		if(email.matches("[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{10,30}")) {
 			if(userPassword.matches("((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{8,20})")) {
 				if(telefono.matches("^[0-9]{8,10}$")) {
 					if(cap.matches("^([0-9]{5})$")) {
 						if(indirizzo.length()>8) {
 							if(città.length()>4) {
 								if(cap.length()==5) {
-									if(stato.length()>=2 && stato.length()>=20) {
+									if(stato.length()>=2 && stato.length()<=20) {
 								
 						
 						return true;
@@ -32,21 +36,22 @@ public class ValidazioneInput {
 		if(username!=null&&nome!=null&&cognome!=null&&email!=null&&telefono!=null&&indirizzo!=null&&userPassword!=null&&città!=null&&stato!=null&&cap!=null) {
 			if(nome.matches("^[A-Za-z]+$")) {
 			  if(cognome.matches("^[A-Za-z]+$")) {
-				if(email.matches("[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}")) {
+				if(email.matches("[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{10,30}")) {
 					if(userPassword.matches("((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{8,20})")) {
 						if(telefono.matches("^[0-9]{8,10}$")) {
 							if(cap.matches("^([0-9]{5})$")) {
 								if(indirizzo.length()>8) {
 									if(città.length()>4) {
 										if(cap.length()==5) {
-											if(stato.length()>=2 && stato.length()>=20) {
+											if(stato.length()>=2 && stato.length()<=20) {
 										
 								
 								return true;
 							
-							}}}}}}}}}}}
+											}}}}}}}}}}} 
 			return false;
 			}
+	
 	
 	public boolean InformazioniSpedizione(String nome,String cognome,String email,String telefono,String indirizzo,String città,String stato,String cap) {
 		
@@ -86,7 +91,7 @@ public class ValidazioneInput {
 	public boolean ValidazioneAggiungiArticolo(ArticoloBean saveBean) {
 		
 		if(saveBean.getNome().matches("^[A-Za-z]+$")) {
-			if(saveBean.getImmagine().length()>1 && saveBean.getImmagine().length()<=15&& saveBean.getImmagine().contains("/EdilCommerce_Design/img/categoria/")) {
+			if(saveBean.getImmagine().length()>1 && saveBean.getImmagine().length()<=15&& saveBean.getImmagine().contains(".jpeg")) {
 				if(saveBean.getDescrizione().length()>5 && saveBean.getDescrizione().matches("^[A-Za-z]+$")) {
 					
 						return true;
