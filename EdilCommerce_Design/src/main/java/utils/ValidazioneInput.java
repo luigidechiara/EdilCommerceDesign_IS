@@ -131,7 +131,7 @@ public boolean ValidazioneModificaArticolo(ArticoloBean saveBean) {
 	
 	
 public boolean ValidazioneInserimentoRecensione(RecensisceBean rBean) {
-	
+	//da controllare
 	if(rBean.getTesto()!=null) {
 		if(rBean.getTesto().length()>1 && rBean.getTesto().length()<=200) {
 			if(rBean.getValore()>=1 && rBean.getValore()<=5) {
