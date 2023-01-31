@@ -1,0 +1,174 @@
+@charset "ISO-8859-1";
+
+header {
+	height: 80px;
+	text-align: center;
+	background-color: #272F38;
+}
+
+header > * {
+	display: inline-block;
+}
+
+#left {
+	float: left;
+}
+
+#left img {
+	padding-left: 5px;
+	padding-top: 10px;
+	height: 57px;
+	width: auto;
+}
+
+#centro {
+	padding-top: 20px;
+	width: 500px;
+}
+
+#centro > img {
+	float: left;
+	 transform: scaleX(-1);
+}
+
+#search {
+	width: calc(100% - 30px);
+	height: 30px;
+	padding: 0 10px;
+	background: white;
+	border: 0;
+	box-sizing: border-box;
+}
+
+#rigth  {
+	margin: 0;
+	padding-top: 20px;
+	padding-right: 10px;
+	float:right;
+}
+#rigth ul {
+	margin: 0;
+	list-style-type: none;
+	padding: 0px;
+}
+
+#rigth ul li{
+	padding-left: 8px;
+	display:inline;
+}
+
+li a img {
+	height: 30px;
+	width: auto;
+}
+
+li a img:not(first-of-type){
+	padding-right: 5px; 
+}
+
+header a {
+	color: #acd0fa;
+}
+
+.bottom {
+	background-color: #f2f2f2;
+	width:100%;
+	margin: 0;
+	height: 40px;
+	margin-bottom: 5px;
+	list-style-type: none;
+	padding: 0px;
+	text-align: center;
+	border-radius: 0 0 3px 3px;
+	
+  	overflow: hidden;
+} 
+.bottom a {
+  display: inline-block;
+  text-align: center;
+  padding: 10px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  color: black;
+}
+
+.bottom a:visited{
+	color: black;
+}
+
+.bottom a:hover {
+  background-color: #206dcb;
+  color:  #f2f2f2;
+}
+
+
+.bottom .icon {
+  display: none;
+}
+#search:focus-visible {
+    outline: 0;
+}
+
+#suggerimenti{
+	z-index: 1;
+	position: absolute;
+	
+}
+#suggerimenti ul{
+	background:  #f2f2f2;
+	text-align: left;
+	margin-top: 0;
+	list-style-type: none;
+	width: 460px;
+	font-size: 16px;
+}
+#suggerimenti li:hover{
+	background:  #acd0fa ;
+	
+}
+#suggerimenti li{
+	 padding-top: 2.5px;
+	 padding-bottom: 2.5px;
+	
+}
+   
+#suggerimenti a{
+	color:  black;
+	text-decoration: none;
+	
+}
+
+@media all and (max-width: 800px) {
+  .bottom a{display: none;}
+  .bottom a:last-child {
+  width: 100%;
+  }
+  .bottom a.icon {
+    float: right;
+    display: block;
+  }
+  .bottom.responsive {
+  position: relative;
+  height: auto;
+  }
+  .bottom.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .bottom.responsive a:not(:last-child) {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+  .bottom.responsive a:last-child {
+ 	width: auto;
+    display: block;
+  }
+  #centro {
+  	width: 50vw;
+  }
+  #suggerimenti ul{
+	width: 44.9vw;
+	}
+ }
