@@ -81,10 +81,18 @@ public class ComputaOrdine extends HttpServlet {
 					cBean.setQuantita(q);
 					cModel.doSave(cBean);
 					importo = importo + aModel.doRetriveByKey(codice).getCosto() * q;
-					ArticoloBean artBean = new ArticoloBean();
+					
+					
+				
 					q=aModel.doRetriveByKey(codice).getGiacenza()-q;
-					artBean.setGiacenza(q);
-					aModel.doUpdateGiacenza(artBean, codice);	
+					if(q>=0) {
+					
+					aModel.doUpdateGiacenza(q, codice);	
+				}else {
+					request.setAttribute("error", "ERRORE GIACENZA");
+					response.sendRedirect(response.encodeRedirectURL("/EdilCommerce_Design/user/checkout.jsp"));
+				}
+					
 				}
 								
 				oBean.setImporto(importo);
@@ -143,7 +151,7 @@ public class ComputaOrdine extends HttpServlet {
 			response.sendRedirect(response.encodeRedirectURL("/EdilCommerce_Design/user/ordineEffettuato.jsp?suc=1"));
 
 			}else {
-				response.sendRedirect(response.encodeRedirectURL("/EdilCommerce_Design/user/home.jsp"));
+				response.sendRedirect(response.encodeRedirectURL("/EdilCommerce_Design/user/checkout.jsp"));
 				} 
 		
 	}else {

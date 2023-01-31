@@ -192,7 +192,7 @@ public class ArticoloModelDS implements ModelInterface<ArticoloBean> {
 			}
 		}
 	}
-	public void doUpdateGiacenza(ArticoloBean item, String code) throws SQLException {
+	public void doUpdateGiacenza(int giacenza, String code) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		
@@ -203,7 +203,7 @@ public class ArticoloModelDS implements ModelInterface<ArticoloBean> {
 			ps = con.prepareStatement(UpdateSQL);
 			
 			
-			ps.setInt(1, item.getGiacenza());
+			ps.setInt(1, giacenza);
 			ps.setString(2, code);
 			
 			Utility.print("doUpdate: " + ps.toString());
