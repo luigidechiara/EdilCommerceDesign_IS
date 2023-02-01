@@ -2,7 +2,7 @@
  * 
  */
 function checkNome(inputtxt){
-	 var nome= /^[A-Za-z]+$/;
+	 var nome= /^[A-Za-z,\s]+$/;
 	 if(inputtxt.value.match(nome))	
 		return true;
 	 return false;
