@@ -15,12 +15,12 @@ public class ValidazioneInput {
 
 	public boolean ValidazioneRegistrazione(String username,String nome,String cognome,String email,String userPassword,String telefono,String indirizzo,String citta,String cap,String stato) {
 	
-		if(username!=null&&nome!=null&&cognome!=null&&email!=null&&telefono!=null&&indirizzo!=null&&userPassword!=null&&citta!=null&&stato!=null&&cap!=null) {
-		if(username.length()>1&&username.length()<=15) {
+		if(username!=null&&nome!=null&&cognome!=null&&email!=null&&telefono!=null&&indirizzo!=null&&userPassword!=null&&citta!=null&&stato!=null&&cap!=null) { System.out.println("1");
+		if(username.length()>1&&username.length()<=15) {System.out.println("2");
 			if(nome.matches("^[A-Za-z,\\s]+$")&&nome.length()>1&&nome.length()<=15) {	
 			  if(cognome.matches("^[A-Za-z,\\s]+$")&&cognome.length()>1&&cognome.length()<=15) { 	
 				if(email.matches("[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}")&&email.length()>10&&email.length()<=40) {
-					if(userPassword.matches("((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{8,20})")) {
+					if(userPassword.matches("((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#*$%]).{8,20})")) {
 						if(telefono.matches("^[0-9]{8,10}$")) {
 							if(cap.matches("^([0-9]{5})$")) {
 								if(indirizzo.length()>=8) {
