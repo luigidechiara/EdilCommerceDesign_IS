@@ -35,8 +35,8 @@ public class Registrazione extends HttpServlet {
 		bean.setUsername(request.getParameter("username"));
 		UserBean checkBean = new UserBean();
 		
-		//if(validazione.ValidazioneRegistrazione(request.getParameter("username"),request.getParameter("nome"),request.getParameter("cognome"),request.getParameter("email"),request.getParameter("password"),
-			//	request.getParameter("telefono"),request.getParameter("indirizzo"),request.getParameter("citta"),request.getParameter("cap"),request.getParameter("stato"))){ 
+		if(validazione.ValidazioneRegistrazione(request.getParameter("username"),request.getParameter("nome"),request.getParameter("cognome"),request.getParameter("email"),request.getParameter("password"),
+				request.getParameter("telefono"),request.getParameter("indirizzo"),request.getParameter("citta"),request.getParameter("cap"),request.getParameter("stato"))){ 
 		 
 		
 		try {
@@ -74,11 +74,11 @@ public class Registrazione extends HttpServlet {
 		} catch (SQLException e) {
 			Utility.print(e);
 			request.setAttribute("error", e.getMessage());
-		}//}else {
-			//request.setAttribute("error", "Dati Registrazione Errati");
-			//getServletContext().getRequestDispatcher(response.encodeURL("/registrazione.jsp")).include(request, response);
+		}}else {
+			request.setAttribute("error", "Dati Registrazione Errati");
+			getServletContext().getRequestDispatcher(response.encodeURL("/registrazione.jsp")).include(request, response);
 			
-		//}
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
