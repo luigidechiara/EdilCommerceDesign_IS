@@ -11,7 +11,7 @@ import model.RecensisceBean;
 public class ValidazioneInput {
 
 	
-	
+	// stringa
 
 	public boolean ValidazioneRegistrazione(String username,String nome,String cognome,String email,String userPassword,String telefono,String indirizzo,String citta,String cap,String stato) {
 	

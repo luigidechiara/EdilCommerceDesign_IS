@@ -31,6 +31,7 @@ public class Login extends HttpServlet {
 		RequestDispatcher dispatcher = null;
 		UserBean bean = new UserBean();
 		PasswordHasher ph= new PasswordHasher();
+		// stringa
 		try {
 			bean = model.doRetriveByKey(request.getParameter("username"));
 		} catch (SQLException e) {

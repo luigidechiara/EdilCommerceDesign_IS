@@ -6,7 +6,7 @@ function checkNome(inputtxt){
 	 if(inputtxt.value.match(nome))	
 		return true;
 	 return false;
-}
+}// stringa
 
 function checkEmail(inputtxt){
 	 var email= /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;

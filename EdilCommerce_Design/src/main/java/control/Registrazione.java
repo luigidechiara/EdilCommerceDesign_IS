@@ -30,7 +30,7 @@ public class Registrazione extends HttpServlet {
 		RuoloUserModelDS modelRuolo = new RuoloUserModelDS(ds);
 		ValidazioneInput validazione= new ValidazioneInput();
 		UserBean bean = new UserBean();
-		
+		// stringa
 		
 		bean.setUsername(request.getParameter("username"));
 		UserBean checkBean = new UserBean();
