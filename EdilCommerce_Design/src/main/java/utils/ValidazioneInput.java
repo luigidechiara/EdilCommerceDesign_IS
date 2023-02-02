@@ -42,7 +42,7 @@ public class ValidazioneInput {
 			if(nome.matches("^[A-Za-z,\\s]+$")&&nome.length()>1&&nome.length()<=15) {	
 			  if(cognome.matches("^[A-Za-z,\\s]+$")&&cognome.length()>1&&cognome.length()<=15) { 	
 				if(email.matches("[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}")&&email.length()>10&&email.length()<=30) {
-					if(userPassword.matches("((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{8,20})")) {
+					if(userPassword.matches("((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@!+*&#$%]).{8,20})")) {
 						if(telefono.matches("^[0-9]{8,10}$")) {
 							if(cap.matches("^([0-9]{5})$")) {
 								if(indirizzo.length()>=8) {
