@@ -16,6 +16,7 @@ import model.RuoloUserBean;
 import model.RuoloUserModelDS;
 import model.UserBean;
 import model.UserModelDS;
+import utils.PasswordHasher;
 import utils.Utility;
 
 
@@ -29,6 +30,7 @@ public class Login extends HttpServlet {
 		RuoloUserModelDS modelRuolo = new RuoloUserModelDS(ds);
 		RequestDispatcher dispatcher = null;
 		UserBean bean = new UserBean();
+		PasswordHasher ph= new PasswordHasher();
 		try {
 			bean = model.doRetriveByKey(request.getParameter("username"));
 		} catch (SQLException e) {
@@ -37,7 +39,7 @@ public class Login extends HttpServlet {
 		}
 		
 		if(!bean.isEmpty()) {
-			if((request.getParameter("password")).equals(bean.getUserPassword())) {
+			if(ph.hash(request.getParameter("password")).equals(bean.getUserPassword())) {
 				try {
 					Collection<RuoloUserBean> collection = modelRuolo.doRetriveByOneKey(bean.getUsername());
 					HttpSession session = request.getSession(true);

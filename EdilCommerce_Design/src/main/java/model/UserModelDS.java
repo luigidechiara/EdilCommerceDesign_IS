@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.Collection;
 import javax.sql.DataSource;
 
+import utils.PasswordHasher;
 import utils.Utility;
 
 public class UserModelDS implements ModelInterface<UserBean> {
@@ -74,6 +75,7 @@ public class UserModelDS implements ModelInterface<UserBean> {
 	public void doSave(UserBean item) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
+		PasswordHasher ph= new PasswordHasher();
 		
 		String InsertSQL = "INSERT INTO user VALUES (?,?,?,?,?,?,?,?,?,?)";
 		
@@ -90,8 +92,8 @@ public class UserModelDS implements ModelInterface<UserBean> {
 				ps.setString(7, item.getCitta());
 				ps.setString(8, item.getStato());
 				ps.setString(9, item.getCap());
-				ps.setString(10, item.getUserPassword());
-
+				ps.setString(10, ph.hash(item.getUserPassword()));
+				//ps.setString(10, item.getUserPassword());
 				Utility.print("doSave: " + ps.toString());
 
 				ps.executeUpdate();
