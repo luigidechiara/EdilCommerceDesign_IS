@@ -1,6 +1,7 @@
 DROP DATABASE IF EXISTS edil_commerce_design_is;
 CREATE DATABASE edil_commerce_design_is;
 
+
 DROP USER IF EXISTS 'edil_user'@'localhost';
 CREATE USER 'edil_user'@'localhost'identified BY 'edil_user';
 grant ALL ON edil_commerce_design_is.* to 'edil_user'@'localhost'; 
