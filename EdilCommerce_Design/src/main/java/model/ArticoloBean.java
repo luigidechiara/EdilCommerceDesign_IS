@@ -22,6 +22,25 @@ public class ArticoloBean {
 		mediaRecensioni = 0;
 		giacenza= 0;
 	}
+	
+	
+	
+
+	public ArticoloBean(String codiceArticolo, String nome, String immagine, String descrizione, double costo,
+			String nomeCategoria, int mediaRecensioni, int giacenza) {
+		super();
+		this.codiceArticolo = codiceArticolo;
+		this.nome = nome;
+		this.immagine = immagine;
+		this.descrizione = descrizione;
+		this.costo = costo;
+		this.nomeCategoria = nomeCategoria;
+		this.mediaRecensioni = mediaRecensioni;
+		this.giacenza = giacenza;
+	}
+
+
+
 
 	public String getCodiceArticolo() {
 		return codiceArticolo;
