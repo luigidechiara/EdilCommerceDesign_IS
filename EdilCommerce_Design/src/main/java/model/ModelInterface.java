@@ -11,9 +11,9 @@ public interface ModelInterface<T> {
 
 	public Collection<T> doRetriveAll(String order) throws SQLException;
 	
-	public void doSave(T item) throws SQLException;
+	public boolean doSave(T item) throws SQLException;
 	
-	public void doUpdate(T item, String code) throws SQLException;
+	public boolean doUpdate(T item, String code) throws SQLException;
 	
-	public void doDelete(T item) throws SQLException;
+	public boolean doDelete(T item) throws SQLException;
 }

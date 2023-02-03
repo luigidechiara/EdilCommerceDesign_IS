@@ -152,7 +152,7 @@ public class RecensisceModelDS implements ModelRelationInterface<RecensisceBean>
 	}
 
 	
-	public void doSave(RecensisceBean item) throws SQLException {
+	public boolean doSave(RecensisceBean item) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		
@@ -184,7 +184,10 @@ public class RecensisceModelDS implements ModelRelationInterface<RecensisceBean>
 			
 			Utility.print("doUpdateMediaRecensioni: " + ps.toString());
 			
-			ps.executeUpdate();
+			if(ps.executeUpdate()==0)
+				return false;
+			
+			return true;
 		} finally {
 			try {
 				if(ps != null)
@@ -197,7 +200,7 @@ public class RecensisceModelDS implements ModelRelationInterface<RecensisceBean>
 	}
 
 	
-	public void doUpdate(RecensisceBean item) throws SQLException {
+	public boolean doUpdate(RecensisceBean item) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		
@@ -230,7 +233,10 @@ public class RecensisceModelDS implements ModelRelationInterface<RecensisceBean>
 				ps.setString(4, item.getCodiceArticolo());
 				Utility.print("doUpdate: " + ps.toString());
 
-				ps.executeUpdate();
+				if(ps.executeUpdate()==0)
+					return false;
+				
+				return true;
 
 			} finally {
 				try {
@@ -244,7 +250,7 @@ public class RecensisceModelDS implements ModelRelationInterface<RecensisceBean>
 	}
 
 	
-	public void doDelete(RecensisceBean item) throws SQLException {
+	public boolean doDelete(RecensisceBean item) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		
@@ -273,7 +279,10 @@ public class RecensisceModelDS implements ModelRelationInterface<RecensisceBean>
 				
 				Utility.print("doUpdateMediaRecensioni: " + ps.toString());
 				
-				ps.executeUpdate();
+				if(ps.executeUpdate()==0)
+					return false;
+				
+				return true;
 			} finally {
 				try {
 					if (ps != null)

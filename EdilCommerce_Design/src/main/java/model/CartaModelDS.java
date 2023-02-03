@@ -106,7 +106,7 @@ public class CartaModelDS implements ModelInterface<CartaBean> {
 	}
 
 	
-	public void doSave(CartaBean item) throws SQLException {
+	public boolean doSave(CartaBean item) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		
@@ -124,7 +124,10 @@ public class CartaModelDS implements ModelInterface<CartaBean> {
 			
 			Utility.print("doSave: " + ps.toString());
 			
-			ps.executeUpdate();
+			if(ps.executeUpdate()==0)
+				return false;
+			
+			return true;
 
 		} finally {
 			try {
@@ -138,14 +141,16 @@ public class CartaModelDS implements ModelInterface<CartaBean> {
 	}
 
 
-	public void doUpdate(CartaBean item, String code) throws SQLException {
+	public boolean doUpdate(CartaBean item, String code) throws SQLException {
 		// TODO Auto-generated method stub
+		return false;
 		
 	}
 
 
-	public void doDelete(CartaBean item) throws SQLException {
+	public boolean doDelete(CartaBean item) throws SQLException {
 		// TODO Auto-generated method stub
+		return false;
 		
 	}
 

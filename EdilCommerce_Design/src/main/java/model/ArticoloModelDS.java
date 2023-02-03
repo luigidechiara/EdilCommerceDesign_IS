@@ -127,7 +127,7 @@ public class ArticoloModelDS implements ModelInterface<ArticoloBean> {
 	}
 
 	
-	public void doSave(ArticoloBean item) throws SQLException {
+	public boolean doSave(ArticoloBean item) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		
@@ -148,7 +148,11 @@ public class ArticoloModelDS implements ModelInterface<ArticoloBean> {
 			
 			Utility.print("doSave: " + ps.toString());
 			
-			ps.executeUpdate();
+			if(ps.executeUpdate()==0)
+				return false;
+			
+			return true;
+			
 		} finally {
 			try {
 				if(ps != null)
@@ -157,11 +161,11 @@ public class ArticoloModelDS implements ModelInterface<ArticoloBean> {
 				if(con != null)
 					con.close();
 			}
-		}		
+		}
 	}
 
 	
-	public void doUpdate(ArticoloBean item, String code) throws SQLException {
+	public boolean doUpdate(ArticoloBean item, String code) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		
@@ -181,7 +185,10 @@ public class ArticoloModelDS implements ModelInterface<ArticoloBean> {
 			
 			Utility.print("doUpdate: " + ps.toString());
 			
-			ps.executeUpdate();
+			if(ps.executeUpdate()==0)
+				return false;
+			
+			return true;
 		} finally {
 			try {
 				if(ps != null)
@@ -192,7 +199,7 @@ public class ArticoloModelDS implements ModelInterface<ArticoloBean> {
 			}
 		}
 	}
-	public void doUpdateGiacenza(int giacenza, String code) throws SQLException {
+	public boolean doUpdateGiacenza(int giacenza, String code) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		
@@ -208,7 +215,10 @@ public class ArticoloModelDS implements ModelInterface<ArticoloBean> {
 			
 			Utility.print("doUpdate: " + ps.toString());
 			
-			ps.executeUpdate();
+			if(ps.executeUpdate()==0)
+				return false;
+			
+			return true;
 		} finally {
 			try {
 				if(ps != null)
@@ -220,8 +230,9 @@ public class ArticoloModelDS implements ModelInterface<ArticoloBean> {
 		}
 	}
 	
-	public void doDelete(ArticoloBean item) throws SQLException {
+	public boolean doDelete(ArticoloBean item) throws SQLException {
 		// TODO Auto-generated method stub
+		return false;
 		
 	}
 	

@@ -117,7 +117,7 @@ public class InfoFatturazioneModelDS implements ModelInterface<InfoFatturazioneB
 	}
 
 	 
-	public void doSave(InfoFatturazioneBean item) throws SQLException {
+	public boolean doSave(InfoFatturazioneBean item) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		
@@ -139,7 +139,10 @@ public class InfoFatturazioneModelDS implements ModelInterface<InfoFatturazioneB
 
 				Utility.print("doSave: " + ps.toString());
 
-				ps.executeUpdate();
+				if(ps.executeUpdate()==0)
+					return false;
+				
+				return true;
 
 			} finally {
 				try {
@@ -153,15 +156,16 @@ public class InfoFatturazioneModelDS implements ModelInterface<InfoFatturazioneB
 	}
 
 	 
-	public void doUpdate(InfoFatturazioneBean item, String code) throws SQLException {
+	public boolean doUpdate(InfoFatturazioneBean item, String code) throws SQLException {
 		// TODO Auto-generated method stub
+		return false;
 		
 	}
 
 	 
-	public void doDelete(InfoFatturazioneBean item) throws SQLException {
+	public boolean doDelete(InfoFatturazioneBean item) throws SQLException {
 		// TODO Auto-generated method stub
-		
+		return false;
 	}
 	
 	

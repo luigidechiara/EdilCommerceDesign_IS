@@ -72,7 +72,7 @@ public class UserModelDS implements ModelInterface<UserBean> {
 	}
 
 	 
-	public void doSave(UserBean item) throws SQLException {
+	public boolean doSave(UserBean item) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		PasswordHasher ph= new PasswordHasher();
@@ -96,7 +96,10 @@ public class UserModelDS implements ModelInterface<UserBean> {
 				//ps.setString(10, item.getUserPassword());
 				Utility.print("doSave: " + ps.toString());
 
-				ps.executeUpdate();
+				if(ps.executeUpdate()==0)
+					return false;
+				
+				return true;
 
 			} finally {
 				try {
@@ -110,7 +113,7 @@ public class UserModelDS implements ModelInterface<UserBean> {
 	}
 
 	 
-	public void doUpdate(UserBean item, String code) throws SQLException {
+	public boolean doUpdate(UserBean item, String code) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		PasswordHasher ph= new PasswordHasher();
@@ -135,7 +138,10 @@ public class UserModelDS implements ModelInterface<UserBean> {
 
 				Utility.print("doUpdate: " + ps.toString());
 
-				ps.executeUpdate();
+				if(ps.executeUpdate()==0)
+					return false;
+				
+				return true;
 
 			} finally {
 				try {
@@ -149,8 +155,9 @@ public class UserModelDS implements ModelInterface<UserBean> {
 	}
 
 	 
-	public void doDelete(UserBean item) throws SQLException {
+	public boolean doDelete(UserBean item) throws SQLException {
 		// TODO Auto-generated method stub
+		return false;
 		
 	}
 

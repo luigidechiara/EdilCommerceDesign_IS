@@ -97,7 +97,7 @@ public class ContrassegnoModelDS implements ModelInterface<ContrassegnoBean> {
 	}
 
 	 
-	public void doSave(ContrassegnoBean item) throws SQLException {
+	public boolean doSave(ContrassegnoBean item) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		
@@ -111,7 +111,10 @@ public class ContrassegnoModelDS implements ModelInterface<ContrassegnoBean> {
 			
 			Utility.print("doSave: " + ps.toString());
 			
-			ps.executeUpdate();
+			if(ps.executeUpdate()==0)
+				return false;
+			
+			return true;
 
 		} finally {
 			try {
@@ -126,14 +129,16 @@ public class ContrassegnoModelDS implements ModelInterface<ContrassegnoBean> {
 	}
 
 	 
-	public void doUpdate(ContrassegnoBean item, String code) throws SQLException {
+	public boolean doUpdate(ContrassegnoBean item, String code) throws SQLException {
 		// TODO Auto-generated method stub
+		return false;
 		
 	}
 
 	 
-	public void doDelete(ContrassegnoBean item) throws SQLException {
+	public boolean doDelete(ContrassegnoBean item) throws SQLException {
 		// TODO Auto-generated method stub
+		return false;
 		
 	}
 }

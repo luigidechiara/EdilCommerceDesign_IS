@@ -111,18 +111,18 @@ public class CategoriaModelDS implements ModelInterface<CategoriaBean> {
 	}
 
 	
-	public void doSave(CategoriaBean item) throws SQLException {
-		
+	public boolean doSave(CategoriaBean item) throws SQLException {
+		return false;
 	}
 
 	
-	public void doUpdate(CategoriaBean item, String code) throws SQLException {
-		
+	public boolean doUpdate(CategoriaBean item, String code) throws SQLException {
+		return false;
 	}
 
 	
-	public void doDelete(CategoriaBean item) throws SQLException {
-		
+	public boolean doDelete(CategoriaBean item) throws SQLException {
+		return false;
 	}
 
 }

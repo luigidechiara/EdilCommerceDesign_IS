@@ -104,7 +104,7 @@ public class ComponeModelDS implements ModelRelationInterface<ComponeBean>{
 	}
 
 	
-	public void doSave(ComponeBean item) throws SQLException {
+	public boolean doSave(ComponeBean item) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		
@@ -120,7 +120,10 @@ public class ComponeModelDS implements ModelRelationInterface<ComponeBean>{
 			
 			Utility.print("doSave: " + ps.toString());
 			
-			ps.executeUpdate();
+			if(ps.executeUpdate()==0)
+				return false;
+			
+			return true;
 
 		} finally {
 			try {
@@ -134,14 +137,14 @@ public class ComponeModelDS implements ModelRelationInterface<ComponeBean>{
 	}
 
 	
-	public void doUpdate(ComponeBean item) throws SQLException {
-		
+	public boolean doUpdate(ComponeBean item) throws SQLException {
+		return false;
 	}
 
 	
-	public void doDelete(ComponeBean item) throws SQLException {
+	public boolean doDelete(ComponeBean item) throws SQLException {
 		// TODO Auto-generated method stub
-		
+		return false;
 	}
 
 }

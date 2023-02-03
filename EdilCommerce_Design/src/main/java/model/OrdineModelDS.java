@@ -104,7 +104,7 @@ public class OrdineModelDS implements ModelInterface<OrdineBean> {
 	}
 
 	 
-	public void doSave(OrdineBean item) throws SQLException {
+	public boolean doSave(OrdineBean item) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		
@@ -119,7 +119,10 @@ public class OrdineModelDS implements ModelInterface<OrdineBean> {
 
 				Utility.print("doSave: " + ps.toString());
 
-				ps.executeUpdate();
+				if(ps.executeUpdate()==0)
+					return false;
+				
+				return true;
 
 			} finally {
 				try {
@@ -134,11 +137,12 @@ public class OrdineModelDS implements ModelInterface<OrdineBean> {
 	}
 
 	 
-	public void doUpdate(OrdineBean item, String code) throws SQLException {
+	public boolean doUpdate(OrdineBean item, String code) throws SQLException {
 		// TODO Auto-generated method stub
+		return false;
 		
 	}
-	public void doUpdateImporto(OrdineBean item) throws SQLException {
+	public boolean doUpdateImporto(OrdineBean item) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		
@@ -153,7 +157,10 @@ public class OrdineModelDS implements ModelInterface<OrdineBean> {
 
 				Utility.print("doSave: " + ps.toString());
 
-				ps.executeUpdate();
+				if(ps.executeUpdate()==0)
+					return false;
+				
+				return true;
 
 			} finally {
 				try {
@@ -167,8 +174,9 @@ public class OrdineModelDS implements ModelInterface<OrdineBean> {
 		
 	}
 	 
-	public void doDelete(OrdineBean item) throws SQLException {
+	public boolean doDelete(OrdineBean item) throws SQLException {
 		// TODO Auto-generated method stub
+		return false;
 		
 	}
 

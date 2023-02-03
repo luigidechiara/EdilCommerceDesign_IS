@@ -71,7 +71,7 @@ public class RuoloUserModelDS implements ModelRelationInterface<RuoloUserBean> {
 	}
 
 	 
-	public void doSave(RuoloUserBean item) throws SQLException {
+	public boolean doSave(RuoloUserBean item) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		
@@ -86,7 +86,10 @@ public class RuoloUserModelDS implements ModelRelationInterface<RuoloUserBean> {
 			
 			Utility.print("doSave: " + ps.toString());
 			
-			ps.executeUpdate();
+			if(ps.executeUpdate()==0)
+				return false;
+			
+			return true;
 
 		} finally {
 			try {
@@ -100,14 +103,16 @@ public class RuoloUserModelDS implements ModelRelationInterface<RuoloUserBean> {
 	}
 
 	 
-	public void doUpdate(RuoloUserBean item) throws SQLException {
+	public boolean doUpdate(RuoloUserBean item) throws SQLException {
 		// TODO Auto-generated method stub
+		return false;
 		
 	}
 
 	 
-	public void doDelete(RuoloUserBean item) throws SQLException {
+	public boolean doDelete(RuoloUserBean item) throws SQLException {
 		// TODO Auto-generated method stub
+		return false;
 		
 	}
 
