@@ -74,10 +74,10 @@ if (bean == null) {
 								<input type="email" name="email" placeholder="mario@ex.com" required readonly value="<%= bean.getEmail()%>">
 								
 								<label for="password"><i class="fa fa-lock"></i> Password</label>
-								<input id="pass" type="password" name="password" placeholder="Password" required readonly value="<%= bean.getUserPassword() %>" onkeyup="controllaPass('pass', 'confermaPass', 'salva')">
+								<input id="pass" type="password" name="password" placeholder="Password" required readonly onkeyup="controllaPass('pass', 'confermaPass', 'salva')">
 								
 								<label for="confermaPass"><i class="fa fa-lock"></i> Conferma Password</label>
-								<input id="confermaPass" type="password" name="confermaP" placeholder="Password" required readonly value="<%= bean.getUserPassword() %>" onkeyup="controllaPass('pass', 'confermaPass', 'salva')">
+								<input id="confermaPass" type="password" name="confermaP" placeholder="Password" required readonly onkeyup="controllaPass('pass', 'confermaPass', 'salva')">
 						</div>
 								
 						<div class="col-50">		

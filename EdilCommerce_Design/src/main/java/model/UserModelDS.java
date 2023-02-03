@@ -113,6 +113,7 @@ public class UserModelDS implements ModelInterface<UserBean> {
 	public void doUpdate(UserBean item, String code) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
+		PasswordHasher ph= new PasswordHasher();
 		
 		String UpdateSQL = "UPDATE user SET username=?, nome=?, cognome=?, email=?, telefono=?, indirizzo=?, userPassword=?, stato=?, cap=?, citta=? WHERE username=?";
 		
@@ -126,7 +127,7 @@ public class UserModelDS implements ModelInterface<UserBean> {
 				ps.setString(4, item.getEmail());
 				ps.setString(5, item.getTelefono());
 				ps.setString(6, item.getIndirizzo());
-				ps.setString(7, item.getUserPassword());
+				ps.setString(7, ph.hash(item.getUserPassword()));
 				ps.setString(8, item.getStato());
 				ps.setString(9, item.getCap());
 				ps.setString(10, item.getCitta());
