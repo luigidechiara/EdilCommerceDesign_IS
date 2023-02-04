@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-<dataset>
-<categoria  immagine='/EdilCommerce_Design/img/categoria/arredamento_interno.jpg' nome='Arredamento interno' descrizione=''/>
-<articolo codiceArticolo='ART00' nome='poltrona bianca' immagine='/EdilCommerce_Design/img/categoria/ArredamentoInterno/poltrona.jpg' descrizione='poltrona in pelle bianca, dotata di un ottimo comfort ed eleganza (90x150)' costo='79.99' nomeCategoria='Arredamento interno' mediaRecensioni='0' giacenza='20'/>
-
-</dataset>

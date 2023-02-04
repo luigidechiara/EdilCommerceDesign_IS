@@ -36,7 +36,7 @@ public class MainContext implements ServletContextListener {
 				Connection con = null;
 				try {
 					con = ds.getConnection();
-
+					
 					DatabaseMetaData metaData = con.getMetaData();
 
 					utils.Utility.print("DBMS name: " + metaData.getDatabaseProductName());

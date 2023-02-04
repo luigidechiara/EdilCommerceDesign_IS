@@ -39,7 +39,7 @@ public class ArticoloModelDS implements ModelInterface<ArticoloBean> {
 			
 			rs = ps.executeQuery();
 			
-			
+			if(rs.next()) {
 				bean.setCodiceArticolo(rs.getString("codiceArticolo"));
 				bean.setNome(rs.getString("nome"));
 				bean.setImmagine(rs.getString("immagine"));
@@ -48,7 +48,7 @@ public class ArticoloModelDS implements ModelInterface<ArticoloBean> {
 				bean.setNomeCategoria(rs.getString("nomeCategoria"));
 				bean.setMediaRecensioni(rs.getInt("mediaRecensioni"));
 				bean.setGiacenza(rs.getInt("giacenza"));
-			
+			}
 		} finally {
 			try {
 				if(ps != null)
@@ -99,7 +99,7 @@ public class ArticoloModelDS implements ModelInterface<ArticoloBean> {
 			
 			while(rs.next()) {
 				ArticoloBean bean = new ArticoloBean();
-				
+
 				bean.setCodiceArticolo(rs.getString("codiceArticolo"));
 				bean.setNome(rs.getString("nome"));
 				bean.setImmagine(rs.getString("immagine"));
@@ -365,7 +365,7 @@ public class ArticoloModelDS implements ModelInterface<ArticoloBean> {
 			Utility.print("doRetriveByImmagine: " + ps.toString());
 			
 			rs = ps.executeQuery();
-					
+			if(rs.next()) {	
 				bean.setCodiceArticolo(rs.getString("codiceArticolo"));
 				bean.setNome(rs.getString("nome"));
 				bean.setImmagine(rs.getString("immagine"));
@@ -374,7 +374,7 @@ public class ArticoloModelDS implements ModelInterface<ArticoloBean> {
 				bean.setNomeCategoria(rs.getString("nomeCategoria"));
 				bean.setMediaRecensioni(rs.getInt("mediaRecensioni"));
 				bean.setGiacenza(rs.getInt("giacenza"));
-	
+			}
 	
 		} finally {
 			try {

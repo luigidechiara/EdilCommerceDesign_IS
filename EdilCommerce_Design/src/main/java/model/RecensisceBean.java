@@ -17,6 +17,16 @@ public class RecensisceBean {
     	valore = 0;
     	testo = "";
     }
+    
+
+	public RecensisceBean(String codiceArticolo, String username, int valore, String testo) {
+		this.codiceArticolo = codiceArticolo;
+		this.username = username;
+		this.date = null;
+		this.valore = valore;
+		this.testo = testo;
+	}
+
 
 	public String getCodiceArticolo() {
 		return codiceArticolo;
