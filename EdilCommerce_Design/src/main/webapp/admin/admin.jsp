@@ -61,12 +61,12 @@ if(unsaved == null)
 									<input type="text" name="nome" maxlength="50" value="<%=unsaved.getNome()%>" required>
 									<%
 									DataSource ds = (DataSource) getServletContext().getAttribute("DataSource");
-									ArticoloModelDS aModel = new ArticoloModelDS(ds);
-									LinkedList<ArticoloBean> collection = (LinkedList<ArticoloBean>) aModel.doRetriveAll("codiceArticolo");
-									ArticoloBean aBean = collection.getLast();
+																ArticoloModelDS aModel = new ArticoloModelDS(ds);
+																LinkedList<ArticoloBean> collection = (LinkedList<ArticoloBean>) aModel.doRetriveAll("codiceArticolo");
+																ArticoloBean aBean = collection.getLast();
 									%>
 									<label for="codice">Codice</label>
-									<input type="text" name="codice" maxlength="5" value="<%=unsaved.isEmpty()?"ART"+ Integer.toString(Integer.parseInt(aBean.getCodiceArticolo().substring(3))+1):unsaved.getCodiceArticolo() %>" readonly="readonly" >
+									<input type="text" name="codice" maxlength="5" value="<%=unsaved.isEmpty()?"ART"+ Integer.toString(Integer.parseInt(aBean.getCodiceArticolo().substring(3))+1):unsaved.getCodiceArticolo()%>" readonly="readonly" >
 									
 									<label for="categorie">Categoria</label>
 									<select name="categorie" id="categorie" value="<%=unsaved.getNomeCategoria()%>" required>
@@ -98,26 +98,32 @@ if(unsaved == null)
 						</form>
 					</div>
 					
-				<%if(cataRole==null && magRole!=null){ %>
+				<%
+									if(cataRole==null && magRole!=null){
+									%>
 					<li onclick="visualizza('modificaArticolo')"><h2>Carico Giacenza</h2></li>
-					<%}else{ %>	
+					<%
+					}else{
+					%>	
 					<li onclick="visualizza('modificaArticolo')"><h2>Modifica articolo</h2></li>
-					<%} %>
+					<%
+					}
+					%>
 						<div class="container start" id="modificaArticolo">
 							
 								<div class="flex">
 						  			<div class="col-50">
 						  				<label for="articolo"><h3>Seleziona l'articolo da modificare</h3></label>
 										<select name="articolo" id="articolo" required>
-										<% 
-										 ds = (DataSource) getServletContext().getAttribute("DataSource");
-											
-										 aModel = new ArticoloModelDS(ds);
-											
-										 collection = (LinkedList<ArticoloBean>) aModel.doRetriveAll("");
-										Iterator<ArticoloBean> iter = collection.iterator();
-										while(iter.hasNext()){
-										 aBean = iter.next();
+										<%
+										ds = (DataSource) getServletContext().getAttribute("DataSource");
+																			
+																		 aModel = new ArticoloModelDS(ds);
+																			
+																		 collection = (LinkedList<ArticoloBean>) aModel.doRetriveAll("");
+																		Iterator<ArticoloBean> iter = collection.iterator();
+																		while(iter.hasNext()){
+																		 aBean = iter.next();
 										%>
 											<option value="<%=aBean.getCodiceArticolo()%>"><%=aBean.getCodiceArticolo() + " " + aBean.getNome()%></option>
 										<% 

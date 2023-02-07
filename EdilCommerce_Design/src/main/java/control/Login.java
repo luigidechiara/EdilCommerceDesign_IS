@@ -67,7 +67,7 @@ public class Login extends HttpServlet {
 						session.removeAttribute("loginRedirect");
 						
 						if(redirect == null) {
-							redirect="home.jsp";							
+							redirect="home.jsp";
 						}
 						Collection<RuoloUserBean> collection1 = modelRuolo.doRetriveByOneKey(bean.getUsername());
 						
@@ -76,7 +76,8 @@ public class Login extends HttpServlet {
 							if(userBean.getNome().equals("catalogo")||userBean.getNome().equals("magazzino")) 
 								redirect="admin/admin.jsp";				
 							}
-											
+						
+						request.setAttribute("testMessage", "Login riuscito");			
 						response.sendRedirect(response.encodeRedirectURL(redirect));
 						return;
 					} catch(SQLException e) {

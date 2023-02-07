@@ -169,7 +169,8 @@ public class RecensisceModelDS implements ModelRelationInterface<RecensisceBean>
 			
 			Utility.print("doSave: " + ps.toString());
 			
-			ps.executeUpdate();
+			if(ps.executeUpdate()==0)
+				return false;
 			
 			ps.close();
 

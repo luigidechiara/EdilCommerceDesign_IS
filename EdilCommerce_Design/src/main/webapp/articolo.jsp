@@ -18,13 +18,13 @@
 		<div id="body">
 		<%
 		ArticoloModelDS model = new ArticoloModelDS((DataSource)getServletContext().getAttribute("DataSource"));
-		ArticoloBean bean = new ArticoloBean();
-		bean=model.doRetriveByKey(request.getParameter("articolo"));
-		HttpSession session = request.getSession(false);
-		UserBean user = new UserBean();
-		if(session != null){
+				ArticoloBean bean = new ArticoloBean();
+				bean=model.doRetriveByKey(request.getParameter("articolo"));
+				HttpSession session = request.getSession(false);
+				UserBean user = new UserBean();
+				if(session != null){
 			user = (UserBean) session.getAttribute("loggedUser");
-		}
+				}
 		%>
 		
 		<div class="visualizzazione">

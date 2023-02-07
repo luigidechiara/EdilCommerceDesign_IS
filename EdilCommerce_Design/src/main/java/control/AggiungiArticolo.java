@@ -59,7 +59,7 @@ public class AggiungiArticolo extends HttpServlet {
 		}
 		
 		if(nome==null || codice==null || categorie==null || immagine==null || testo==null || costo==null) {
-			session.setAttribute("AdminError", "Un campo è nullo");
+			session.setAttribute("AdminError", "Un campo ï¿½ nullo");
 			response.sendRedirect(response.encodeURL("/EdilCommerce_Design/admin/admin.jsp"));
 			return;
 		}

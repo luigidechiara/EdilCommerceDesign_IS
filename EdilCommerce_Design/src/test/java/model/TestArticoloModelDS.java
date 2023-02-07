@@ -1,5 +1,6 @@
 package model;
 
+
 import static org.junit.Assert.assertEquals;
 
 import java.sql.SQLException;
@@ -20,7 +21,9 @@ public class TestArticoloModelDS {
 	private static IDatabaseTester tester;
 	private DataSource ds;
 
+
 	private ArticoloModelDS1 model;
+
 	private ArticoloBean articolo;
 	
 	@Before
@@ -31,8 +34,9 @@ public class TestArticoloModelDS {
 		tester.setTearDownOperation(DatabaseOperation.DELETE_ALL);
 		ds = Mockito.mock(DataSource.class);
 		Mockito.when(ds.getConnection()).thenReturn(tester.getConnection().getConnection());
+
 		model= new ArticoloModelDS1(ds);
-		
+
     	articolo=new ArticoloBean();
 		articolo.setCodiceArticolo("ART00");
 		articolo.setCosto(80.2);
