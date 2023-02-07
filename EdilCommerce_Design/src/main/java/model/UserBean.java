@@ -25,6 +25,20 @@ public class UserBean {
 		cap = "";
 	}
 	
+	public UserBean(String username, String nome, String cognome, String email, String telefono, String indirizzo,
+			String userPassword, String citta, String stato, String cap) {
+		this.username = username;
+		this.nome = nome;
+		this.cognome = cognome;
+		this.email = email;
+		this.telefono = telefono;
+		this.indirizzo = indirizzo;
+		this.userPassword = userPassword;
+		this.citta = citta;
+		this.stato = stato;
+		this.cap = cap;
+	}
+
 	public String getCitta() {
 		return citta;
 	}

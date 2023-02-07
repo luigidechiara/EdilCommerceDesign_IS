@@ -106,89 +106,84 @@ if (bean == null) {
 		<li onclick="visualizza('ordiniE')"><h2>Ordini effettuati</h2></li>
 			<div class="container start" id="ordiniE">
 				<%
-					DataSource ds = (DataSource) getServletContext().getAttribute("DataSource");
-				
-					OrdineModelDS oModel = new OrdineModelDS(ds);
-					ComponeModelDS cModel = new ComponeModelDS(ds);
-					CartaModelDS caModel = new CartaModelDS(ds);
-					ContrassegnoModelDS coModel = new ContrassegnoModelDS(ds);
-					ArticoloModelDS aModel = new ArticoloModelDS(ds);
-					DecimalFormat df = new DecimalFormat("#0.00");
-					
-					LinkedList<OrdineBean> oList = (LinkedList<OrdineBean>) oModel.doRetriveByUser(bean.getUsername());
-					
-					boolean primoOrdine = true;
-				
-					Iterator<OrdineBean> it = oList.iterator();
-					if(!it.hasNext()) {
+				DataSource ds = (DataSource) getServletContext().getAttribute("DataSource");
+						
+							OrdineModelDS oModel = new OrdineModelDS(ds);
+							ComponeModelDS cModel = new ComponeModelDS(ds);
+							CartaModelDS caModel = new CartaModelDS(ds);
+							ContrassegnoModelDS coModel = new ContrassegnoModelDS(ds);
+							ArticoloModelDS1 aModel = new ArticoloModelDS1(ds);
+							DecimalFormat df = new DecimalFormat("#0.00");
+							
+							LinkedList<OrdineBean> oList = (LinkedList<OrdineBean>) oModel.doRetriveByUser(bean.getUsername());
+							
+							boolean primoOrdine = true;
+						
+							Iterator<OrdineBean> it = oList.iterator();
+							if(!it.hasNext()) {
 				%>
 				<h3>Non hai ancora effettuato un ordine</h3>
-				<%			
-					}
-					while(it.hasNext()) {
-						 if(primoOrdine==true) {
-							 primoOrdine = false;
-						 } else {
-						%><hr><%
-						 }
-						OrdineBean oBean = it.next();
+				<%
+				}
+							while(it.hasNext()) {
+								 if(primoOrdine==true) {
+									 primoOrdine = false;
+								 } else {
+				%><hr><%
+				}
+								OrdineBean oBean = it.next();
 
-												
-						CartaBean caBean = caModel.doRetriveByKey(oBean.getNumeroOrdine());
-						ContrassegnoBean coBean = coModel.doRetriveByKey(oBean.getNumeroOrdine());
-
-						
+														
+								CartaBean caBean = caModel.doRetriveByKey(oBean.getNumeroOrdine());
+								ContrassegnoBean coBean = coModel.doRetriveByKey(oBean.getNumeroOrdine());
 				%>
 					<div>
 					<h2>Codice Ordine: <%=oBean.getNumeroOrdine()%></h2>
 					<h3>Metodo di pagamento: 
 				<%
-					if(caBean.isEmpty()){ 
-				%> 
+					if(caBean.isEmpty()){
+					%> 
 						Contrassegno
 				<%
 					}else{
-				%> 
+					%> 
 						<%="Carta NumeroCarta:****" + caBean.getNumero().substring(caBean.getNumero().length() - 4) + " Intestario carta:" + caBean.getIntestatario()%>
 				<%
-					}
-				 %>
+				}
+				%>
 					</h3>
 					<h3>Importo ordine: <%=df.format(oBean.getImporto())%>&euro;</h3>
 				<%
-						
-						LinkedList<ComponeBean> cList = (LinkedList<ComponeBean>) cModel.doRetriveByOneKey(oBean.getNumeroOrdine() + "");
-						Iterator<ComponeBean> it1 = cList.iterator(); 
+				LinkedList<ComponeBean> cList = (LinkedList<ComponeBean>) cModel.doRetriveByOneKey(oBean.getNumeroOrdine() + "");
+								Iterator<ComponeBean> it1 = cList.iterator();
 				%>
 					<h3>Articoli che compongono l'ordine:</h3><ul>
-				<%		
-				
-						while(it1.hasNext()){
-							ComponeBean cBean = it1.next();
-							ArticoloBean aBean = aModel.doRetriveByKey(cBean.getCodiceArticolo()); 
+				<%
+				while(it1.hasNext()){
+									ComponeBean cBean = it1.next();
+									ArticoloBean aBean = aModel.doRetriveByKey(cBean.getCodiceArticolo());
 				%>
 					<li><a href="<%=response.encodeURL("/EdilCommerce_Design/articolo.jsp?articolo=" + aBean.getCodiceArticolo())%>"><%=aBean.getNome()%></a>, quantita:<%=cBean.getQuantita()%></li>
-				<%			
-						}
+				<%
+				}
 				%>
 					</ul></div>
 				<%
-					}
-					
+				}
 				%>
 			</div>
 			<li onclick="visualizza('recensioni')"><h2>Recensioni effettuate</h2></li>
 			<div class="container start" id="recensioni">
 				<%
-					RecensisceModelDS rModel = new RecensisceModelDS(ds);
-					aModel = new ArticoloModelDS(ds);
-										
-					LinkedList<RecensisceBean> rList = (LinkedList<RecensisceBean>) rModel.doRetriveByOneKey(bean.getUsername());
-					
-					boolean primaRecensione = true;
-				
-					Iterator<RecensisceBean> iter= rList.iterator();
-					if(!iter.hasNext()) {
+				RecensisceModelDS rModel = new RecensisceModelDS(ds);
+							aModel = new ArticoloModelDS1(ds);
+												
+							LinkedList<RecensisceBean> rList = (LinkedList<RecensisceBean>) rModel.doRetriveByOneKey(bean.getUsername());
+							
+							boolean primaRecensione = true;
+						
+							Iterator<RecensisceBean> iter= rList.iterator();
+							if(!iter.hasNext()) {
 				%>
 				<h3>Non hai ancora effettuato una recensione</h3>
 				<%			

@@ -17,14 +17,14 @@
 		<%@include file="header.jsp" %>
 		<div id="body">
 		<%
-		ArticoloModelDS model = new ArticoloModelDS((DataSource)getServletContext().getAttribute("DataSource"));
-		ArticoloBean bean = new ArticoloBean();
-		bean=model.doRetriveByKey(request.getParameter("articolo"));
-		HttpSession session = request.getSession(false);
-		UserBean user = new UserBean();
-		if(session != null){
+		ArticoloModelDS1 model = new ArticoloModelDS1((DataSource)getServletContext().getAttribute("DataSource"));
+				ArticoloBean bean = new ArticoloBean();
+				bean=model.doRetriveByKey(request.getParameter("articolo"));
+				HttpSession session = request.getSession(false);
+				UserBean user = new UserBean();
+				if(session != null){
 			user = (UserBean) session.getAttribute("loggedUser");
-		}
+				}
 		%>
 		
 		<div class="visualizzazione">

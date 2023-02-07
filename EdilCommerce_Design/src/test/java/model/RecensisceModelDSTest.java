@@ -73,11 +73,20 @@ protected IDataSet getDataSet() throws Exception {
  
  @Test
  public void testDoSave() throws SQLException {
-	 RecensisceBean rec= new RecensisceBean("ART00", "luigi", 0, "comoda");
+	 RecensisceBean rec= new RecensisceBean("ART00", "luigi", 1, "comoda");
 	 boolean r =recensione.doSave(rec);
 	 
 	 assertEquals(r, true);
 	 
+ }
+ 
+ @Test
+ public void testP() throws SQLException {
+	// <recensisce codiceArticolo='ART10' username='luigi' data='ccc' valore='1' testo="aaaa"/>
+	 RecensisceBean rec= new RecensisceBean("ART10", "luigi", 1, "aaaa");
+	 RecensisceBean po= recensione.doRetriveByKey("luigi", "ART10");
+	 
+	 assertEquals(rec.getUsername(), po.getUsername());
  }
 	
 
