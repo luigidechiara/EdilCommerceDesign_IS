@@ -14,7 +14,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
 
-import model.test.ArticoloModelDS1;
+import model.test.ArticoloModelDS;
 
 public class TestArticoloModelDS {
 	
@@ -22,7 +22,7 @@ public class TestArticoloModelDS {
 	private DataSource ds;
 
 
-	private ArticoloModelDS1 model;
+	private ArticoloModelDS model;
 
 	private ArticoloBean articolo;
 	
@@ -35,7 +35,7 @@ public class TestArticoloModelDS {
 		ds = Mockito.mock(DataSource.class);
 		Mockito.when(ds.getConnection()).thenReturn(tester.getConnection().getConnection());
 
-		model= new ArticoloModelDS1(ds);
+		model= new ArticoloModelDS(ds);
 
     	articolo=new ArticoloBean();
 		articolo.setCodiceArticolo("ART00");
@@ -48,6 +48,9 @@ public class TestArticoloModelDS {
 		articolo.setNomeCategoria("arredamento");
 		 
 		 model.doSave(articolo);
+		 
+		 
+		 
     	
 	}
 	

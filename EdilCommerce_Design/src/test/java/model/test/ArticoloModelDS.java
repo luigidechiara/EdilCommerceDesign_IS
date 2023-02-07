@@ -13,11 +13,11 @@ import model.ArticoloBean;
 import model.ModelInterface;
 import utils.Utility;
 
-public class ArticoloModelDS1 implements ModelInterface<ArticoloBean> {
+public class ArticoloModelDS implements ModelInterface<ArticoloBean> {
 	
 	private DataSource ds = null;
 	
-	public ArticoloModelDS1(DataSource ds) {
+	public ArticoloModelDS(DataSource ds) {
 		this.ds = ds;
 	}
 
