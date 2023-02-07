@@ -61,7 +61,7 @@ if(unsaved == null)
 									<input type="text" name="nome" maxlength="50" value="<%=unsaved.getNome()%>" required>
 									<%
 									DataSource ds = (DataSource) getServletContext().getAttribute("DataSource");
-																ArticoloModelDS1 aModel = new ArticoloModelDS1(ds);
+																ArticoloModelDS aModel = new ArticoloModelDS(ds);
 																LinkedList<ArticoloBean> collection = (LinkedList<ArticoloBean>) aModel.doRetriveAll("codiceArticolo");
 																ArticoloBean aBean = collection.getLast();
 									%>
@@ -118,7 +118,7 @@ if(unsaved == null)
 										<%
 										ds = (DataSource) getServletContext().getAttribute("DataSource");
 																			
-																		 aModel = new ArticoloModelDS1(ds);
+																		 aModel = new ArticoloModelDS(ds);
 																			
 																		 collection = (LinkedList<ArticoloBean>) aModel.doRetriveAll("");
 																		Iterator<ArticoloBean> iter = collection.iterator();

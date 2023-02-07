@@ -112,7 +112,7 @@ if (bean == null) {
 							ComponeModelDS cModel = new ComponeModelDS(ds);
 							CartaModelDS caModel = new CartaModelDS(ds);
 							ContrassegnoModelDS coModel = new ContrassegnoModelDS(ds);
-							ArticoloModelDS1 aModel = new ArticoloModelDS1(ds);
+							ArticoloModelDS aModel = new ArticoloModelDS(ds);
 							DecimalFormat df = new DecimalFormat("#0.00");
 							
 							LinkedList<OrdineBean> oList = (LinkedList<OrdineBean>) oModel.doRetriveByUser(bean.getUsername());
@@ -176,7 +176,7 @@ if (bean == null) {
 			<div class="container start" id="recensioni">
 				<%
 				RecensisceModelDS rModel = new RecensisceModelDS(ds);
-							aModel = new ArticoloModelDS1(ds);
+							aModel = new ArticoloModelDS(ds);
 												
 							LinkedList<RecensisceBean> rList = (LinkedList<RecensisceBean>) rModel.doRetriveByOneKey(bean.getUsername());
 							

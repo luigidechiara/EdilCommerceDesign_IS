@@ -17,7 +17,7 @@
 		<%@include file="header.jsp" %>
 		<div id="body">
 		<%
-		ArticoloModelDS1 model = new ArticoloModelDS1((DataSource)getServletContext().getAttribute("DataSource"));
+		ArticoloModelDS model = new ArticoloModelDS((DataSource)getServletContext().getAttribute("DataSource"));
 				ArticoloBean bean = new ArticoloBean();
 				bean=model.doRetriveByKey(request.getParameter("articolo"));
 				HttpSession session = request.getSession(false);
