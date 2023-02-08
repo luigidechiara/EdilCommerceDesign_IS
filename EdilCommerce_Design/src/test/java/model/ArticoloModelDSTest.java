@@ -32,7 +32,7 @@ public class ArticoloModelDSTest {
 	@Before
 	public void setUp() throws SQLException, Exception {
 		tester = new JdbcDatabaseTester(org.h2.Driver.class.getName(),
-				"jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;init=runscript from 'classpath:resources/articolo.sql'", "sa", "");
+				"jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;init=runscript from 'classpath:resources/database.sql'", "sa", "");
 		tester.setSetUpOperation(DatabaseOperation.REFRESH);
 		tester.setTearDownOperation(DatabaseOperation.DELETE_ALL);
 		ds = Mockito.mock(DataSource.class);
@@ -74,7 +74,6 @@ public class ArticoloModelDSTest {
     @Test
 	public void testDoRetriveByKey() throws SQLException {
     	ArticoloBean pre= new ArticoloBean();
-    	pre=new ArticoloBean();
 		pre.setCodiceArticolo("ART00");
 		pre.setCosto(80.2);
 		pre.setDescrizione("ciao");
@@ -139,7 +138,6 @@ public class ArticoloModelDSTest {
     @Test
   	public void testDoSave() throws SQLException {
       	ArticoloBean pre= new ArticoloBean();
-      	pre=new ArticoloBean();
   		pre.setCodiceArticolo("ART10");
   		pre.setCosto(80.2);
   		pre.setDescrizione("ciao");
@@ -166,7 +164,6 @@ public class ArticoloModelDSTest {
     @Test
   	public void testDoUpdate() throws SQLException {
       	ArticoloBean pre= new ArticoloBean();
-      	pre=new ArticoloBean();
   		pre.setCodiceArticolo("ART00");
   		pre.setCosto(50);
   		pre.setDescrizione("saldi");

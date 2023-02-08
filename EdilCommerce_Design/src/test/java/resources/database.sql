@@ -31,6 +31,14 @@ cap varchar(20) not null,
 primary key (numeroOrdine)
 );
 
+CREATE TABLE IF NOT EXISTS carta (
+numeroOrdine int  not null,
+numero varchar(100) not null,
+intestatario varchar(100) not null,
+dataScadenza char(7) not null,
+cvv varchar(10) not null,
+primary key (numeroOrdine)
+);
 
 
 

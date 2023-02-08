@@ -53,17 +53,10 @@ public class CartaModelDS implements ModelInterface<CartaBean> {
 				bean.setDataScadenza(rs.getString("dataScadenza"));
 				bean.setCvv(rs.getString("cvv"));
 			}
-		} finally {
-			try {
-				if(ps != null)
-					ps.close();
-			} finally {
-				if(con != null)
-					con.close();
-				if (rs != null)
-					rs.close();
-			}
-		}
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} 
 		return bean;
 	}
 
@@ -94,15 +87,7 @@ public class CartaModelDS implements ModelInterface<CartaBean> {
 				collection.add(bean);
 			}
 		} finally {
-			try {
-				if(ps != null)
-					ps.close();
-			} finally {
-				if(con != null)
-					con.close();
-				if (rs != null)
-					rs.close();
-			}
+			
 		}
 		return collection;
 	}
@@ -131,15 +116,10 @@ public class CartaModelDS implements ModelInterface<CartaBean> {
 			
 			return true;
 
-		} finally {
-			try {
-				if(ps != null)
-					ps.close();
-			} finally {
-				if(con != null)
-					con.close();
-			}
+		} catch(SQLException e) {
+			
 		}
+		return false;
 	}
 
 
