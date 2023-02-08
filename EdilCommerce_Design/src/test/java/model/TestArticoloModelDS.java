@@ -32,7 +32,7 @@ public class TestArticoloModelDS {
 	@Before
 	public void setUp() throws SQLException, Exception {
 		tester = new JdbcDatabaseTester(org.h2.Driver.class.getName(),
-				"jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;init=runscript from 'classpath:resources/articolo.sql'", "sa", "");
+				"jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;init=runscript from 'classpath:resources/database.sql'", "sa", "");
 		tester.setSetUpOperation(DatabaseOperation.REFRESH);
 		tester.setTearDownOperation(DatabaseOperation.DELETE_ALL);
 		ds = Mockito.mock(DataSource.class);

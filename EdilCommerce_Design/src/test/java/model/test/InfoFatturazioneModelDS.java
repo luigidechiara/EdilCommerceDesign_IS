@@ -56,16 +56,8 @@ public class InfoFatturazioneModelDS implements ModelInterface<InfoFatturazioneB
 				bean.setStato(rs.getString("stato"));
 				bean.setCap(rs.getString("cap"));
 			}
-		} finally {
-			try {
-				if(ps != null)
-					ps.close();
-			} finally {
-				if(con != null)
-					con.close();
-				if (rs != null)
-					rs.close();
-			}
+		} catch(SQLException e) {
+			e.printStackTrace();
 		}
 		
 		return bean;
@@ -145,15 +137,11 @@ public class InfoFatturazioneModelDS implements ModelInterface<InfoFatturazioneB
 				
 				return true;
 
-			} finally {
-				try {
-					if (ps != null)
-						ps.close();
-				} finally {
-					if (con != null)
-						con.close();
-				}
+			} catch(SQLException e) {
+				e.printStackTrace();
 			}
+			return false;
+			
 	}
 
 	 

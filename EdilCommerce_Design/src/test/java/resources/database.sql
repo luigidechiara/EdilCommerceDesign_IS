@@ -1,0 +1,42 @@
+
+CREATE TABLE IF NOT EXISTS articolo (
+codiceArticolo char(5) not null,
+nome varchar(50) not null,
+immagine varchar(100) not null,
+descrizione varchar(1000) not null,
+costo double not null,
+nomeCategoria varchar(20) not null,
+mediaRecensioni double not null,
+giacenza int not null,
+primary key (codiceArticolo));
+
+CREATE TABLE IF NOT EXISTS ordine (
+numeroOrdine int not null,
+data date not null,
+username varchar(20) not null,
+importo double not null,
+primary key (numeroOrdine)
+);
+
+CREATE TABLE IF NOT EXISTS infoFatturazione (
+numeroOrdine int not null,
+nome varchar(20) not null,
+cognome varchar(20) not null,
+email varchar(50) not null,
+telefono varchar(20) not null,
+indirizzo varchar(100) not null,
+citta varchar(20) not null,
+stato varchar(20) not null,
+cap varchar(20) not null,
+primary key (numeroOrdine),
+foreign key (numeroOrdine) references ordine (numeroOrdine)
+);
+
+
+
+
+
+
+
+
+
