@@ -28,8 +28,7 @@ indirizzo varchar(100) not null,
 citta varchar(20) not null,
 stato varchar(20) not null,
 cap varchar(20) not null,
-primary key (numeroOrdine),
-foreign key (numeroOrdine) references ordine (numeroOrdine)
+primary key (numeroOrdine)
 );
 
 

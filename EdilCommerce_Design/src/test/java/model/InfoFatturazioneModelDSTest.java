@@ -35,7 +35,7 @@ public class InfoFatturazioneModelDSTest {
 		
 		InfoFatturazioneBean fattura= new InfoFatturazioneBean();
 		
-		fattura.setNumeroOrdine(1);
+		fattura.setNumeroOrdine(100);
 		fattura.setNome("alessio");
 		fattura.setCognome("ferro");
 		fattura.setEmail("admin@email.com");
@@ -56,7 +56,7 @@ public class InfoFatturazioneModelDSTest {
 	 		
 	 		InfoFatturazioneBean pre= new InfoFatturazioneBean();
 			
-			pre.setNumeroOrdine(1);
+			pre.setNumeroOrdine(100);
 			pre.setNome("alessio");
 			pre.setCognome("ferro");
 			pre.setEmail("admin@email.com");
@@ -69,7 +69,7 @@ public class InfoFatturazioneModelDSTest {
 			InfoFatturazioneBean confronto=null;
 					try {
 						
-						confronto=model.doRetriveByKey(1);
+						confronto=model.doRetriveByKey(100);
 						
 					}catch(SQLException e) {
 						e.printStackTrace();
