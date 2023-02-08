@@ -46,16 +46,8 @@ public class CategoriaModelDS implements ModelInterface<CategoriaBean> {
 				bean.setDescrizione(rs.getString("descrizione"));
 			}
 			
-		} finally {
-			try {
-				if(ps != null)
-					ps.close();
-			} finally {
-				if(con != null)
-					con.close();
-				if (rs != null)
-					rs.close();
-			}
+		} catch(SQLException e) {
+			
 		}
 		
 		return bean;
@@ -114,6 +106,29 @@ public class CategoriaModelDS implements ModelInterface<CategoriaBean> {
 
 	
 	public boolean doSave(CategoriaBean item) throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		
+		String InsertSQL = "INSERT INTO categoria VALUES (?,?,?)";
+		
+		try {
+			con = ds.getConnection();
+			ps = con.prepareStatement(InsertSQL);
+			
+			ps.setString(1, item.getImmagine());
+			ps.setString(2, item.getNome());
+			ps.setString(3, item.getDescrizione());
+			
+			Utility.print("doSave: " + ps.toString());
+			
+			if(ps.executeUpdate()==0)
+				return false;
+			
+			return true;
+
+		} catch(SQLException e) {
+			
+		}
 		return false;
 	}
 

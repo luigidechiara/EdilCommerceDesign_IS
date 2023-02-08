@@ -53,17 +53,10 @@ public class ComponeModelDS implements ModelRelationInterface<ComponeBean>{
 				bean.setQuantita(Integer.parseInt(rs.getString("quantita")));
 				collection.add(bean);
 			}
-		} finally {
-			try {
-				if(ps != null)
-					ps.close();
-			} finally {
-				if(con != null)
-					con.close();
-				if (rs != null)
-					rs.close();
-			}
+		} catch(SQLException e) {
+			
 		}
+
 		return collection;
 	}
 
@@ -127,15 +120,10 @@ public class ComponeModelDS implements ModelRelationInterface<ComponeBean>{
 			
 			return true;
 
-		} finally {
-			try {
-				if(ps != null)
-					ps.close();
-			} finally {
-				if(con != null)
-					con.close();
-			}
-		}		
+		} catch(SQLException e) {
+			
+		}
+		return false;
 	}
 
 	

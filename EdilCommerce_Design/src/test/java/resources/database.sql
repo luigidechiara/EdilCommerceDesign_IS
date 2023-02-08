@@ -1,3 +1,8 @@
+CREATE TABLE IF NOT EXISTS categoria (
+immagine varchar(100) not null,
+nome varchar(20) not null,
+descrizione varchar(50) not null,
+primary key (nome));
 
 CREATE TABLE IF NOT EXISTS articolo (
 codiceArticolo char(5) not null,
@@ -40,6 +45,11 @@ cvv varchar(10) not null,
 primary key (numeroOrdine)
 );
 
+CREATE TABLE IF NOT EXISTS compone (
+numeroOrdine int not null,
+codiceArticolo char(5) not null,
+quantita int not null,
+primary key (numeroOrdine, codiceArticolo));
 
 
 
