@@ -36,6 +36,10 @@ cap varchar(20) not null,
 primary key (numeroOrdine)
 );
 
+CREATE TABLE IF NOT EXISTS contrassegno (
+numeroOrdine int not null,
+primary key (numeroOrdine));
+
 CREATE TABLE IF NOT EXISTS carta (
 numeroOrdine int  not null,
 numero varchar(100) not null,
