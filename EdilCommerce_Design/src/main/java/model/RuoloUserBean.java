@@ -31,7 +31,7 @@ public class RuoloUserBean {
 	
 	@Override
 	public boolean equals(Object obj) {
-		return ((this.getUsername() == ((UserBean) obj).getUsername()) && (this.getNome() == ((UserBean) obj).getNome())) ;
+		return ((this.getUsername() == ((RuoloUserBean) obj).getUsername()) && (this.getNome() == ((RuoloUserBean) obj).getNome())) ;
 	}
 	
 	@Override

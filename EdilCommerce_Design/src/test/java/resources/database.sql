@@ -55,7 +55,10 @@ codiceArticolo char(5) not null,
 quantita int not null,
 primary key (numeroOrdine, codiceArticolo));
 
-
+CREATE TABLE IF NOT EXISTS ruoloUser (
+username varchar(20) not null,
+nome varchar(20) not null,
+primary key (username, nome));
 
 
 

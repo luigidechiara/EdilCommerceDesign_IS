@@ -48,19 +48,12 @@ public class OrdineModelDS implements ModelInterface<OrdineBean> {
 			if(rs.next()) {
 				bean.setUsername(rs.getString("username"));
 				bean.setData(rs.getDate("data"));
-				bean.setNumeroOrdine(rs.getInt("cognome"));
+				bean.setNumeroOrdine(rs.getInt("numeroOrdine"));
 			}
-		} finally {
-			try {
-				if(ps != null)
-					ps.close();
-			} finally {
-				if(con != null)
-					con.close();
-				if (rs != null)
-					rs.close();
-			}
+		}catch(SQLException e) {
+			e.printStackTrace();
 		}
+		
 		
 		return bean;
 	}
@@ -90,16 +83,8 @@ public class OrdineModelDS implements ModelInterface<OrdineBean> {
 				bean.setImporto(rs.getDouble("importo"));
 				collection.add(bean);
 			}
-		} finally {
-			try {
-				if(ps != null)
-					ps.close();
-			} finally {
-				if(con != null)
-					con.close();
-				if (rs != null)
-					rs.close();
-			}
+		}catch(SQLException e) {
+			e.printStackTrace();
 		}
 		return collection;
 	}
@@ -109,14 +94,14 @@ public class OrdineModelDS implements ModelInterface<OrdineBean> {
 		Connection con = null;
 		PreparedStatement ps = null;
 		
-		String InsertSQL = "INSERT INTO ordine (data, username,importo) VALUES (NOW(),?,?)";
+		String InsertSQL = "INSERT INTO ordine (numeroOrdine,data, username,importo) VALUES (?,NOW(),?,?)";
 		
 			try {
 				con = ds.getConnection();
 				ps = con.prepareStatement(InsertSQL);
-				
-				ps.setString(1, item.getUsername());
-				ps.setDouble(2, item.getImporto());
+				ps.setInt(1, item.getNumeroOrdine());
+				ps.setString(2, item.getUsername());
+				ps.setDouble(3, item.getImporto());
 
 				Utility.print("doSave: " + ps.toString());
 
@@ -125,15 +110,10 @@ public class OrdineModelDS implements ModelInterface<OrdineBean> {
 				
 				return true;
 
-			} finally {
-				try {
-					if (ps != null)
-						ps.close();
-				} finally {
-					if (con != null)
-						con.close();
-				}
+			} catch(SQLException e) {
+				e.printStackTrace();
 			}
+			return false;
 		
 	}
 
@@ -163,15 +143,10 @@ public class OrdineModelDS implements ModelInterface<OrdineBean> {
 				
 				return true;
 
-			} finally {
-				try {
-					if (ps != null)
-						ps.close();
-				} finally {
-					if (con != null)
-						con.close();
-				}
+			} catch(SQLException e) {
+				e.printStackTrace();
 			}
+			return false;
 		
 	}
 	 
@@ -207,16 +182,8 @@ public class OrdineModelDS implements ModelInterface<OrdineBean> {
 				bean.setImporto(rs.getDouble("importo"));
 				collection.add(bean);
 			}
-		} finally {
-			try {
-				if(ps != null)
-					ps.close();
-			} finally {
-				if(con != null)
-					con.close();
-				if (rs != null)
-					rs.close();
-			}
+		} catch(SQLException e) {
+			e.printStackTrace();
 		}
 		return collection;
 	}

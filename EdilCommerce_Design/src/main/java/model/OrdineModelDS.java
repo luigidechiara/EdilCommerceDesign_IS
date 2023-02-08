@@ -47,7 +47,7 @@ public class OrdineModelDS implements ModelInterface<OrdineBean> {
 			if(rs.next()) {
 				bean.setUsername(rs.getString("username"));
 				bean.setData(rs.getDate("data"));
-				bean.setNumeroOrdine(rs.getInt("cognome"));
+				bean.setNumeroOrdine(rs.getInt("numeroOrdine"));
 			}
 		} finally {
 			try {

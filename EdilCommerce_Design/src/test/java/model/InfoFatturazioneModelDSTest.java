@@ -9,6 +9,7 @@ import javax.sql.DataSource;
 import org.dbunit.IDatabaseTester;
 import org.dbunit.JdbcDatabaseTester;
 import org.dbunit.operation.DatabaseOperation;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
@@ -34,8 +35,8 @@ public class InfoFatturazioneModelDSTest {
 		model= new InfoFatturazioneModelDS(ds);
 		
 		InfoFatturazioneBean fattura= new InfoFatturazioneBean();
-		
-		fattura.setNumeroOrdine(100);
+	
+		fattura.setNumeroOrdine(2);
 		fattura.setNome("alessio");
 		fattura.setCognome("ferro");
 		fattura.setEmail("admin@email.com");
@@ -51,12 +52,13 @@ public class InfoFatturazioneModelDSTest {
 	}	
 	
 	
+	
 	 	@Test
 		public void testdoRetriveByKey() throws SQLException {
 	 		
 	 		InfoFatturazioneBean pre= new InfoFatturazioneBean();
 			
-			pre.setNumeroOrdine(100);
+			pre.setNumeroOrdine(2);
 			pre.setNome("alessio");
 			pre.setCognome("ferro");
 			pre.setEmail("admin@email.com");
@@ -69,7 +71,7 @@ public class InfoFatturazioneModelDSTest {
 			InfoFatturazioneBean confronto=null;
 					try {
 						
-						confronto=model.doRetriveByKey(100);
+						confronto=model.doRetriveByKey(2);
 						
 					}catch(SQLException e) {
 						e.printStackTrace();
@@ -78,6 +80,36 @@ public class InfoFatturazioneModelDSTest {
 			assertEquals(pre,confronto);
 		 
 	 }
+	 	
+	 	@Test
+		public void testdoSave() throws SQLException {
+	 		InfoFatturazioneBean pre= new InfoFatturazioneBean();
+			
+	 		pre.setNumeroOrdine(1);
+			pre.setNome("alessandro");
+			pre.setCognome("ferro");
+			pre.setEmail("admin@email.com");
+			pre.setTelefono("089893889");
+			pre.setIndirizzo("via lamberti");
+			pre.setCitta("salerno");
+			pre.setStato("italia");
+			pre.setCap("84085");
+			
+			boolean verifica= false;
+			InfoFatturazioneBean expected= null;
+			
+			try {
+			verifica=model.doSave(pre);
+			expected=model.doRetriveByKey(1);
+			}
+			catch(SQLException e) {
+				e.printStackTrace();
+			}
+			assertEquals(true,verifica);
+	      	assertEquals(pre,expected);
+	 	}
+	 	
+	 	
 	
 
 }

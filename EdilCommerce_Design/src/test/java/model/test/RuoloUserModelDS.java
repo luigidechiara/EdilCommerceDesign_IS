@@ -51,16 +51,8 @@ public class RuoloUserModelDS implements ModelRelationInterface<RuoloUserBean> {
 				bean.setNome(rs.getString("nome"));
 				collection.add(bean);
 			}
-		} finally {
-			try {
-				if(ps != null)
-					ps.close();
-			} finally {
-				if(con != null)
-					con.close();
-				if (rs != null)
-					rs.close();
-			}
+		} catch(SQLException e) {
+			e.printStackTrace();
 		}
 		return collection;
 	}
@@ -92,15 +84,10 @@ public class RuoloUserModelDS implements ModelRelationInterface<RuoloUserBean> {
 			
 			return true;
 
-		} finally {
-			try {
-				if(ps != null)
-					ps.close();
-			} finally {
-				if(con != null)
-					con.close();
-			}
+		} catch(SQLException e) {
+			e.printStackTrace();
 		}
+		return false;
 	}
 
 	 
