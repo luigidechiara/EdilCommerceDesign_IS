@@ -18,7 +18,7 @@ import org.mockito.Mockito;
 
 import model.test.ArticoloModelDS;
 
-public class TestArticoloModelDS {
+public class ArticoloModelDSTest {
 	
 	private static IDatabaseTester tester;
 	private DataSource ds;
@@ -98,7 +98,7 @@ public class TestArticoloModelDS {
     public void testDoRetriveAll() {
     	ArticoloBean a1= new ArticoloBean();
       	a1=new ArticoloBean();
-  		a1.setCodiceArticolo("ART10");
+  		a1.setCodiceArticolo("ART00");
   		a1.setCosto(80.2);
   		a1.setDescrizione("ciao");
   		a1.setGiacenza(20);
@@ -137,7 +137,7 @@ public class TestArticoloModelDS {
     }
     
     @Test
-  	public void testDoSaveTest() throws SQLException {
+  	public void testDoSave() throws SQLException {
       	ArticoloBean pre= new ArticoloBean();
       	pre=new ArticoloBean();
   		pre.setCodiceArticolo("ART10");
@@ -146,25 +146,135 @@ public class TestArticoloModelDS {
   		pre.setGiacenza(20);
   		pre.setImmagine("prova");
   		pre.setMediaRecensioni(0);
-  		pre.setNome("poltrona");
+  		pre.setNome("Lampada moderna");
   		pre.setNomeCategoria("arredamento");    	
   		boolean confronto=false;
+  		ArticoloBean expected= null;
       	try {
       		confronto=model.doSave(pre);
+      		expected= model.doRetriveByKey(pre.getCodiceArticolo());
       		
       	}catch(SQLException e) {
       		e.printStackTrace();
       	}
       	assertEquals(true,confronto);
+      	assertEquals(pre,expected);
       	
       	}
   	
+
+    @Test
+  	public void testDoUpdate() throws SQLException {
+      	ArticoloBean pre= new ArticoloBean();
+      	pre=new ArticoloBean();
+  		pre.setCodiceArticolo("ART00");
+  		pre.setCosto(50);
+  		pre.setDescrizione("saldi");
+  		pre.setGiacenza(30);
+  		pre.setImmagine("prova");
+  		pre.setMediaRecensioni(0);
+  		pre.setNome("poltrona");
+  		pre.setNomeCategoria("arredamento");    	
+  		boolean confronto=false;
+  		ArticoloBean expected= null;
+      	try {
+      		confronto=model.doUpdate(pre, pre.getCodiceArticolo());
+      		expected= model.doRetriveByKey(pre.getCodiceArticolo());
+      		
+      	}catch(SQLException e) {
+      		e.printStackTrace();
+      	}
+      	assertEquals(true,confronto);
+      	assertEquals(pre,expected);
+      	
+      	}
 	
+    @Test
+  	public void testDoUpdateGiacenza() throws SQLException {
+      
+    	String codiceArticolo="ART00";
+    	int giacenza=30;
+    	
+  		boolean confronto=false;
+  		ArticoloBean expected= null;
+      	try {
+      		confronto=model.doUpdateGiacenza(giacenza, codiceArticolo);
+      		expected= model.doRetriveByKey(codiceArticolo);
+      	}catch(SQLException e) {
+      		e.printStackTrace();
+      	}
+      	assertEquals(true,confronto);
+      	assertEquals(giacenza,expected.getGiacenza());
+      	
+      	}
 	
+    @Test
+  	public void testDoRetriveByCategory() throws SQLException {
+      	
+    	String categoria="arredamento";
+    	String prezzo= "";
+    	String ordine="";
+    	
+  		ArticoloBean a1= new ArticoloBean();
+      	a1=new ArticoloBean();
+  		a1.setCodiceArticolo("ART00");
+  		a1.setCosto(80.2);
+  		a1.setDescrizione("ciao");
+  		a1.setGiacenza(20);
+  		a1.setImmagine("prova");
+  		a1.setMediaRecensioni(0);
+  		a1.setNome("poltrona");
+  		a1.setNomeCategoria("arredamento"); 
+  		
+  		
+  		Collection<ArticoloBean> expected = new LinkedList<ArticoloBean>();
+  		expected.add(a1);
+  		
+  		Collection<ArticoloBean> actual = new LinkedList<ArticoloBean>();
+      	try {
+      		
+      		actual= model.doRetriveByCategory(categoria, prezzo, ordine);
+      		
+      	}catch(SQLException e) {
+      		e.printStackTrace();
+      	}
+      	assertEquals(actual,expected);
+      	
+      	}
 	
-	
-	
-	
+    @Test
+  	public void testDoSearchByNome() throws SQLException {
+      	
+    	String nome="poltrona";
+    	String prezzo= "";
+    	String ordine="";
+    	
+  		ArticoloBean a1= new ArticoloBean();
+      	a1=new ArticoloBean();
+  		a1.setCodiceArticolo("ART00");
+  		a1.setCosto(80.2);
+  		a1.setDescrizione("ciao");
+  		a1.setGiacenza(20);
+  		a1.setImmagine("prova");
+  		a1.setMediaRecensioni(0);
+  		a1.setNome("poltrona");
+  		a1.setNomeCategoria("arredamento"); 
+  		
+  		
+  		Collection<ArticoloBean> expected = new LinkedList<ArticoloBean>();
+  		expected.add(a1);
+  		
+  		Collection<ArticoloBean> actual = new LinkedList<ArticoloBean>();
+      	try {
+      		
+      		actual= model.doSearchByNome(nome, prezzo, ordine);
+      		
+      	}catch(SQLException e) {
+      		e.printStackTrace();
+      	}
+      	assertEquals(actual,expected);
+      	
+      	}
 	
 	
 }

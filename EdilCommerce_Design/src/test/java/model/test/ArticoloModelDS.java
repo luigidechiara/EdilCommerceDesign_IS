@@ -181,13 +181,7 @@ public class ArticoloModelDS implements ModelInterface<ArticoloBean> {
 			
 			return true;
 		} finally {
-			try {
-				if(ps != null)
-					ps.close();
-			} finally {
-				if(con != null)
-					con.close();
-			}
+			
 		}
 	}
 	public boolean doUpdateGiacenza(int giacenza, String code) throws SQLException {
@@ -211,13 +205,7 @@ public class ArticoloModelDS implements ModelInterface<ArticoloBean> {
 			
 			return true;
 		} finally {
-			try {
-				if(ps != null)
-					ps.close();
-			} finally {
-				if(con != null)
-					con.close();
-			}
+			
 		}
 	}
 	
@@ -268,15 +256,7 @@ public class ArticoloModelDS implements ModelInterface<ArticoloBean> {
 				collection.add(bean);
 			}
 		} finally {
-			try {
-				if(ps != null)
-					ps.close();
-			} finally {
-				if(con != null)
-					con.close();
-				if (rs != null)
-					rs.close();
-			}
+			
 		}
 		
 		return collection;
@@ -324,15 +304,7 @@ public class ArticoloModelDS implements ModelInterface<ArticoloBean> {
 				collection.add(bean);
 			}
 		} finally {
-			try {
-				if(ps != null)
-					ps.close();
-			} finally {
-				if(con != null)
-					con.close();
-				if (rs != null)
-					rs.close();
-			}
+			
 		}
 		
 		return collection;
