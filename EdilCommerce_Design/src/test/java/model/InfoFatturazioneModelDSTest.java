@@ -9,7 +9,6 @@ import javax.sql.DataSource;
 import org.dbunit.IDatabaseTester;
 import org.dbunit.JdbcDatabaseTester;
 import org.dbunit.operation.DatabaseOperation;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
@@ -20,7 +19,7 @@ public class InfoFatturazioneModelDSTest {
 	private static IDatabaseTester tester;
 	private DataSource ds;
 	private InfoFatturazioneModelDS model;
-	
+	private InfoFatturazioneBean fattura;
 	
 	@Before
 	public void setUp() throws SQLException, Exception {
@@ -34,7 +33,7 @@ public class InfoFatturazioneModelDSTest {
 		
 		model= new InfoFatturazioneModelDS(ds);
 		
-		InfoFatturazioneBean fattura= new InfoFatturazioneBean();
+	    fattura= new InfoFatturazioneBean();
 	
 		fattura.setNumeroOrdine(2);
 		fattura.setNome("alessio");

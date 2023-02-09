@@ -16,7 +16,7 @@ giacenza int not null,
 primary key (codiceArticolo));
 
 CREATE TABLE IF NOT EXISTS ordine (
-numeroOrdine int not null,
+numeroOrdine int not null ,
 data date not null,
 username varchar(20) not null,
 importo double not null,
@@ -33,8 +33,7 @@ indirizzo varchar(100) not null,
 citta varchar(20) not null,
 stato varchar(20) not null,
 cap varchar(20) not null,
-primary key (numeroOrdine)
-);
+primary key (numeroOrdine));
 
 CREATE TABLE IF NOT EXISTS contrassegno (
 numeroOrdine int not null,

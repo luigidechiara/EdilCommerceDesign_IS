@@ -25,7 +25,8 @@ public class OrdineModelDSTest {
 	private DataSource ds;
 	private OrdineModelDS model;
 	private Date data;
-	
+	private OrdineBean ordine;
+	private OrdineBean ordine1;
 	@Before
 	public void setUp() throws SQLException, Exception {
 		tester = new JdbcDatabaseTester(org.h2.Driver.class.getName(),
@@ -37,13 +38,13 @@ public class OrdineModelDSTest {
 		data= new Date(System.currentTimeMillis());
 		model= new OrdineModelDS(ds);
 		
-		OrdineBean ordine= new OrdineBean();
+	    ordine= new OrdineBean();
 		ordine.setNumeroOrdine(1);
 		ordine.setUsername("xander");
 		ordine.setImporto(120);
 		
     	
-		OrdineBean ordine1= new OrdineBean();
+		ordine1= new OrdineBean();
 		ordine1.setNumeroOrdine(2);
 		ordine1.setUsername("cavallo99");
 		ordine1.setImporto(120);
@@ -114,11 +115,19 @@ public class OrdineModelDSTest {
 		pre2.setNumeroOrdine(2);
 		pre2.setImporto(120);	
 		pre2.setData(data);
+		
+		OrdineBean pre3= new OrdineBean();
+		pre3.setUsername("nicolle");
+		pre3.setNumeroOrdine(5);
+		pre3.setImporto(120);	
+		pre3.setData(data);
+		
 	
 		
 		Collection<OrdineBean> expected = new LinkedList<OrdineBean>();
   		expected.add(pre1);
   		expected.add(pre2);
+  		expected.add(pre3);
   		
   		Collection<OrdineBean> actual = new LinkedList<OrdineBean>();
 		
@@ -137,7 +146,7 @@ public class OrdineModelDSTest {
 		OrdineBean expected= new OrdineBean();
 		expected.setUsername("xander");
 		expected.setNumeroOrdine(1);
-		expected.setImporto(150);	
+		expected.setImporto(120);	
 		expected.setData(data);
 		boolean verifica= false;
 		OrdineBean actual= null;

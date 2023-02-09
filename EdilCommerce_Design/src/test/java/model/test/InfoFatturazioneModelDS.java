@@ -95,15 +95,7 @@ public class InfoFatturazioneModelDS implements ModelInterface<InfoFatturazioneB
 				collection.add(bean);
 			}
 		} finally {
-			try {
-				if(ps != null)
-					ps.close();
-			} finally {
-				if(con != null)
-					con.close();
-				if (rs != null)
-					rs.close();
-			}
+			
 		}
 		
 		return collection;
