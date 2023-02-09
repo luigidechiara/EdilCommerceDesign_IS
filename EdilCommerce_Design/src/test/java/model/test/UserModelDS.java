@@ -25,7 +25,7 @@ public class UserModelDS implements ModelInterface<UserBean> {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		
-		String selectCodeSQL = "SELECT * FROM user WHERE username=?";
+		String selectCodeSQL = "SELECT * FROM utente WHERE username=?";
 		
 		UserBean bean = new UserBean();
 		
@@ -51,16 +51,9 @@ public class UserModelDS implements ModelInterface<UserBean> {
 				bean.setCap(rs.getString("cap"));
 				bean.setStato(rs.getString("stato"));
 			}
-		} finally {
-			try {
-				if(ps != null)
-					ps.close();
-			} finally {
-				if(con != null)
-					con.close();
-				if (rs != null)
-					rs.close();
-			}
+		} catch(SQLException e) {
+			
+			
 		}
 		
 		return bean;
@@ -78,7 +71,7 @@ public class UserModelDS implements ModelInterface<UserBean> {
 		PreparedStatement ps = null;
 		PasswordHasher ph= new PasswordHasher();
 		
-		String InsertSQL = "INSERT INTO user VALUES (?,?,?,?,?,?,?,?,?,?)";
+		String InsertSQL = "INSERT INTO utente VALUES (?,?,?,?,?,?,?,?,?,?)";
 		
 			try {
 				con = ds.getConnection();
@@ -102,15 +95,11 @@ public class UserModelDS implements ModelInterface<UserBean> {
 				
 				return true;
 
-			} finally {
-				try {
-					if (ps != null)
-						ps.close();
-				} finally {
-					if (con != null)
-						con.close();
-				}
+			} catch(SQLException e) {
+				
+				
 			}
+			return false;
 	}
 
 	 
@@ -119,7 +108,7 @@ public class UserModelDS implements ModelInterface<UserBean> {
 		PreparedStatement ps = null;
 		PasswordHasher ph= new PasswordHasher();
 		
-		String UpdateSQL = "UPDATE user SET username=?, nome=?, cognome=?, email=?, telefono=?, indirizzo=?, userPassword=?, stato=?, cap=?, citta=? WHERE username=?";
+		String UpdateSQL = "UPDATE utente SET username=?, nome=?, cognome=?, email=?, telefono=?, indirizzo=?, userPassword=?, stato=?, cap=?, citta=? WHERE username=?";
 		
 			try {
 				con = ds.getConnection();
@@ -144,15 +133,11 @@ public class UserModelDS implements ModelInterface<UserBean> {
 				
 				return true;
 
-			} finally {
-				try {
-					if (ps != null)
-						ps.close();
-				} finally {
-					if (con != null)
-						con.close();
-				}
+			} catch(SQLException e) {
+				
+				
 			}
+			return false;
 	}
 
 	 

@@ -59,7 +59,18 @@ username varchar(20) not null,
 nome varchar(20) not null,
 primary key (username, nome));
 
-
+CREATE TABLE IF NOT EXISTS utente ( 
+username varchar(20) not null,
+nome varchar(20) not null,
+cognome varchar(20) not null,
+email varchar(100) not null,
+telefono varchar(15) not null,
+indirizzo varchar(20) not null,
+citta varchar(20) not null,
+stato varchar(20) not null,
+cap varchar(20) not null,
+userPassword varchar(100) not null,
+primary key (username));
 
 
 
