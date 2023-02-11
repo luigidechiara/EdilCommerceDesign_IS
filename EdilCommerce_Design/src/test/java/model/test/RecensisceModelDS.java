@@ -46,16 +46,8 @@ public class RecensisceModelDS implements ModelRelationInterface<RecensisceBean>
 				bean.setTesto(rs.getString("testo"));
 				bean.setValore(rs.getInt("valore"));
 			}
-		} finally {
-			try {
-				if(ps != null)
-					ps.close();
-			} finally {
-				if(con != null)
-					con.close();
-				if (rs != null)
-					rs.close();
-			}
+		}catch(SQLException e) {
+			e.printStackTrace();
 		}
 		return bean;
 	}
@@ -89,16 +81,8 @@ public class RecensisceModelDS implements ModelRelationInterface<RecensisceBean>
 				bean.setValore(rs.getInt("valore"));
 				collection.add(bean);
 			}
-		} finally {
-			try {
-				if(ps != null)
-					ps.close();
-			} finally {
-				if(con != null)
-					con.close();
-				if (rs != null)
-					rs.close();
-			}
+		} catch(SQLException e) {
+			e.printStackTrace();
 		}
 		return collection;
 	}
@@ -131,16 +115,8 @@ public class RecensisceModelDS implements ModelRelationInterface<RecensisceBean>
 				bean.setValore(rs.getInt("valore"));
 				collection.add(bean);
 			}
-		} finally {
-			try {
-				if(ps != null)
-					ps.close();
-			} finally {
-				if(con != null)
-					con.close();
-				if (rs != null)
-					rs.close();
-			}
+		} catch(SQLException e) {
+			e.printStackTrace();
 		}
 		return collection;
 	}
@@ -188,15 +164,10 @@ public class RecensisceModelDS implements ModelRelationInterface<RecensisceBean>
 				return false;
 			
 			return true;
-		} finally {
-			try {
-				if(ps != null)
-					ps.close();
-			} finally {
-				if(con != null)
-					con.close();
-			}
-		}		
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return false;		
 	}
 
 	
@@ -238,15 +209,10 @@ public class RecensisceModelDS implements ModelRelationInterface<RecensisceBean>
 				
 				return true;
 
-			} finally {
-				try {
-					if (ps != null)
-						ps.close();
-				} finally {
-					if (con != null)
-						con.close();
-				}
+			} catch(SQLException e) {
+				e.printStackTrace();
 			}
+			return false;
 	}
 
 	
@@ -283,15 +249,10 @@ public class RecensisceModelDS implements ModelRelationInterface<RecensisceBean>
 					return false;
 				
 				return true;
-			} finally {
-				try {
-					if (ps != null)
-						ps.close();
-				} finally {
-					if (con != null)
-						con.close();
-				}
+			} catch(SQLException e) {
+				e.printStackTrace();
 			}
+			return false;
 	}
 
 }

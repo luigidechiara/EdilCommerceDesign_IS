@@ -12,6 +12,7 @@ import javax.sql.DataSource;
 import org.dbunit.IDatabaseTester;
 import org.dbunit.JdbcDatabaseTester;
 import org.dbunit.operation.DatabaseOperation;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
@@ -32,7 +33,7 @@ public class ArticoloModelDSTest {
 	@Before
 	public void setUp() throws SQLException, Exception {
 		tester = new JdbcDatabaseTester(org.h2.Driver.class.getName(),
-				"jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;init=runscript from 'classpath:resources/database.sql'", "sa", "");
+				"jdbc:h2:mem:test1;DB_CLOSE_DELAY=-1;init=runscript from 'classpath:resources/database.sql'", "sa", "");
 		tester.setSetUpOperation(DatabaseOperation.REFRESH);
 		tester.setTearDownOperation(DatabaseOperation.DELETE_ALL);
 		ds = Mockito.mock(DataSource.class);
@@ -63,12 +64,9 @@ public class ArticoloModelDSTest {
 		articolo2.setNomeCategoria("aEsterno");
 		 
 		 model.doSave(articolo2);
-		 
-		 
-		 
-    	
+
 	}
-	
+		
 
 	
     @Test

@@ -41,13 +41,13 @@ public class CategoriaModelDS implements ModelInterface<CategoriaBean> {
 			rs = ps.executeQuery();
 			
 			if(rs.next()) {
-				bean.setImmagine(rs.getString("imagine"));
+				bean.setImmagine(rs.getString("immagine"));
 				bean.setNome(rs.getString("nome"));
 				bean.setDescrizione(rs.getString("descrizione"));
 			}
 			
 		} catch(SQLException e) {
-			
+			e.printStackTrace();
 		}
 		
 		return bean;

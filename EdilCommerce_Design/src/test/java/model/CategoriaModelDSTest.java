@@ -77,7 +77,7 @@ public class CategoriaModelDSTest {
     	}catch(SQLException e) {
     		e.printStackTrace();
     	}
-    	//assertEquals(expected,actual);
+    	assertEquals(expected,actual);
     	assertEquals(confronto,true);
     	
     	}

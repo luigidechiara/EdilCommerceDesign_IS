@@ -72,5 +72,13 @@ cap varchar(20) not null,
 userPassword varchar(100) not null,
 primary key (username));
 
+CREATE TABLE IF NOT EXISTS recensisce (
+codiceArticolo char(5) not null,
+username varchar(20) not null,
+data date not null,
+valore int not null,
+testo varchar(500) not null,
+primary key (username, codiceArticolo));
+
 
 
