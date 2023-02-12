@@ -29,6 +29,7 @@ public class ModificaArticolo extends HttpServlet {
 		DataSource ds = (DataSource) getServletContext().getAttribute("DataSource");
 		ValidazioneInput validazione= new ValidazioneInput();
 		HttpSession session = request.getSession(false);
+		boolean verifica=false;
 		if(session == null) {
 			response.sendRedirect(response.encodeRedirectURL("/EdilCommerce_Design/"));
 		}
@@ -36,6 +37,8 @@ public class ModificaArticolo extends HttpServlet {
 		Collection<CategoriaBean> categorie = (Collection<CategoriaBean>) getServletContext().getAttribute("Categorie");
 		
 		ArticoloModelDS modelA = new ArticoloModelDS(ds);
+		
+		
 		
 		ArticoloBean aBean = new ArticoloBean();
 		
@@ -73,7 +76,7 @@ public class ModificaArticolo extends HttpServlet {
 					buffer.append(">" + cBean.getNome() + "</option>\r\n");
 				}
 				String[] img = aBean.getImmagine().split("/");
-				buffer.append("										</select>\r\n"
+				buffer.append("									</select>\r\n"
 						+ "										\r\n"
 						+ "										<label for=\"immagine\">Foto</label>\r\n"
 						+ "										<input type=\"text\" name=\"immagine\" required value=" + img[5] + ">\r\n"
@@ -82,7 +85,7 @@ public class ModificaArticolo extends HttpServlet {
 						+ "										<textarea name=\"testo\" cols=\"40\" rows=\"5\" maxlength=\"1000\" required>" + aBean.getDescrizione() + "</textarea>\r\n"
 						+ "										\r\n"
 						+ "										<label for=\"costo\">Costo (&euro;)</label>\r\n"
-						+ "										<input type=\"number\" name=\"costo\" min=\"0.00\" required value=" + aBean.getCosto() + ">\r\n"
+						+ "										<input type=\"number\" name=\"costo\" min=\"0.00\" step=\"0.01\" required value=" + aBean.getCosto() + ">\r\n"
 						+ "										\r\n"
 						+ "										<label for=\"giacenza\">giacenza</label>\r\n"								
 						+ "										<input type=\"number\" name=\"giacenza\" min=\"1\"max=\"1000\" value="+ aBean.getGiacenza()+">\r\n"
@@ -102,7 +105,9 @@ public class ModificaArticolo extends HttpServlet {
 			if(cat.length != 1)
 				cat1 = cat[0] + cat[1].substring(0, 1).toUpperCase() + cat[1].substring(1);
 			immagine = "/EdilCommerce_Design/img/categoria/" + cat1 + "/" + immagine;
+		
 			
+		
 			
 			aBean.setCodiceArticolo(codice);
 			aBean.setCosto(costo);
@@ -132,7 +137,7 @@ public class ModificaArticolo extends HttpServlet {
 				return;
 				
 			}
-			
+	
 			}
 		return;
 	}

@@ -54,7 +54,7 @@ if(unsaved == null)
 				<li onclick="visualizza('inserisciArticolo')"><h2>Inserisci articolo</h2></li>
 				<%} %>
 					<div class="container start" id="inserisciArticolo">
-						<form action="<%=response.encodeURL("/EdilCommerce_Design/AggiungiArticolo")%>" method="POST">
+						<form action="<%=response.encodeURL("/EdilCommerce_Design/AggiungiArticolo")%>" method="POST" >
 							<div class="flex">
 					  			<div class="col-50">
 									<label for="nome">Nome dell'articolo</label>
@@ -82,7 +82,7 @@ if(unsaved == null)
 									</select>
 									
 									<label for="immagine">Foto</label>
-									<input type="text" name="immagine" value="<%=unsaved.getImmagine()%>" required>
+									<input type="text" name="immagine" value="<%=unsaved.getImmagine()%>" required pattern="^[A-Za-z0-9]{3,}$">
 									
 									<label for="testo">Descrizione</label>
 									<textarea name="testo" cols="40" rows="5" maxlength="1000" required><%=unsaved.getDescrizione()%></textarea>
@@ -132,6 +132,7 @@ if(unsaved == null)
 										</select>
 										&nbsp;<input type="button" onclick="selezionaArticolo('1')" value="Seleziona articolo"><br>
 									<div id="formModificaA">
+									
 									</div>
 								</div>
 							</div>									

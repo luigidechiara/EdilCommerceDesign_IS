@@ -390,4 +390,52 @@ public class ArticoloModelDS implements ModelInterface<ArticoloBean> {
 		
 		return bean;
 	}
+	
+	
+	public ArticoloBean doRetriveByNome(String nome) throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		String selectCodeSQL = "SELECT * FROM articolo WHERE nome=?";
+		
+		ArticoloBean bean = new ArticoloBean();
+		
+		try {
+			con = ds.getConnection();
+			ps = con.prepareStatement(selectCodeSQL);
+			
+			ps.setString(1, nome);
+			
+			Utility.print("doRetriveByKey: " + ps.toString());
+			
+			rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				bean.setCodiceArticolo(rs.getString("codiceArticolo"));
+				bean.setNome(rs.getString("nome"));
+				bean.setImmagine(rs.getString("immagine"));
+				bean.setDescrizione(rs.getString("descrizione"));
+				bean.setCosto(rs.getDouble("costo"));
+				bean.setNomeCategoria(rs.getString("nomeCategoria"));
+				bean.setMediaRecensioni(rs.getInt("mediaRecensioni"));
+				bean.setGiacenza(rs.getInt("giacenza"));
+			}
+		} finally {
+			try {
+				if(ps != null)
+					ps.close();
+			} finally {
+				if(con != null)
+					con.close();
+				if (rs != null)
+					rs.close();
+			}
+		}
+		
+		return bean;
+	}
+
+	
+	
 }

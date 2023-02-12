@@ -22,6 +22,7 @@ function getXmlHttpRequest() {
 	return xhr;
 }
 
+
 function selezionaArticolo(op) {
 	var select = document.getElementById("articolo");
 	var selected = select.options[select.selectedIndex].value;

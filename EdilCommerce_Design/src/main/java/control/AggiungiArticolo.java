@@ -36,9 +36,23 @@ public class AggiungiArticolo extends HttpServlet {
 		String testo = request.getParameter("testo");
 		Double costo = Double.parseDouble(request.getParameter("costo"));
 		int giacenza = Integer.parseInt(request.getParameter("giacenza"));
+		DataSource ds = (DataSource) getServletContext().getAttribute("DataSource");
+		ArticoloModelDS modelA = new ArticoloModelDS(ds);
+		HttpSession session = request.getSession(false);
+		
+		
 		
 		ArticoloBean saveBean = new ArticoloBean();
-		
+		try {
+			saveBean=modelA.doRetriveByNome(nome);
+			if(saveBean.getNome().equals(nome)) {
+				session.setAttribute("AdminError", "Nome articolo esistente");
+				response.sendRedirect(response.encodeURL("/EdilCommerce_Design/admin/admin.jsp"));
+				return;
+				
+				
+			}else {
+
 		saveBean.setCodiceArticolo(codice);
 		saveBean.setNome(nome);
 		saveBean.setNomeCategoria(categorie);
@@ -46,7 +60,7 @@ public class AggiungiArticolo extends HttpServlet {
 		saveBean.setDescrizione(testo);
 		saveBean.setCosto(costo);
 		saveBean.setGiacenza(giacenza);
-		HttpSession session = request.getSession(false);
+		
 		
 		if(validazione.ValidazioneAggiungiArticolo(saveBean)) {
 		
@@ -59,17 +73,15 @@ public class AggiungiArticolo extends HttpServlet {
 		}
 		
 		if(nome==null || codice==null || categorie==null || immagine==null || testo==null || costo==null) {
-			session.setAttribute("AdminError", "Un campo � nullo");
+			session.setAttribute("AdminError", "Un campo nullo");
 			response.sendRedirect(response.encodeURL("/EdilCommerce_Design/admin/admin.jsp"));
 			return;
 		}
 		
-		DataSource ds = (DataSource) getServletContext().getAttribute("DataSource");
 		
 		ArticoloBean articolo= new ArticoloBean();
 		
 		
-		ArticoloModelDS modelA = new ArticoloModelDS(ds);
 		
 		try {
 			articolo = modelA.doRetriveByImmagine(immagine);
@@ -114,6 +126,11 @@ public class AggiungiArticolo extends HttpServlet {
 		}else {
 			session.setAttribute("Messaggio", "Errore dati Input");
 			response.sendRedirect(response.encodeURL("/EdilCommerce_Design/admin/admin.jsp"));
+		}
+		
+			}} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
 		}
 	}
 

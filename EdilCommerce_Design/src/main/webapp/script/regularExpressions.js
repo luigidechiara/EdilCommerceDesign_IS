@@ -8,6 +8,13 @@ function checkNome(inputtxt){
 	 return false;
 }// stringa
 
+function checkUsername(inputtxt){
+	 var nome= /^[A-Za-z0-9,\s]{3,15}$/;
+	 if(inputtxt.value.match(nome))	
+		return true;
+	 return false;
+}
+
 function checkEmail(inputtxt){
 	 var email= /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 	 if(inputtxt.value.match(email))	
@@ -86,7 +93,7 @@ function validateRegistrazione(obj){
 	}
 	
 	var username= document.getElementsByName("username")[0];
-	if(!checkNome(username)){
+	if(!checkUsername(username)){
 		valid= false;
 		username.classList.add("error");
 	}else{
